@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 
 export default function Signup() {
@@ -7,15 +7,30 @@ export default function Signup() {
   const passwordConfimRef = useRef();
 
   const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault(); //prevent from refreshing
 
-    signup(emailRef.current.value, passwordRef.current.value);
+    if (passwordRef.current.value !== passwordConfimRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to create an account");
+    }
+    setLoading(false);
   }
+
   return (
     <div className="signupFormComponentContainer">
-      <form className="formContainer">
+      {error}
+      <form onSubmit={handleSubmit} className="formContainer">
         <h1>Signup</h1>
         <label htmlFor="emailInput" className="emailLabel">
           email
@@ -29,7 +44,9 @@ export default function Signup() {
           password confirm
         </label>
         <input className="passwordConfirmInput" ref={passwordConfimRef}></input>
-        <button type="submit">Signup</button>
+        <button disabled={loading} type="submit">
+          Signup
+        </button>
       </form>
     </div>
   );
