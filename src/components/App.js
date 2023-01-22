@@ -1,13 +1,20 @@
 import React from "react";
 import Signup from "./Signup";
-import AuthProvider from "../components/context/AuthContext";
+import { AuthProvider } from "../components/context/AuthContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <AuthProvider>
-      <div className="signupComponentContainer">
-        <Signup />
-      </div>
-    </AuthProvider>
+    <div className="signupComponentContainer">
+      <Router>
+        <AuthProvider>
+          <Routes>
+            {/* <Route exact path="/" component={Dashboard}></Route> */}
+            {/* <Route path="/signup" component={Signup} /> */}
+          </Routes>
+          <Signup />
+        </AuthProvider>
+      </Router>
+    </div>
   );
 }
 

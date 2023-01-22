@@ -1,35 +1,53 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 
 export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfimRef = useRef();
+  const { signup, currentUser } = useAuth();
 
-  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault(); //prevent from refreshing
 
-    signup(emailRef.current.value, passwordRef.current.value);
+    if (passwordRef.current.value !== passwordConfimRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError(`${currentUser}`);
+    }
+    setLoading(false);
   }
+
   return (
     <div className="signupFormComponentContainer">
-      <form className="formContainer">
+      {error}
+      {currentUser && currentUser.email}
+      <form onSubmit={handleSubmit} className="formContainer">
         <h1>Signup</h1>
-        <label for="emailInput" className="emailLabel">
+        <label htmlFor="emailInput" className="emailLabel">
           email
         </label>
         <input className="emailInput" ref={emailRef}></input>
-        <label for="passwordInput" className="passwordLabel">
+        <label htmlFor="passwordInput" className="passwordLabel">
           password
         </label>
         <input className="passwordInput" ref={passwordRef}></input>
-        <label for="passwordConfirmInput" className="passwordConfirmLabel">
-          email
+        <label htmlFor="passwordConfirmInput" className="passwordConfirmLabel">
+          password confirm
         </label>
         <input className="passwordConfirmInput" ref={passwordConfimRef}></input>
-        <button>Signup</button>
+        <button disabled={loading} type="submit">
+          Signup
+        </button>
       </form>
     </div>
   );
