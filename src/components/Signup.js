@@ -5,8 +5,8 @@ export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfimRef = useRef();
+  const { signup, currentUser } = useAuth();
 
-  const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +22,7 @@ export default function Signup() {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
     } catch {
-      setError("Failed to create an account");
+      setError(`${currentUser}`);
     }
     setLoading(false);
   }
@@ -30,6 +30,7 @@ export default function Signup() {
   return (
     <div className="signupFormComponentContainer">
       {error}
+      {currentUser && currentUser.email}
       <form onSubmit={handleSubmit} className="formContainer">
         <h1>Signup</h1>
         <label htmlFor="emailInput" className="emailLabel">
