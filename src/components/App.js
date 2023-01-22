@@ -9,7 +9,7 @@ function App() {
         <AuthProvider>
           <Routes>
             {/* <Route exact path="/" component={Dashboard}></Route> */}
-            {/* <Route path="/signup" component={Signup} /> */}
+            <Route path="/signup" component={Signup} />
           </Routes>
           <Signup />
         </AuthProvider>
