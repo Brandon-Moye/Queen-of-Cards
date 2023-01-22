@@ -1,5 +1,7 @@
 import React from "react";
 import Signup from "./Signup";
+import Dashboard from "./Dashboard";
+import Login from "./Login";
 import { AuthProvider } from "../components/context/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
@@ -8,10 +10,11 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            {/* <Route exact path="/" component={Dashboard}></Route> */}
-            {/* <Route path="/signup" component={Signup} /> */}
+            <Route exact path="/" element={<Dashboard />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
-          <Signup />
+          {/* <Signup /> */}
         </AuthProvider>
       </Router>
     </div>
