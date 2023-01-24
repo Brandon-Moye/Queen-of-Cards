@@ -2,56 +2,78 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfimRef = useRef();
-  const { signup } = useAuth();
+  const { currentUser, updatePassword, updateEmail } = useAuth();
   const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault(); //prevent from refreshing
 
     if (passwordRef.current.value !== passwordConfimRef.current.value) {
       return setError("Passwords do not match");
     }
 
-    try {
-      setError("");
-      setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      navigate("/");
-    } catch {
-      setError("Failed to create an account");
+    const promises = [];
+    setLoading(true);
+    setError("");
+    if (emailRef.current.value !== currentUser.email) {
+      promises.push(updateEmail(emailRef.current.value));
     }
-    setLoading(false);
+    if (passwordRef.current.value) {
+      promises.push(updatePassword(passwordRef.current.value));
+    }
+
+    Promise.all(promises)
+      .then(() => {
+        navigate("/");
+      })
+      .catch(() => setError("Failed to update account"))
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
     <div className="signupFormComponentContainer">
       {error}
       <form onSubmit={handleSubmit} className="formContainer">
-        <h1>Signup</h1>
+        <h1>Update Profile</h1>
         <label htmlFor="emailInput" className="emailLabel">
           email
         </label>
-        <input className="emailInput" ref={emailRef}></input>
+        <input
+          className="emailInput"
+          ref={emailRef}
+          required
+          defaultValue={currentUser.email}
+        ></input>
         <label htmlFor="passwordInput" className="passwordLabel">
           password
         </label>
-        <input className="passwordInput" ref={passwordRef}></input>
+        <input
+          className="passwordInput"
+          ref={passwordRef}
+          placeholder="Leave blank to keep the same"
+        ></input>
         <label htmlFor="passwordConfirmInput" className="passwordConfirmLabel">
           password confirm
         </label>
-        <input className="passwordConfirmInput" ref={passwordConfimRef}></input>
+        <input
+          className="passwordConfirmInput"
+          ref={passwordConfimRef}
+          placeholder="Leave blank to keep the same"
+        ></input>
         <button disabled={loading} type="submit">
-          Signup
+          Update
         </button>
         <div className="loginFromSignupPage">
-          Already have an account? <Link to="/login">Login</Link>
+          <Link to="/">Cancel</Link>
         </div>
       </form>
     </div>
