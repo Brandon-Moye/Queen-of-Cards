@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfimRef = useRef();
   const { signup } = useAuth();
+  const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,6 +23,7 @@ export default function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch {
       setError("Failed to create an account");
     }
@@ -47,6 +50,9 @@ export default function Signup() {
         <button disabled={loading} type="submit">
           Signup
         </button>
+        <div className="loginFromSignupPage">
+          Already have an account? <Link to="/login">Login</Link>
+        </div>
       </form>
     </div>
   );
