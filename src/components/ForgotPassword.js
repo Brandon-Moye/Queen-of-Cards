@@ -1,26 +1,25 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Login() {
+export default function ForgotPassword() {
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const { login } = useAuth();
-
+  const { resetPassword } = useAuth();
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault(); //prevent from refreshing
 
     try {
       setError("");
+      setMessage("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      navigate("/");
+      await resetPassword(emailRef.current.value);
+      setMessage("Check your inbox for further instructions");
     } catch {
-      setError("Failed to sign in");
+      setError("Failed to reset password");
     }
     setLoading(false);
   }
@@ -28,25 +27,22 @@ export default function Login() {
   return (
     <div className="signupFormComponentContainer">
       {error}
+      {message}
       <form onSubmit={handleSubmit} className="formContainer">
-        <h1>Login</h1>
+        <h1>Password Reset</h1>
         <label htmlFor="emailInput" className="emailLabel">
           email
         </label>
         <input className="emailInput" ref={emailRef}></input>
-        <label htmlFor="passwordInput" className="passwordLabel">
-          password
-        </label>
-        <input className="passwordInput" ref={passwordRef}></input>
         <button disabled={loading} type="submit">
-          Login
+          Reset Password
         </button>
       </form>
       <div className="signUpFromLoginPage">
         Need an account? Signup here <Link to="/signup">Sign up</Link>{" "}
       </div>
       <div className="forgotPassword">
-        <Link to="/forgot-password">Forgot Password?</Link>
+        <Link to="/login">Login</Link>
       </div>
     </div>
   );
