@@ -23,10 +23,13 @@ export default function UpdateProfile() {
     setLoading(true);
     setError("");
     if (emailRef.current.value !== currentUser.email) {
-      promises.push(updateEmail(emailRef.current.value));
+      // promises.push(updateEmail(emailRef.current.value));
+      //it can retrieve the new email, something is wrong with either the
+      //update email function or the way I am pushing it into the function
+      console.log(emailRef.current.value);
     }
     if (passwordRef.current.value) {
-      promises.push(updatePassword(passwordRef.current.value));
+      // promises.push(updatePassword(passwordRef.current.value));
     }
 
     Promise.all(promises)
