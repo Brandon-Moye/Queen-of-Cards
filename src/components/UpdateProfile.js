@@ -6,7 +6,7 @@ export default function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfimRef = useRef();
-  const { currentUser, updatePassword, updateEmail } = useAuth();
+  const { currentUser, userUpdatePassword, userUpdateEmail } = useAuth();
   const navigate = useNavigate();
 
   const [error, setError] = useState("");
@@ -23,10 +23,13 @@ export default function UpdateProfile() {
     setLoading(true);
     setError("");
     if (emailRef.current.value !== currentUser.email) {
-      promises.push(updateEmail(emailRef.current.value));
+      promises.push(userUpdateEmail(emailRef.current.value));
+      console.log(emailRef.current.value);
+      //it can retrieve the new email, something is wrong with either the
+      //update email function or the way I am pushing it into the function
     }
     if (passwordRef.current.value) {
-      promises.push(updatePassword(passwordRef.current.value));
+      promises.push(userUpdatePassword(passwordRef.current.value));
     }
 
     Promise.all(promises)
