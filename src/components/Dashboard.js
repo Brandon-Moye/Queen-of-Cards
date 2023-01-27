@@ -4,17 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { db } from "../Firebase";
 import { auth } from "../Firebase";
 import { uid } from "uid";
-import {
-  getDatabase,
-  set,
-  ref,
-  onValue,
-  DataSnapshot,
-} from "firebase/database";
+import { set, ref, onValue, remove } from "firebase/database";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
-  const [testDb, setTestDb] = useState([]);
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const { currentUser, logout } = useAuth();
@@ -30,27 +23,10 @@ export default function Dashboard() {
     }
   }
 
-  function testAddToDb() {
-    let testObjectInputValue = document.getElementById("testInputField").value;
-    const testObject = testObjectInputValue;
-
-    setTestDb((prevTest) => [...prevTest, testObject]);
-    return console.log(testDb);
-    // const inputTestValue = document.getElementById("testInputField").value;
-    // console.log(testAddToDb);
-
-    // return testDb.push([inputTestValue]);
-    // --------------
-    // const reactDbTest = getDatabase();
-    // set(ref(db, "users/" + userId), {
-    //   testDb,
-    // });
-  }
   //---------------------
-  const handleTodoChange = (e) => {
-    setTodo(e.target.value);
-  };
-  //read
+
+  //READ
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -59,7 +35,7 @@ export default function Dashboard() {
           const data = snapshot.val();
           if (data !== null) {
             Object.values(data).map((todo) => {
-              setTodos((oldArray) => [...oldArray, todo]);
+              return setTodos((oldArray) => [...oldArray, todo]);
             });
           }
         });
@@ -69,14 +45,21 @@ export default function Dashboard() {
     });
   }, []);
 
-  //write
+  //WRITE
   const writeToDatabase = () => {
     const uidVariable = uid();
     set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
       todo: todo,
-      uid: uidVariable,
+      uidVariable: uidVariable,
     });
     setTodo("");
+  };
+
+  //DELETE
+  const handleDelete = (uid) => {
+    remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
+    console.log(auth.currentUser.uid);
+    // console.log(uidVariable);
   };
 
   return (
@@ -96,7 +79,7 @@ export default function Dashboard() {
         className="testInputField"
         type="text"
         value={todo}
-        onChange={handleTodoChange}
+        onChange={(e) => setTodo(e.target.value)}
       ></input>
 
       <button onClick={writeToDatabase} className="testButton">
@@ -106,6 +89,7 @@ export default function Dashboard() {
       {todos.map((todo) => (
         <div>
           <h1>{todo.todo}</h1>
+          <button onClick={() => handleDelete(todo.uidVariable)}>Delete</button>
         </div>
       ))}
     </div>
