@@ -8,8 +8,8 @@ import { set, ref, onValue, remove } from "firebase/database";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
-  const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [mySelectedQueen, setMySelectedQueen] = useState("");
+  const [mySelectedQueens, setMySelectedQueens] = useState([]);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   async function handleLogout() {
@@ -26,16 +26,18 @@ export default function Dashboard() {
   //---------------------
 
   //READ
-
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
-          setTodos([]);
+          setMySelectedQueens([]);
           const data = snapshot.val();
           if (data !== null) {
-            Object.values(data).map((todo) => {
-              return setTodos((oldArray) => [...oldArray, todo]);
+            Object.values(data).map((mySelectedQueen) => {
+              return setMySelectedQueens((prevQueens) => [
+                ...prevQueens,
+                mySelectedQueen,
+              ]);
             });
           }
         });
@@ -49,17 +51,16 @@ export default function Dashboard() {
   const writeToDatabase = () => {
     const uidVariable = uid();
     set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-      todo: todo,
+      mySelectedQueen: mySelectedQueen,
       uidVariable: uidVariable,
     });
-    setTodo("");
+    setMySelectedQueen("");
   };
 
   //DELETE
   const handleDelete = (uid) => {
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
     console.log(auth.currentUser.uid);
-    // console.log(uidVariable);
   };
 
   return (
@@ -78,18 +79,20 @@ export default function Dashboard() {
         id="testInputField"
         className="testInputField"
         type="text"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+        value={mySelectedQueen}
+        onChange={(e) => setMySelectedQueen(e.target.value)}
       ></input>
 
       <button onClick={writeToDatabase} className="testButton">
         Test Button
       </button>
       {/* <div className="testDbContainer">{testDb}</div> */}
-      {todos.map((todo) => (
+      {mySelectedQueens.map((mySelectedQueen) => (
         <div>
-          <h1>{todo.todo}</h1>
-          <button onClick={() => handleDelete(todo.uidVariable)}>Delete</button>
+          <h1>{mySelectedQueen.mySelectedQueen}</h1>
+          <button onClick={() => handleDelete(mySelectedQueen.uidVariable)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>

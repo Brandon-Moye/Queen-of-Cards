@@ -1,0 +1,91 @@
+.card {
+  background-color: #f598b9;
+  padding: 0rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  border-radius: 10px;
+  color: #30161f;
+  height: 35rem;
+  box-shadow: 0px 1px 10px #30161f;
+}
+
+.card img {
+  margin-top: 2rem;
+  max-height: 20rem;
+  max-width: 15rem;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #30161f;
+  object-position: 50% 2.5%;
+}
+
+.cardQueenNameProp {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardQueenWinnerProp {
+  margin-bottom: 1rem;
+}
+.cardQueenCongenialProp {
+  margin-bottom: 1rem;
+}
+
+.cardQueenQuoteProp {
+  width: 15rem;
+  margin-bottom: 2.5rem;
+  font-size: 85%;
+  height: 5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btn2 {
+  display: inline-block;
+  background-color: #fbd3e1;
+  color: #30161f;
+  border-radius: 10px;
+  border: none;
+  height: 2rem;
+  width: 6rem;
+  position: relative;
+  overflow: hidden;
+  font-size: 1rem;
+  transition: all 0.75s;
+  margin-bottom: 1rem;
+}
+
+.btn2:hover {
+  background-color: #f598b9;
+  box-shadow: 0 5px 10px #30161f;
+  cursor: pointer;
+}
+
+.btn2.test-completed2::after,
+.btn2.test-completed2::before {
+  content: "Sashay";
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  transition: all 0.75s;
+  left: 0;
+  line-height: 0.05rem;
+}
+
+.btn2.btn2.test-completed2:hover::after {
+  left: 6rem;
+}
+
+.btn2.test-completed2::before {
+  content: "Away";
+  left: -6rem;
+}
+
+.btn2.btn2.test-completed2:hover::before {
+  left: 0;
+}
