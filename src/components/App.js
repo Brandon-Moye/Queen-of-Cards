@@ -6,6 +6,7 @@ import ForgotPassword from "./ForgotPassword";
 import Header from "./queenOfCardsComponents/Header";
 import Search from "./queenOfCardsComponents/Search";
 import CardDisplay from "./queenOfCardsComponents/CardDisplay";
+import ViewAllQueens from "./queenOfCardsComponents/ViewAllQueens";
 import { AuthProvider } from "../components/context/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";

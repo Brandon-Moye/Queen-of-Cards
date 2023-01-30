@@ -10,25 +10,34 @@ export default function CardDisplays(props) {
           src={props.certainItem.selectedQueenImage}
         ></img>
         <div className="cardQueenNameProp">
-          <strong>{props.certainItem.selectedQueenName}</strong>
+          <strong>{props.certainItem.selectedQueenDragName}</strong>
         </div>
         <div className="cardQueenWinnerProp">
-          <strong>Winner:</strong> {props.certainItem.selectedQueenWinnerStatus}
+          <strong>Season:</strong>{" "}
+          {props.certainItem.selectedQueenSeasonAppearedOn}
+        </div>
+        <div className="cardQueenHomepageProp">
+          <strong>Placement:</strong>
+          {props.certainItem.selectedQueenMainSeasonPlacement}
         </div>
         <div className="cardQueenCongenialProp">
-          <strong>Congenial: </strong>
-          {props.certainItem.selectedQueenCongenialStatus}
+          <strong>Challenge Wins: </strong>
+          {props.certainItem.selectedQueenMainSeasonChallengeWins}
         </div>
-        <i className="cardQueenQuoteProp">
-          {props.certainItem.selectedQueenQuote}
-        </i>
+        <a
+          className="cardQueenQuoteProp"
+          href={props.certainItem.selectedQueenHomepage}
+          target="_blank"
+        >
+          Link to Page
+        </a>
         <div className="buttonContainer">
-          <button
+          {/* <button
             className="btn2 test-completed2"
             onClick={() => {
               props.handleClick(props.certainItem.selectedQueenId);
             }}
-          ></button>
+          ></button> */}
         </div>
       </div>
     </div>
