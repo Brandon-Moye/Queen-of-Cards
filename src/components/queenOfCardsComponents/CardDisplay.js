@@ -5,10 +5,10 @@ export default function CardDisplays(props) {
   return (
     <div className="cardDisplayContainer">
       <div className="card">
-        <img
+        {/* <img
           className="cardQueenImageProp"
           src={props.certainItem.selectedQueenImage}
-        ></img>
+        ></img> */}
         <div className="cardQueenNameProp">
           <strong>{props.certainItem.selectedQueenDragName}</strong>
         </div>

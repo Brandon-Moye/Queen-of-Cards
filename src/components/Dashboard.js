@@ -97,8 +97,10 @@ const queenDatabase = [
 export default function Dashboard() {
   const [error, setError] = useState("");
   const [mySelectedQueen, setMySelectedQueen] = useState("");
-  const [mySelectedQueenTrial, setMySelectedQueenTrial] = useState([]);
   const [mySelectedQueens, setMySelectedQueens] = useState([]);
+  const [mySelectedQueenTrial, setMySelectedQueenTrial] = useState([]);
+  const [mySelectedQueenTrials, setMySelectedQueenTrials] = useState([]);
+
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   async function handleLogout() {
@@ -111,7 +113,9 @@ export default function Dashboard() {
       setError("Failed to log out");
     }
   }
-
+  //--------------------------------------------------------------------
+  // ------------ OLD MAPPING CODE TO COMPONENTS BELOW -----------------
+  //--------------------------------------------------------------------
   function addNewQueen(dragNameProp) {
     const findSelectedQueen = queenDatabase.find(function (
       theQueenThatIsCurrentlyBeingIndexed
@@ -128,22 +132,38 @@ export default function Dashboard() {
       selectedQueenHomepage: findSelectedQueen.queenHomepage,
     };
     setMySelectedQueenTrial((prevQueen) => [...prevQueen, newQueen]);
-    console.log(mySelectedQueenTrial);
   }
-  //---------------------
+
+  console.log(mySelectedQueenTrial);
+
+  const myQueenElements = mySelectedQueenTrial.map((certainItem) => {
+    return <CardDisplays certainItem={certainItem} />;
+  });
+
+  const gridQueenElements = queenDatabase.map((item) => {
+    return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
+  });
+
+  //--------------------------------------------------------------------
+  // ------------ ^OLD MAPPING CODE TO COMPONENTS ABOVE^ ---------------
+  //--------------------------------------------------------------------
+
+  //--------------------------------------------------------------------
+  // ------------ FIREBASE CODE BELOW ----------------------------------
+  //--------------------------------------------------------------------
 
   //READ
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
-          setMySelectedQueens([]);
+          setMySelectedQueenTrials([]);
           const data = snapshot.val();
           if (data !== null) {
-            Object.values(data).map((mySelectedQueen) => {
-              return setMySelectedQueens((prevQueens) => [
+            Object.values(data).map((mySelectedQueenTrials) => {
+              return setMySelectedQueenTrials((prevQueens) => [
                 ...prevQueens,
-                mySelectedQueen,
+                mySelectedQueenTrial,
               ]);
             });
           }
@@ -155,31 +175,49 @@ export default function Dashboard() {
   }, []);
 
   //WRITE
-  const writeToDatabase = () => {
+  function writeToDatabase(dragNameProp) {
+    const findSelectedQueen = queenDatabase.find(function (
+      theQueenThatIsCurrentlyBeingIndexed
+    ) {
+      return theQueenThatIsCurrentlyBeingIndexed.dragName === dragNameProp;
+    });
+    const newQueen = {
+      selectedQueenImage: findSelectedQueen.queenImage,
+      selectedQueenDragName: findSelectedQueen.dragName,
+      selectedQueenSeasonAppearedOn: findSelectedQueen.mainSeasonAppearedOn,
+      selectedQueenMainSeasonPlacement: findSelectedQueen.mainSeasonPlacement,
+      selectedQueenMainSeasonChallengeWins:
+        findSelectedQueen.mainSeasonChallengeWins,
+      selectedQueenHomepage: findSelectedQueen.queenHomepage,
+    };
+    setMySelectedQueenTrial((prevQueen) => [...prevQueen, newQueen]);
+
     const uidVariable = uid();
     set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-      mySelectedQueen: mySelectedQueen,
+      mySelectedQueenTrial: newQueen.selectedQueenDragName,
+      // mySelectedQueenTrial: newQueen.selectedQueenSeasonAppearedOn,
+      // mySelectedQueenTrial: newQueen.selectedQueenMainSeasonPlacement,
+      // mySelectedQueenTrial: newQueen.selectedQueenMainSeasonChallengeWins,
       uidVariable: uidVariable,
     });
-    setMySelectedQueen("");
-  };
+    setMySelectedQueenTrial([]);
+    console.log(setMySelectedQueenTrial);
+  }
 
   //DELETE
   const handleDelete = (uid) => {
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
     console.log(auth.currentUser.uid);
   };
-
-  // -----------------------------
-  const gridQueenElements = queenDatabase.map((item) => {
-    return <ViewAllQueens item={item} handleClick={addNewQueen} />;
-  });
-
-  const myQueenElements = mySelectedQueenTrial.map((certainItem) => {
-    return <CardDisplays certainItem={certainItem} />;
-  });
+  //--------------------------------------------------------------------
+  // ------------^  FIREBASE CODE ABOVE ^ ------------------------------
+  //--------------------------------------------------------------------
 
   return (
+    //--------------------------------------------------------------------
+    // ------------ FIREBASE RENDERING BELOW -----------------------------
+    //--------------------------------------------------------------------
+
     <div className="dashboardContainer">
       <div>Profile</div>
       {error}
@@ -198,19 +236,25 @@ export default function Dashboard() {
         value={mySelectedQueen}
         onChange={(e) => setMySelectedQueen(e.target.value)}
       ></input>
-
       <button onClick={writeToDatabase} className="testButton">
         Test Button
       </button>
       {/* <div className="testDbContainer">{testDb}</div> */}
-      {mySelectedQueens.map((mySelectedQueen) => (
+
+      {mySelectedQueenTrials.map((mySelectedQueen) => (
         <div>
-          <h1>{mySelectedQueen.mySelectedQueen}</h1>
-          <button onClick={() => handleDelete(mySelectedQueen.uidVariable)}>
+          <h1>{mySelectedQueenTrial.mySelectedQueenTrial}</h1>
+          <button
+            onClick={() => handleDelete(mySelectedQueenTrial.uidVariable)}
+          >
             Delete
           </button>
         </div>
       ))}
+      {/* //--------------------------------------------------------------------
+  // ------------ OLD MAPPING CODE TO COMPONENTS BELOW -----------------
+  //-------------------------------------------------------------------- */}
+
       {myQueenElements}
       <ViewAllQueensHeader />
       {gridQueenElements}
