@@ -101,6 +101,9 @@ export default function Dashboard() {
   const [mySelectedQueenTrial, setMySelectedQueenTrial] = useState([]);
   const [mySelectedQueenTrials, setMySelectedQueenTrials] = useState([]);
   const [mySelectedQueenTrialName, setMySelectedQueenTrialName] = useState([]);
+  const [mySelectedQueenTrialNames, setMySelectedQueenTrialNames] = useState(
+    []
+  );
   const [
     mySelectedQueenTrialSeasonAppearedOn,
     setMySelectedQueenTrialSeasonAppearedOn,
@@ -135,7 +138,7 @@ export default function Dashboard() {
       return theQueenThatIsCurrentlyBeingIndexed.dragName === dragNameProp;
     });
     const newQueen = {
-      selectedQueenImage: findSelectedQueen.queenImage,
+      // selectedQueenImage: findSelectedQueen.queenImage,
       selectedQueenDragName: findSelectedQueen.dragName,
       selectedQueenSeasonAppearedOn: findSelectedQueen.mainSeasonAppearedOn,
       selectedQueenMainSeasonPlacement: findSelectedQueen.mainSeasonPlacement,
@@ -164,28 +167,6 @@ export default function Dashboard() {
   // ------------ FIREBASE CODE BELOW ----------------------------------
   //--------------------------------------------------------------------
 
-  //READ
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
-          setMySelectedQueenTrials([]);
-          const data = snapshot.val();
-          if (data !== null) {
-            Object.values(data).map((mySelectedQueenTrials) => {
-              return setMySelectedQueenTrials((prevQueens) => [
-                ...prevQueens,
-                mySelectedQueenTrial,
-              ]);
-            });
-          }
-        });
-      } else if (!user) {
-        navigate("/");
-      }
-    });
-  }, []);
-
   //WRITE
   function writeToDatabase(dragNameProp) {
     const findSelectedQueen = queenDatabase.find(function (
@@ -202,26 +183,51 @@ export default function Dashboard() {
         findSelectedQueen.mainSeasonChallengeWins,
       selectedQueenHomepage: findSelectedQueen.queenHomepage,
     };
-    setMySelectedQueenTrial((prevQueen) => [...prevQueen, newQueen]);
+    // setMySelectedQueenTrial((prevQueen) => [...prevQueen, newQueen]);
 
     const uidVariable = uid();
     set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
       mySelectedQueenTrialName: newQueen.selectedQueenDragName,
-      mySelectedQueenTrialSeasonAppearedOn:
-        newQueen.selectedQueenSeasonAppearedOn,
-      mySelectedQueenTrialMainSeasonPlacement:
-        newQueen.selectedQueenMainSeasonPlacement,
-      mySelectedQueenTrialMainSeasonChallengeWins:
-        newQueen.selectedQueenMainSeasonChallengeWins,
+      // mySelectedQueenTrialSeasonAppearedOn:
+      //   newQueen.selectedQueenSeasonAppearedOn,
+      // mySelectedQueenTrialMainSeasonPlacement:
+      //   newQueen.selectedQueenMainSeasonPlacement,
+      // mySelectedQueenTrialMainSeasonChallengeWins:
+      //   newQueen.selectedQueenMainSeasonChallengeWins,
       uidVariable: uidVariable,
     });
-    setMySelectedQueenTrial([]);
+
+    setMySelectedQueenTrialName([]);
+    setMySelectedQueenTrialSeasonAppearedOn([]);
+    setMySelectedQueenTrialMainSeasonPlacement([]);
+    setMySelectedQueenTrialMainSeasonChallengeWins([]);
   }
+
+  //READ
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
+          setMySelectedQueenTrialNames([]);
+          const data = snapshot.val();
+          if (data !== null) {
+            Object.values(data).map((mySelectedQueenTrialName) => {
+              return setMySelectedQueenTrialNames((prevQueens) => [
+                ...prevQueens,
+                mySelectedQueenTrialName,
+              ]);
+            });
+          }
+        });
+      } else if (!user) {
+        navigate("/");
+      }
+    });
+  }, []);
 
   //DELETE
   const handleDelete = (uid) => {
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
-    console.log(auth.currentUser.uid);
   };
   //--------------------------------------------------------------------
   // ------------^  FIREBASE CODE ABOVE ^ ------------------------------
@@ -255,9 +261,9 @@ export default function Dashboard() {
       </button>
       {/* <div className="testDbContainer">{testDb}</div> */}
 
-      {mySelectedQueenTrials.map((mySelectedQueen) => (
+      {mySelectedQueenTrialNames.map(({ mySelectedQueenTrialName }) => (
         <div>
-          <h1>{mySelectedQueenTrial.mySelectedQueenTrial}</h1>
+          <h1>{mySelectedQueenTrialName}</h1>
           <button
             onClick={() => handleDelete(mySelectedQueenTrial.uidVariable)}
           >
