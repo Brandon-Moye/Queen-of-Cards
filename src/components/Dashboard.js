@@ -100,7 +100,19 @@ export default function Dashboard() {
   const [mySelectedQueens, setMySelectedQueens] = useState([]);
   const [mySelectedQueenTrial, setMySelectedQueenTrial] = useState([]);
   const [mySelectedQueenTrials, setMySelectedQueenTrials] = useState([]);
-
+  const [mySelectedQueenTrialName, setMySelectedQueenTrialName] = useState([]);
+  const [
+    mySelectedQueenTrialSeasonAppearedOn,
+    setMySelectedQueenTrialSeasonAppearedOn,
+  ] = useState([]);
+  const [
+    mySelectedQueenTrialMainSeasonPlacement,
+    setMySelectedQueenTrialMainSeasonPlacement,
+  ] = useState([]);
+  const [
+    mySelectedQueenTrialMainSeasonChallengeWins,
+    setMySelectedQueenTrialMainSeasonChallengeWins,
+  ] = useState([]);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   async function handleLogout() {
@@ -194,14 +206,16 @@ export default function Dashboard() {
 
     const uidVariable = uid();
     set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-      mySelectedQueenTrial: newQueen.selectedQueenDragName,
-      // mySelectedQueenTrial: newQueen.selectedQueenSeasonAppearedOn,
-      // mySelectedQueenTrial: newQueen.selectedQueenMainSeasonPlacement,
-      // mySelectedQueenTrial: newQueen.selectedQueenMainSeasonChallengeWins,
+      mySelectedQueenTrialName: newQueen.selectedQueenDragName,
+      mySelectedQueenTrialSeasonAppearedOn:
+        newQueen.selectedQueenSeasonAppearedOn,
+      mySelectedQueenTrialMainSeasonPlacement:
+        newQueen.selectedQueenMainSeasonPlacement,
+      mySelectedQueenTrialMainSeasonChallengeWins:
+        newQueen.selectedQueenMainSeasonChallengeWins,
       uidVariable: uidVariable,
     });
     setMySelectedQueenTrial([]);
-    console.log(setMySelectedQueenTrial);
   }
 
   //DELETE
