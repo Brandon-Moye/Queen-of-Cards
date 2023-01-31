@@ -228,6 +228,7 @@ export default function Dashboard() {
   //DELETE
   const handleDelete = (uid) => {
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
+    console.log("test", uid);
   };
   //--------------------------------------------------------------------
   // ------------^  FIREBASE CODE ABOVE ^ ------------------------------
@@ -264,9 +265,7 @@ export default function Dashboard() {
       {mySelectedQueenTrialNames.map(({ mySelectedQueenTrialName }) => (
         <div>
           <h1>{mySelectedQueenTrialName}</h1>
-          <button
-            onClick={() => handleDelete(mySelectedQueenTrial.uidVariable)}
-          >
+          <button onClick={() => handleDelete(mySelectedQueenTrialName.uid)}>
             Delete
           </button>
         </div>
