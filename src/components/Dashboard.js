@@ -12,6 +12,7 @@ import viewAllQueensHeader from "./queenOfCardsComponents/ViewAllQueensHeader";
 import ViewAllQueensHeader from "./queenOfCardsComponents/ViewAllQueensHeader";
 const queenDatabase = [
   {
+    uid: 1,
     dragName: "Jade",
     mainSeasonAppearedOn: "1",
     mainSeasonPlacement: "6",
@@ -21,6 +22,7 @@ const queenDatabase = [
     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Jade",
   },
   {
+    uid: 2,
     dragName: "Ongina",
     mainSeasonAppearedOn: "1",
     mainSeasonPlacement: "5",
@@ -30,6 +32,7 @@ const queenDatabase = [
     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Ongina",
   },
   {
+    uid: 3,
     dragName: "Nina Flowers",
     mainSeasonAppearedOn: "1",
     mainSeasonPlacement: "2",
@@ -96,26 +99,26 @@ const queenDatabase = [
 
 export default function Dashboard() {
   const [error, setError] = useState("");
-  const [mySelectedQueen, setMySelectedQueen] = useState("");
-  const [mySelectedQueens, setMySelectedQueens] = useState([]);
-  const [mySelectedQueenTrial, setMySelectedQueenTrial] = useState([]);
-  const [mySelectedQueenTrials, setMySelectedQueenTrials] = useState([]);
+  // const [mySelectedQueen, setMySelectedQueen] = useState("");
+  // const [mySelectedQueens, setMySelectedQueens] = useState([]);
+  // const [mySelectedQueenTrial, setMySelectedQueenTrial] = useState([]);
+  // const [mySelectedQueenTrials, setMySelectedQueenTrials] = useState([]);
   const [mySelectedQueenTrialName, setMySelectedQueenTrialName] = useState([]);
   const [mySelectedQueenTrialNames, setMySelectedQueenTrialNames] = useState(
     []
   );
-  const [
-    mySelectedQueenTrialSeasonAppearedOn,
-    setMySelectedQueenTrialSeasonAppearedOn,
-  ] = useState([]);
-  const [
-    mySelectedQueenTrialMainSeasonPlacement,
-    setMySelectedQueenTrialMainSeasonPlacement,
-  ] = useState([]);
-  const [
-    mySelectedQueenTrialMainSeasonChallengeWins,
-    setMySelectedQueenTrialMainSeasonChallengeWins,
-  ] = useState([]);
+  // const [
+  //   mySelectedQueenTrialSeasonAppearedOn,
+  //   setMySelectedQueenTrialSeasonAppearedOn,
+  // ] = useState([]);
+  // const [
+  //   mySelectedQueenTrialMainSeasonPlacement,
+  //   setMySelectedQueenTrialMainSeasonPlacement,
+  // ] = useState([]);
+  // const [
+  //   mySelectedQueenTrialMainSeasonChallengeWins,
+  //   setMySelectedQueenTrialMainSeasonChallengeWins,
+  // ] = useState([]);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   async function handleLogout() {
@@ -146,14 +149,14 @@ export default function Dashboard() {
         findSelectedQueen.mainSeasonChallengeWins,
       selectedQueenHomepage: findSelectedQueen.queenHomepage,
     };
-    setMySelectedQueenTrial((prevQueen) => [...prevQueen, newQueen]);
+    // setMySelectedQueenTrial((prevQueen) => [...prevQueen, newQueen]);
   }
 
-  console.log(mySelectedQueenTrial);
+  // console.log(mySelectedQueenTrial);
 
-  const myQueenElements = mySelectedQueenTrial.map((certainItem) => {
-    return <CardDisplays certainItem={certainItem} />;
-  });
+  // const myQueenElements = mySelectedQueenTrial.map((certainItem) => {
+  //   return <CardDisplays certainItem={certainItem} />;
+  // });
 
   const gridQueenElements = queenDatabase.map((item) => {
     return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
@@ -185,22 +188,24 @@ export default function Dashboard() {
     };
     // setMySelectedQueenTrial((prevQueen) => [...prevQueen, newQueen]);
 
-    const uidVariable = uid();
+    const uidVariable = findSelectedQueen.uid;
     set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-      mySelectedQueenTrialName: newQueen.selectedQueenDragName,
+      // mySelectedQueenTrialName: newQueen.selectedQueenDragName,
+      // mySelectedQueenTrialName: findSelectedQueen.dragName,
       // mySelectedQueenTrialSeasonAppearedOn:
       //   newQueen.selectedQueenSeasonAppearedOn,
       // mySelectedQueenTrialMainSeasonPlacement:
       //   newQueen.selectedQueenMainSeasonPlacement,
       // mySelectedQueenTrialMainSeasonChallengeWins:
       //   newQueen.selectedQueenMainSeasonChallengeWins,
-      uidVariable: uidVariable,
     });
 
+    console.log(uidVariable);
+
     setMySelectedQueenTrialName([]);
-    setMySelectedQueenTrialSeasonAppearedOn([]);
-    setMySelectedQueenTrialMainSeasonPlacement([]);
-    setMySelectedQueenTrialMainSeasonChallengeWins([]);
+    // setMySelectedQueenTrialSeasonAppearedOn([]);
+    // setMySelectedQueenTrialMainSeasonPlacement([]);
+    // setMySelectedQueenTrialMainSeasonChallengeWins([]);
   }
 
   //READ
@@ -254,8 +259,8 @@ export default function Dashboard() {
         id="testInputField"
         className="testInputField"
         type="text"
-        value={mySelectedQueen}
-        onChange={(e) => setMySelectedQueen(e.target.value)}
+        // value={mySelectedQueen}
+        // onChange={(e) => setMySelectedQueen(e.target.value)}
       ></input>
       <button onClick={writeToDatabase} className="testButton">
         Test Button
@@ -274,7 +279,7 @@ export default function Dashboard() {
   // ------------ OLD MAPPING CODE TO COMPONENTS BELOW -----------------
   //-------------------------------------------------------------------- */}
 
-      {myQueenElements}
+      {/* {myQueenElements} */}
       <ViewAllQueensHeader />
       {gridQueenElements}
     </div>
