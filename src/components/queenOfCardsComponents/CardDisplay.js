@@ -5,28 +5,27 @@ export default function CardDisplays(props) {
   return (
     <div className="cardDisplayContainer">
       <div className="card">
-        {/* <img
+        <img
           className="cardQueenImageProp"
-          src={props.certainItem.selectedQueenImage}
-        ></img> */}
+          src={props.certainItem.queenImage}
+        ></img>
         <div className="cardQueenNameProp">
-          <strong>{props.certainItem.selectedQueenDragName}</strong>
+          <strong>{props.certainItem.dragName}</strong>
         </div>
         <div className="cardQueenWinnerProp">
-          <strong>Season:</strong>{" "}
-          {props.certainItem.selectedQueenSeasonAppearedOn}
+          <strong>Season:</strong> {props.certainItem.mainSeasonAppearedOn}
         </div>
         <div className="cardQueenHomepageProp">
           <strong>Placement:</strong>
-          {props.certainItem.selectedQueenMainSeasonPlacement}
+          {props.certainItem.mainSeasonPlacement}
         </div>
         <div className="cardQueenCongenialProp">
           <strong>Challenge Wins: </strong>
-          {props.certainItem.selectedQueenMainSeasonChallengeWins}
+          {props.certainItem.mainSeasonChallengeWins}
         </div>
         <a
           className="cardQueenQuoteProp"
-          href={props.certainItem.selectedQueenHomepage}
+          href={props.certainItem.queenHomepage}
           target="_blank"
         >
           Link to Page
