@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f06c9b;
+}
+
+.pageTitle,
+.viewAllQueensButton {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pageTitle {
+  color: black;
+  margin-left: 1.5rem;
+  align-content: center;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+}
+
+.viewAllQueensButton {
+  text-decoration: none;
+  color: black;
+  margin-right: 1.5rem;
+  background-color: pink;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
