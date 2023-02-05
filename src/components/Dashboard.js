@@ -161,9 +161,6 @@ export default function Dashboard() {
       myQueensUID: uidVariable,
     });
 
-    // console.log(uidVariable);
-    // console.log(findSelectedQueen.dragName);
-
     setMyQueensUID([]);
   }
 
@@ -209,8 +206,16 @@ export default function Dashboard() {
   });
 
   //DELETE
-  function handleDelete(uid) {
-    remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
+  function handleDelete(dragNameProp) {
+    const findSelectedQueen = queenDatabase.find(function (
+      theQueenThatIsCurrentlyBeingIndexed
+    ) {
+      return theQueenThatIsCurrentlyBeingIndexed.dragName === dragNameProp;
+    });
+
+    const uidVariable = findSelectedQueen.uid;
+
+    remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`));
     console.log("test", uid);
   }
   //--------------------------------------------------------------------
