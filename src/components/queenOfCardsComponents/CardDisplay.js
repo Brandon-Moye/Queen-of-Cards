@@ -37,6 +37,12 @@ export default function CardDisplays(props) {
               props.handleClick(props.certainItem.selectedQueenId);
             }}
           ></button> */}
+          <button
+            className="btn test-completed"
+            onClick={() => {
+              props.handleClick(props.certainItem.dragName);
+            }}
+          ></button>
         </div>
       </div>
     </div>
