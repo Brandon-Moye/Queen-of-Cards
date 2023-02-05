@@ -123,9 +123,6 @@ export default function Dashboard() {
       setError("Failed to log out");
     }
   }
-  //--------------------------------------------------------------------
-  // ------------ OLD MAPPING CODE TO COMPONENTS BELOW -----------------
-  //--------------------------------------------------------------------
   function addNewQueen(dragNameProp) {
     const findSelectedQueen = queenDatabase.find(function (
       theQueenThatIsCurrentlyBeingIndexed
@@ -142,10 +139,6 @@ export default function Dashboard() {
       selectedQueenHomepage: findSelectedQueen.queenHomepage,
     };
   }
-
-  const gridQueenElements = queenDatabase.map((item) => {
-    return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
-  });
 
   //--------------------------------------------------------------------
   // ------------ ^OLD MAPPING CODE TO COMPONENTS ABOVE^ ---------------
@@ -183,11 +176,6 @@ export default function Dashboard() {
           const data = snapshot.val();
           if (data !== null) {
             Object.values(data).map((myQueensUID) => {
-              const findSelectedQueen = queenDatabase.find(function (
-                theQueenThatIsCurrentlyBeingIndexed
-              ) {
-                return theQueenThatIsCurrentlyBeingIndexed.dragName;
-              });
               return setMyQueensUIDSToRenderState((prevQueens) => [
                 ...prevQueens,
                 myQueensUID,
@@ -195,15 +183,6 @@ export default function Dashboard() {
             });
           }
         });
-
-        // for (const item of myQueensUIDSToRenderState) {
-        //   console.log(item);
-        // }
-        //FIND FUNCTION TRIALS
-        // function poopoo(peepee) {
-        //   return peepee.myQueensUID === 5;
-        // }
-        // console.log(myQueensUIDSToRenderState);
       } else if (!user) {
         navigate("/");
       }
@@ -215,27 +194,25 @@ export default function Dashboard() {
   console.log(result);
   let i = 0;
   let testArray = [];
-  // for (let i = 0; i < result.length; i++) {
-  //   for (let j = 0; j < queenDatabase.length; j++)
-  //     if (result[i] === queenDatabase[j].uid) {
-  //       testArray.unshift(queenDatabase[j]);
-  //     }
-  // }
-
   testArray = queenDatabase.filter(function (queen) {
     return result.includes(queen.uid);
   });
-  console.log(testArray);
+
+  const gridQueenElements = queenDatabase.map((item) => {
+    return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
+  });
 
   const myQueenElements = testArray.map((certainItem) => {
-    return <CardDisplays certainItem={certainItem} />;
+    return (
+      <CardDisplays certainItem={certainItem} handleClick={handleDelete} />
+    );
   });
 
   //DELETE
-  const handleDelete = (uid) => {
+  function handleDelete(uid) {
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
     console.log("test", uid);
-  };
+  }
   //--------------------------------------------------------------------
   // ------------^  FIREBASE CODE ABOVE ^ ------------------------------
   //--------------------------------------------------------------------
@@ -256,23 +233,7 @@ export default function Dashboard() {
       <button type="link" onClick={handleLogout}>
         Logout
       </button>
-      <input
-        id="testInputField"
-        className="testInputField"
-        type="text"
-        // value={mySelectedQueen}
-        // onChange={(e) => setMySelectedQueen(e.target.value)}
-      ></input>
-      <button onClick={writeToDatabase} className="testButton">
-        Test Button
-      </button>
 
-      {testArray.map(({ myQueensUID }) => (
-        <div>
-          <h1>{testArray.myQueensUID}</h1>
-          {/* <button onClick={() => handleDelete(myQueensUID.uid)}>Delete</button> */}
-        </div>
-      ))}
       {/* //--------------------------------------------------------------------
   // ------------ OLD MAPPING CODE TO COMPONENTS BELOW -----------------
   //-------------------------------------------------------------------- */}
