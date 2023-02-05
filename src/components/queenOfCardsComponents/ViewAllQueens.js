@@ -5,9 +5,13 @@ export default function ViewAllQueens(props) {
   return (
     <div className="queenContainer">
       <div className="ViewAllQueensContainer">
-        <div className="queenNameInGrid gridCell">
+        <a
+          href={props.item.queenHomepage}
+          className="queenNameInGrid gridCell"
+          target="_blank"
+        >
           <strong>{props.item.dragName}</strong>
-        </div>
+        </a>
         <div className="gridCell">{props.item.mainSeasonAppearedOn}</div>
         <div className="gridCell">{props.item.mainSeasonPlacement}</div>
         <div className="gridCell">{props.item.mainSeasonChallengeWins}</div>
