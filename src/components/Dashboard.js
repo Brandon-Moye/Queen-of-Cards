@@ -366,11 +366,11 @@ export default function Dashboard() {
   //--------------------------------------------------------------------
 
   //WRITE
-  function writeToDatabase(dragNameProp) {
+  function writeToDatabase(uidProp) {
     const findSelectedQueen = queenDatabase.find(function (
       theQueenThatIsCurrentlyBeingIndexed
     ) {
-      return theQueenThatIsCurrentlyBeingIndexed.dragName === dragNameProp;
+      return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
     });
 
     const uidVariable = findSelectedQueen.uid;

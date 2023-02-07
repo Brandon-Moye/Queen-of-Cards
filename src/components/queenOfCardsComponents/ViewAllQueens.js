@@ -19,7 +19,7 @@ export default function ViewAllQueens(props) {
           <button
             className="btn test-completed"
             onClick={() => {
-              props.handleClick(props.item.dragName);
+              props.handleClick(props.item.uid);
             }}
           >
             <div className="buttonTextContainer">
