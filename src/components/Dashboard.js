@@ -2006,19 +2006,22 @@ export default function Dashboard() {
   //--------------------------------------------------------------------
 
   //WRITE
+
   function writeToDatabase(uidProp) {
-    const findSelectedQueen = queenDatabase.find(function (
-      theQueenThatIsCurrentlyBeingIndexed
-    ) {
-      return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-    });
+    if (myQueensUIDSToRenderState.length <= 4) {
+      const findSelectedQueen = queenDatabase.find(function (
+        theQueenThatIsCurrentlyBeingIndexed
+      ) {
+        return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
+      });
 
-    const uidVariable = findSelectedQueen.uid;
-    set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-      myQueensUID: uidVariable,
-    });
+      const uidVariable = findSelectedQueen.uid;
+      set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
+        myQueensUID: uidVariable,
+      });
 
-    setMyQueensUID([]);
+      setMyQueensUID([]);
+    }
   }
 
   //READ
