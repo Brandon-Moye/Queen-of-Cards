@@ -10,7 +10,9 @@ import CardDisplays from "./queenOfCardsComponents/CardDisplay";
 import ViewAllQueens from "./queenOfCardsComponents/ViewAllQueens";
 import viewAllQueensHeader from "./queenOfCardsComponents/ViewAllQueensHeader";
 import ViewAllQueensHeader from "./queenOfCardsComponents/ViewAllQueensHeader";
+import Modal from "./queenOfCardsComponents/Modal";
 import "./Dashboard.css";
+import ScrollToTop from "./queenOfCardsComponents/ScrollToTop";
 // const queenDatabase = [
 //   {
 //     uid: 1,
@@ -1967,6 +1969,7 @@ export default function Dashboard() {
   const [myQueensUIDSToRenderState, setMyQueensUIDSToRenderState] = useState(
     []
   );
+  const [tooManyQueensMessage, setTooManyQueensMessage] = useState(false);
 
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
@@ -2006,19 +2009,24 @@ export default function Dashboard() {
   //--------------------------------------------------------------------
 
   //WRITE
+
   function writeToDatabase(uidProp) {
-    const findSelectedQueen = queenDatabase.find(function (
-      theQueenThatIsCurrentlyBeingIndexed
-    ) {
-      return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-    });
+    if (myQueensUIDSToRenderState.length <= 4) {
+      const findSelectedQueen = queenDatabase.find(function (
+        theQueenThatIsCurrentlyBeingIndexed
+      ) {
+        return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
+      });
 
-    const uidVariable = findSelectedQueen.uid;
-    set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-      myQueensUID: uidVariable,
-    });
+      const uidVariable = findSelectedQueen.uid;
+      set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
+        myQueensUID: uidVariable,
+      });
 
-    setMyQueensUID([]);
+      setMyQueensUID([]);
+    } else {
+      setTooManyQueensMessage(true);
+    }
   }
 
   //READ
@@ -2085,6 +2093,10 @@ export default function Dashboard() {
     //--------------------------------------------------------------------
 
     <div className="dashboardContainer">
+      <Modal
+        onOpenOfModal={tooManyQueensMessage}
+        onCloseOfModal={() => setTooManyQueensMessage(false)}
+      ></Modal>
       <div>Profile</div>
       {error}
       <strong>Email:</strong>
@@ -2102,6 +2114,7 @@ export default function Dashboard() {
       <div className="myQueenElements">{myQueenElements}</div>
       <ViewAllQueensHeader />
       {gridQueenElements}
+      <ScrollToTop />
     </div>
   );
 }
