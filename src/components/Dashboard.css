@@ -1,4 +1,5 @@
 .myQueenElements {
   display: flex;
-  gap: 2rem;
+  padding: 0rem 1rem 0rem 1rem;
+  justify-content: space-between;
 }

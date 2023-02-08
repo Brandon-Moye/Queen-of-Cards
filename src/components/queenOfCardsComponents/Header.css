@@ -11,6 +11,44 @@
   background-color: #f06c9b;
 }
 
+.headerProfileInfoUpdateAndLogoutContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.updateProfileLink:link,
+.updateProfileLink:visited {
+  text-decoration: underline pink;
+  color: #000;
+  transition: all ease 0.5s;
+  padding: 0.4rem 0.5rem 0.4rem 0.5rem;
+  background-color: pink;
+  border-radius: 5px;
+}
+
+.updateProfileLink:hover,
+.updateProfileLink:active {
+  text-decoration: underline #000;
+  transition: all ease 0.5s;
+}
+
+.logoutButton {
+  border: none;
+  background-color: pink;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: all 0.75s;
+  position: relative;
+  right: 0;
+  transition: right ease 0.75s;
+}
+
+.logoutButton:hover {
+  cursor: pointer;
+  transition: all 0.75s;
+  right: -0.5rem;
+}
+
 .pageTitle,
 .viewAllQueensButton {
   padding-top: 1rem;
