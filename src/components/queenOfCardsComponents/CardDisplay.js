@@ -40,7 +40,7 @@ export default function CardDisplays(props) {
           <button
             className="btn test-completed"
             onClick={() => {
-              props.handleClick(props.certainItem.dragName);
+              props.handleClick(props.certainItem.uid);
             }}
           ></button>
         </div>
