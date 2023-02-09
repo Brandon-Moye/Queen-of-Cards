@@ -1,25 +1,38 @@
 .card {
   background-color: #f598b9;
-  padding: 0rem 1rem 0rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   /* align-items: center; */
   border-radius: 10px;
   color: #30161f;
   height: 30rem;
   width: 12rem;
   box-shadow: 0px 1px 10px #30161f;
+  margin-top: 5rem;
 }
 
-.card img {
+.queenCardImageContainer {
+  display: flex;
+  justify-content: center;
+  height: 17rem;
+}
+
+.cardQueenImageProp {
+  /* margin-top: 1rem; */
+  max-width: 10rem;
+  max-height: 15rem;
+  /* border-radius: 10px; */
+  /* box-shadow: 0px 0px 5px #30161f; */
+  object-fit: contain;
+  /* object-position: 50% 2.5%; */
   margin-top: 1rem;
-  max-height: 20rem;
-  max-width: 15rem;
-  object-fit: cover;
+}
+
+img {
   border-radius: 10px;
   box-shadow: 0px 0px 5px #30161f;
-  object-position: 50% 2.5%;
+}
+
+.cardQuenInfoTextContainer {
+  margin-left: 0.5rem;
 }
 
 .cardQueenNameProp {

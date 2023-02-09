@@ -2097,16 +2097,6 @@ export default function Dashboard() {
         onOpenOfModal={tooManyQueensMessage}
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
-      {/* <div>Profile</div>
-      {error}
-      <strong>Email:</strong>
-      {currentUser.email}
-      <Link to="/update-profile" className="updateProfileButton">
-        Update Profile
-      </Link>
-      <button type="link" onClick={handleLogout}>
-        Logout
-      </button> */}
 
       {/* //--------------------------------------------------------------------
   // ------------ OLD MAPPING CODE TO COMPONENTS BELOW -----------------
