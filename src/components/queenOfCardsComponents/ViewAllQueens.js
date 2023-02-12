@@ -12,9 +12,15 @@ export default function ViewAllQueens(props) {
         >
           <strong>{props.item.dragName}</strong>
         </a>
-        <div className="gridCell">{props.item.mainSeasonAppearedOn}</div>
-        <div className="gridCell">{props.item.mainSeasonPlacement}</div>
-        <div className="gridCell">{props.item.mainSeasonChallengeWins}</div>
+        <div className="gridCell mainSeasonAppearedOnProp">
+          {props.item.mainSeasonAppearedOn}
+        </div>
+        <div className="gridCell mainSeasonPlacement">
+          {props.item.mainSeasonPlacement}
+        </div>
+        <div className="gridCell mainSeasonChallengeWins">
+          {props.item.mainSeasonChallengeWins}
+        </div>
         <div className="buttonContainer">
           <button
             className="btn test-completed"
