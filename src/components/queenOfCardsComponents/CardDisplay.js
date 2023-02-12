@@ -47,7 +47,7 @@ export default function CardDisplays(props) {
             }}
           ></button> */}
           <button
-            className="btn test-completed"
+            className="btn2 test-completed2"
             onClick={() => {
               props.handleClick(props.certainItem.uid);
             }}
