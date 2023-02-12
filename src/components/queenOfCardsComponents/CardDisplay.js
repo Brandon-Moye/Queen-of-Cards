@@ -13,27 +13,32 @@ export default function CardDisplays(props) {
         </div>
         <div className="cardQuenInfoTextContainer">
           <div className="cardQueenNameProp">
-            <strong>{props.certainItem.dragName}</strong>
+            <div className="cardQueenNameContrastForCheckerProp">
+              <strong>{props.certainItem.dragName}</strong>
+            </div>
           </div>
-          <div className="cardQueenWinnerProp">
-            <strong>Season:</strong> {props.certainItem.mainSeasonAppearedOn}
-          </div>
-          <div className="cardQueenHomepageProp">
-            <strong>Placement: </strong>
-            {props.certainItem.mainSeasonPlacement}
-          </div>
-          <div className="cardQueenCongenialProp">
-            <strong>Challenge Wins: </strong>
-            {props.certainItem.mainSeasonChallengeWins}
+          <div className="queenStatsWithoutNameContainer">
+            <div className="cardQueenWinnerProp">
+              <strong>Season:</strong> {props.certainItem.mainSeasonAppearedOn}
+            </div>
+            <div className="cardQueenHomepageProp">
+              <strong>Placement: </strong>
+              {props.certainItem.mainSeasonPlacement}
+            </div>
+            <div className="cardQueenCongenialProp">
+              <strong>Challenge Wins: </strong>
+              {props.certainItem.mainSeasonChallengeWins}
+            </div>
+            <a
+              className="cardQueenLinkProp"
+              href={props.certainItem.queenHomepage}
+              target="_blank"
+            >
+              Go to Page
+            </a>
           </div>
         </div>
-        <a
-          className="cardQueenQuoteProp"
-          href={props.certainItem.queenHomepage}
-          target="_blank"
-        >
-          Link to Page
-        </a>
+
         <div className="buttonContainer">
           {/* <button
             className="btn2 test-completed2"
