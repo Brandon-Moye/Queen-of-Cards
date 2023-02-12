@@ -29,7 +29,7 @@ export default function ScrollToTop() {
 
   return (
     <button onClick={scrollToTop} className={visibiltyClassName}>
-      Back to Top
+      To Top ^
     </button>
   );
 }

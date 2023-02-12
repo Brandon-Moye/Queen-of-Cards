@@ -1,9 +1,19 @@
 .visible {
   position: fixed;
-  bottom: 5%;
-  right: 1rem;
-  background-color: red;
-  transition: all 2s;
+  bottom: 2%;
+  right: 0.5rem;
+  background-color: #25cdf76b;
+  color: #072931;
+  transition: all 0.5s;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.visible:hover {
+  cursor: pointer;
+  background-color: #25cdf7;
+  transition: all 0.5s;
 }
 
 .invisible {
