@@ -23,7 +23,7 @@ export default function Header() {
       <h1 className="pageTitle">QUEEN OF CARDS</h1>
       <div className="headerProfileInfoUpdateAndLogoutContainer">
         {error}
-        <strong>{currentUser.email}</strong>
+        <strong className="usersCurrentEmail">{currentUser.email}</strong>
 
         <Link to="/update-profile" className="updateProfileLink">
           Update Profile
@@ -32,9 +32,9 @@ export default function Header() {
           Logout
         </button>
       </div>
-      <a href="#" className="viewAllQueensButton">
+      {/* <a href="#" className="viewAllQueensButton">
         View All Queens
-      </a>
+      </a> */}
     </div>
   );
 }

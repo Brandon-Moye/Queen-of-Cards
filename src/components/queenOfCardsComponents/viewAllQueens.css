@@ -1,6 +1,6 @@
 .ViewAllQueensContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
   padding: 0.5rem;
@@ -8,10 +8,29 @@
   border: 0.5px solid #f06c9b;
   color: #30161f;
 }
-.queenNameInGrid {
-  font-size: 1.15rem;
+.queenNameInGrid:link,
+.queenNameInGrid:visited {
+  font-size: 1.75rem;
+  text-decoration: none;
+  color: #30161f;
+  transition: all ease 0.5s;
+  padding: 0.25rem;
+  border-radius: 10px;
 }
 
+.queenNameInGrid:hover,
+.queenNameInGrid:active {
+  color: #fbd3e1;
+  background-color: #30161f;
+  transition: all ease 0.5s;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.mainSeasonAppearedOnProp,
+.mainSeasonPlacement,
+.mainSeasonChallengeWins {
+  font-size: 2rem;
+}
 .btn {
   display: inline-block;
   background-color: #f598b9;
