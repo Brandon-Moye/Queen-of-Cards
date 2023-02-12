@@ -88,27 +88,28 @@
 }
 
 .btn2 {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #fbd3e1;
   color: #30161f;
+  text-decoration: line-through #30161f00;
   border-radius: 10px;
   border: none;
-  height: 2rem;
-  width: 6rem;
-  position: relative;
-  overflow: hidden;
+  width: 8rem;
   font-size: 1rem;
-  transition: all 0.75s;
+  transition: all 0.25s;
+  padding: 0.25rem;
 }
 
 .btn2:hover {
-  background-color: #f598b9;
+  /* background-color: #fbd3e1;
   box-shadow: 0 5px 10px #30161f;
+  text-decoration: line-through #30161f; */
   cursor: pointer;
-  transition-delay: 500ms;
 }
 
-.btn2.test-completed2::after,
+/* .btn2.test-completed2::after,
 .btn2.test-completed2::before {
   content: "Sashay";
   position: absolute;
@@ -127,7 +128,7 @@
 .btn2.test-completed2::before {
   content: "Away";
   left: -6rem;
-}
+} */
 
 .btn2.btn2.test-completed2:hover::before {
   left: 0;

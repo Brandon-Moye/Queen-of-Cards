@@ -47,11 +47,13 @@ export default function CardDisplays(props) {
             }}
           ></button> */}
           <button
-            className="btn2 test-completed2"
+            className="btn2"
             onClick={() => {
               props.handleClick(props.certainItem.uid);
             }}
-          ></button>
+          >
+            Sashay Away
+          </button>
         </div>
       </div>
     </div>
