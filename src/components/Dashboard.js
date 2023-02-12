@@ -781,7 +781,7 @@ const queenDatabase = [
     mainSeasonChallengeWins: "0",
     uid: "57caed95-0e3c-4391-a27d-46aa24f47f93",
     queenImage:
-      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/35/JoslynS6promo.jpg",
+      "https://www.dragofficial.com/uploads/1/9/3/9/19395567/4353854.jpg",
     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Joslyn_Fox",
   },
   {
@@ -977,7 +977,7 @@ const queenDatabase = [
     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Mrs._Kasha_Davis",
   },
   {
-    dragName: "asmine Masters",
+    dragName: "Jasmine Masters",
     mainSeasonAppearedOn: "7",
     mainSeasonPlacement: "12",
     mainSeasonChallengeWins: "0",
@@ -1146,7 +1146,7 @@ const queenDatabase = [
     mainSeasonChallengeWins: "1",
     uid: "4f594193-de16-486e-9062-174dd70321a0",
     queenImage:
-      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/MissPeppermintCMM2.jpg",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3d/PeppermintS9.jpg",
     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Peppermint",
   },
   {
@@ -1186,7 +1186,7 @@ const queenDatabase = [
     mainSeasonChallengeWins: "1",
     uid: "8d9c6cab-a138-4061-993c-8fe098fcbbe3",
     queenImage:
-      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c7/NinaS9.jpg",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7e/NinaBoninaReunion.png",
     queenHomepage:
       "https://rupaulsdragrace.fandom.com//wiki/Nina_Bo%27nina_Brown",
   },
@@ -2011,22 +2011,22 @@ export default function Dashboard() {
   //WRITE
 
   function writeToDatabase(uidProp) {
-    if (myQueensUIDSToRenderState.length <= 4) {
-      const findSelectedQueen = queenDatabase.find(function (
-        theQueenThatIsCurrentlyBeingIndexed
-      ) {
-        return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-      });
+    // if (myQueensUIDSToRenderState.length <= 4) {
+    const findSelectedQueen = queenDatabase.find(function (
+      theQueenThatIsCurrentlyBeingIndexed
+    ) {
+      return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
+    });
 
-      const uidVariable = findSelectedQueen.uid;
-      set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-        myQueensUID: uidVariable,
-      });
+    const uidVariable = findSelectedQueen.uid;
+    set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
+      myQueensUID: uidVariable,
+    });
 
-      setMyQueensUID([]);
-    } else {
-      setTooManyQueensMessage(true);
-    }
+    setMyQueensUID([]);
+    // } else {
+    //   setTooManyQueensMessage(true);
+    // }
   }
 
   //READ
@@ -2083,24 +2083,13 @@ export default function Dashboard() {
     remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`));
     console.log("test", uid);
   }
-  //--------------------------------------------------------------------
-  // ------------^  FIREBASE CODE ABOVE ^ ------------------------------
-  //--------------------------------------------------------------------
 
   return (
-    //--------------------------------------------------------------------
-    // ------------ FIREBASE RENDERING BELOW -----------------------------
-    //--------------------------------------------------------------------
-
     <div className="dashboardContainer">
       <Modal
         onOpenOfModal={tooManyQueensMessage}
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
-
-      {/* //--------------------------------------------------------------------
-  // ------------ OLD MAPPING CODE TO COMPONENTS BELOW -----------------
-  //-------------------------------------------------------------------- */}
       <div className="myQueenElements">{myQueenElements}</div>
       <ViewAllQueensHeader />
       {gridQueenElements}

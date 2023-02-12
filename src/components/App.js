@@ -26,7 +26,6 @@ function App() {
               element={
                 <PrivateRoute>
                   <Header />
-                  {/* <CardDisplay /> */}
                   <Dashboard />
                 </PrivateRoute>
               }
