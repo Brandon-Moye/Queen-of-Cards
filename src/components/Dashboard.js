@@ -2000,16 +2000,7 @@ export default function Dashboard() {
     };
   }
 
-  //--------------------------------------------------------------------
-  // ------------ ^OLD MAPPING CODE TO COMPONENTS ABOVE^ ---------------
-  //--------------------------------------------------------------------
-
-  //--------------------------------------------------------------------
-  // ------------ FIREBASE CODE BELOW ----------------------------------
-  //--------------------------------------------------------------------
-
   //WRITE
-
   function writeToDatabase(uidProp) {
     if (myQueensUIDSToRenderState.length <= 4) {
       const findSelectedQueen = queenDatabase.find(function (
