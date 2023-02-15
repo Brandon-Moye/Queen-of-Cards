@@ -10,6 +10,11 @@
   border-radius: 10px;
 }
 
+ion-icon {
+  font-size: 2rem;
+  color: black;
+}
+
 .visible:hover {
   cursor: pointer;
   background-color: #25cdf7;

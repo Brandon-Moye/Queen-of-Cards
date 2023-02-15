@@ -29,7 +29,7 @@ export default function ScrollToTop() {
 
   return (
     <button onClick={scrollToTop} className={visibiltyClassName}>
-      To Top ^
+      <ion-icon name="arrow-up-outline"></ion-icon>
     </button>
   );
 }
