@@ -1,18 +1,21 @@
 .visible {
   position: fixed;
   bottom: 2%;
-  right: 0.5rem;
+  right: 1rem;
   background-color: #25cdf76b;
   color: #072931;
   transition: all 0.5s;
   border: none;
-  padding: 0.5rem;
-  border-radius: 10px;
+  /* padding: 0.5rem; */
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50px;
+  transition: all 2s;
 }
 
 ion-icon {
-  font-size: 2rem;
-  color: black;
+  font-size: 1rem;
+  color: #000;
 }
 
 .visible:hover {
