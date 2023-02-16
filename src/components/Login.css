@@ -1,0 +1,70 @@
+body {
+  background-color: #788bff;
+  background-color: #3b28cc;
+  background-color: #9d94e6;
+}
+
+.formContainer,
+.linksToOtherPagesContainer {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 30rem;
+}
+
+.formContainer {
+  flex-direction: column;
+  margin-top: 7rem;
+  border-radius: 10px;
+  border: 3px solid #fbd3e1;
+  margin-bottom: 1rem;
+  background-color: #f06c9b;
+  background-color: #fff;
+}
+
+.loginPageTitle {
+  margin-top: 1rem;
+  font-size: 3rem;
+}
+
+.emailLabel,
+.passwordLabel {
+  display: flex;
+  margin-bottom: 0.75rem;
+  margin-left: 0.45rem;
+  font-size: 1.5rem;
+}
+
+.emailInput,
+.passwordInput {
+  border: 1px solid #788bff;
+  border-radius: 10px;
+  height: 2rem;
+  width: 15rem;
+  text-indent: 0.5rem;
+  font-size: 1rem;
+}
+
+.emailInput {
+  margin-bottom: 1rem;
+}
+
+.emailInput:focus,
+.passwordInput:focus {
+  outline: 2px solid #788bff;
+  box-shadow: 0px 0.5px 15px #788bff;
+}
+
+.logInButton {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.logInButton:hover {
+  cursor: pointer;
+}
