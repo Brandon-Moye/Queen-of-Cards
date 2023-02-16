@@ -35,7 +35,11 @@ export default function Login() {
           <label htmlFor="emailLabel" className="emailLabel">
             email
           </label>
-          <input className="emailInput" ref={emailRef}></input>
+          <input
+            className="emailInput"
+            ref={emailRef}
+            placeholder="bimini@bonboulash.com"
+          ></input>
         </div>
         <div className="passwordLabelAndInputContainer">
           <label htmlFor="passwordLabel" className="passwordLabel">
@@ -45,6 +49,7 @@ export default function Login() {
             className="passwordInput"
             ref={passwordRef}
             type="password"
+            placeholder="Alyssa's Secret"
           ></input>
         </div>
         <button disabled={loading} type="submit" className="logInButton">
