@@ -1,10 +1,8 @@
 body {
-  background-color: #788bff;
-  background-color: #3b28cc;
   background-color: #9d94e6;
 }
 
-.formContainer,
+.formContainerForSignup,
 .linksToOtherPagesContainer {
   margin: 0 auto;
   display: flex;
@@ -14,7 +12,7 @@ body {
   max-width: 30rem;
 }
 
-.formContainer {
+.formContainerForSignup {
   flex-direction: column;
   margin-top: 7rem;
   border-radius: 10px;
@@ -24,7 +22,7 @@ body {
   background-color: #fff;
 }
 
-.loginPageTitle {
+.signupPageTitle {
   margin-top: 1rem;
   font-size: 3rem;
   background-color: #f06c9b;
@@ -33,8 +31,9 @@ body {
   border-radius: 50px;
 }
 
-.emailLabel,
-.passwordLabel {
+.emailLabelForSignup,
+.passwordLabelForSignup,
+.passwordConfirmLabelForSignup {
   display: flex;
   margin-bottom: 0.75rem;
   margin-left: 0.45rem;
@@ -42,8 +41,9 @@ body {
   color: #242a4c;
 }
 
-.emailInput,
-.passwordInput {
+.emailInputForSignup,
+.passwordInputForSignup,
+.passwordConfirmInputForSignup {
   border: 1px solid #788bff;
   border-radius: 10px;
   height: 2rem;
@@ -52,22 +52,22 @@ body {
   font-size: 1rem;
 }
 
-.emailInput {
+.emailInputForSignup {
   margin-bottom: 1rem;
 }
 
-.emailInput:focus,
-.passwordInput:focus {
+.emailInputForSignup:focus,
+.passwordInputForSignup:focus {
   outline: 2px solid #788bff;
   box-shadow: 0px 0.5px 15px #788bff;
 }
 
-.emailInput::placeholder,
-.passwordInput::placeholder {
+.emailInputForSignup::placeholder,
+.passwordInputForSignup::placeholder {
   color: #bcc5ff;
 }
 
-.logInButton {
+.signupButton {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   padding: 0.5rem 0.75rem 0.5rem 0.75rem;
@@ -78,17 +78,14 @@ body {
   transition: all 0.75s ease;
 }
 
-.logInButton:hover {
+.signupButton:hover {
   background-color: #3b28cc;
   color: #fff;
   transition: all 0.75s ease;
-}
-
-.logInButton:hover {
   cursor: pointer;
 }
 
-.linksToOtherPagesContainer {
+.linksToOtherPagesContainerForSignup {
   background-color: #fff;
   border-radius: 10px;
   font-size: 1.25rem;

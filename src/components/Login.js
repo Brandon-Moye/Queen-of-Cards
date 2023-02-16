@@ -58,10 +58,15 @@ export default function Login() {
       </form>
       <div className="linksToOtherPagesContainer">
         <div className="signUpFromLoginPage">
-          Need an account? Signup here <Link to="/signup">Sign up</Link>{" "}
+          Need an account?{" "}
+          <Link className="linkToOtherPage" to="/signup">
+            Sign up
+          </Link>{" "}
         </div>
         <div className="forgotPassword">
-          <Link to="/forgot-password">Forgot Password?</Link>
+          <Link className="linkToOtherPage" to="/forgot-password">
+            Forgot Password?
+          </Link>
         </div>
       </div>
     </div>
