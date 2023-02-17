@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 import { Link } from "react-router-dom";
+import "./ForgotPassword.css";
 
 export default function ForgotPassword() {
   const emailRef = useRef();
@@ -25,24 +26,43 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="signupFormComponentContainer">
+    <div className="entireFormContainerForPasswordReset">
       {error}
       {message}
-      <form onSubmit={handleSubmit} className="formContainer">
-        <h1>Password Reset</h1>
-        <label htmlFor="emailInput" className="emailLabel">
-          email
-        </label>
-        <input className="emailInput" ref={emailRef}></input>
-        <button disabled={loading} type="submit">
+      <form onSubmit={handleSubmit} className="formContainerForPasswordReset">
+        <h1 className="resetPasswordPageTitle">Password Reset</h1>
+        <div className="emailLabelAndInputContainerForPasswordReset">
+          <label htmlFor="emailInput" className="emailLabelForPasswordReset">
+            email
+          </label>
+
+          <input
+            className="emailInputForPasswordReset"
+            ref={emailRef}
+            placeholder="bob@thedragqueen.com"
+          ></input>
+        </div>
+        <button
+          className="resetPasswordButton"
+          disabled={loading}
+          type="submit"
+        >
           Reset Password
         </button>
       </form>
-      <div className="signUpFromLoginPage">
-        Need an account? Signup here <Link to="/signup">Sign up</Link>{" "}
-      </div>
-      <div className="forgotPassword">
-        <Link to="/login">Login</Link>
+      <div className="linksToOtherPageContainerForPasswordReset">
+        <div className="signUpFromLoginPageLink">
+          Need an account?{" "}
+          <Link to="/signup" className="linksToOtherPageFromPasswordReset">
+            Sign up
+          </Link>{" "}
+        </div>
+        <div>
+          Have an account?{" "}
+          <Link to="/login" className="linksToOtherPageFromPasswordReset">
+            Login
+          </Link>
+        </div>
       </div>
     </div>
   );

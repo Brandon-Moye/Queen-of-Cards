@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
   const emailRef = useRef();
@@ -29,24 +30,44 @@ export default function Login() {
     <div className="signupFormComponentContainer">
       {error}
       <form onSubmit={handleSubmit} className="formContainer">
-        <h1>Login</h1>
-        <label htmlFor="emailInput" className="emailLabel">
-          email
-        </label>
-        <input className="emailInput" ref={emailRef}></input>
-        <label htmlFor="passwordInput" className="passwordLabel">
-          password
-        </label>
-        <input className="passwordInput" ref={passwordRef}></input>
-        <button disabled={loading} type="submit">
+        <h1 className="loginPageTitle">Login</h1>
+        <div className="emailLabelAndInputContainer">
+          <label htmlFor="emailLabel" className="emailLabel">
+            email
+          </label>
+          <input
+            className="emailInput"
+            ref={emailRef}
+            placeholder="bimini@bonboulash.com"
+          ></input>
+        </div>
+        <div className="passwordLabelAndInputContainer">
+          <label htmlFor="passwordLabel" className="passwordLabel">
+            password
+          </label>
+          <input
+            className="passwordInput"
+            ref={passwordRef}
+            type="password"
+            placeholder="Alyssa's Secret"
+          ></input>
+        </div>
+        <button disabled={loading} type="submit" className="logInButton">
           Login
         </button>
       </form>
-      <div className="signUpFromLoginPage">
-        Need an account? Signup here <Link to="/signup">Sign up</Link>{" "}
-      </div>
-      <div className="forgotPassword">
-        <Link to="/forgot-password">Forgot Password?</Link>
+      <div className="linksToOtherPagesContainer">
+        <div className="signUpFromLoginPage">
+          Need an account?{" "}
+          <Link className="linkToOtherPage" to="/signup">
+            Sign up
+          </Link>
+        </div>
+        <div className="forgotPassword">
+          <Link className="linkToOtherPage" to="/forgot-password">
+            Forgot Password?
+          </Link>
+        </div>
       </div>
     </div>
   );

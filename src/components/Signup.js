@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import "./Signup.css";
 
 export default function Signup() {
   const emailRef = useRef();
@@ -33,27 +34,41 @@ export default function Signup() {
   return (
     <div className="signupFormComponentContainer">
       {error}
-      <form onSubmit={handleSubmit} className="formContainer">
-        <h1>Signup</h1>
-        <label htmlFor="emailInput" className="emailLabel">
+      <form onSubmit={handleSubmit} className="formContainerForSignup">
+        <h1 className="signupPageTitle">Signup</h1>
+        <label htmlFor="emailInput" className="emailLabelForSignup">
           email
         </label>
-        <input className="emailInput" ref={emailRef}></input>
-        <label htmlFor="passwordInput" className="passwordLabel">
+        <input className="emailInputForSignup" ref={emailRef}></input>
+        <label htmlFor="passwordInput" className="passwordLabelForSignup">
           password
         </label>
-        <input className="passwordInput" ref={passwordRef}></input>
-        <label htmlFor="passwordConfirmInput" className="passwordConfirmLabel">
+        <input
+          className="passwordInputForSignup"
+          ref={passwordRef}
+          type="password"
+        ></input>
+        <label
+          htmlFor="passwordConfirmInput"
+          className="passwordConfirmLabelForSignup"
+        >
           password confirm
         </label>
-        <input className="passwordConfirmInput" ref={passwordConfimRef}></input>
-        <button disabled={loading} type="submit">
+        <input
+          className="passwordConfirmInputForSignup"
+          ref={passwordConfimRef}
+          type="password"
+        ></input>
+        <button disabled={loading} type="submit" className="signupButton">
           Signup
         </button>
-        <div className="loginFromSignupPage">
-          Already have an account? <Link to="/login">Login</Link>
-        </div>
       </form>
+      <div className="linksToOtherPagesContainerForSignup">
+        Already have an account?{" "}
+        <Link to="/login" className="linkToOtherPage">
+          Login
+        </Link>
+      </div>
     </div>
   );
 }
