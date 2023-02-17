@@ -6,7 +6,7 @@ import { auth } from "../Firebase";
 import { uid } from "uid";
 import { set, ref, onValue, remove } from "firebase/database";
 import { render } from "react-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import CardDisplays from "./queenOfCardsComponents/CardDisplay";
 import ViewAllQueens from "./queenOfCardsComponents/ViewAllQueens";
@@ -2047,7 +2047,6 @@ export default function Dashboard() {
   //RENDER QUEENS TO DISPLAY
   const result = myQueensUIDSToRenderState.map((a) => a.myQueensUID);
   console.log(result);
-  let i = 0;
   let testArray = [];
   testArray = queenDatabase.filter(function (queen) {
     return result.includes(queen.uid);
@@ -2059,7 +2058,16 @@ export default function Dashboard() {
 
   const myQueenElements = testArray.map((certainItem) => {
     return (
-      <CardDisplays certainItem={certainItem} handleClick={handleDelete} />
+      <motion.div
+        key={certainItem.uid}
+        className="card"
+        animate={{ scale: 1 }}
+        initial={{ scale: 0 }}
+        exit={{ scale: 0 }}
+        transition={{ ease: "easeInOut", duration: 0.25 }}
+      >
+        <CardDisplays certainItem={certainItem} handleClick={handleDelete} />
+      </motion.div>
     );
   });
 
@@ -2083,7 +2091,9 @@ export default function Dashboard() {
         onOpenOfModal={tooManyQueensMessage}
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
-      <div className="myQueenElements">{myQueenElements}</div>
+      <div className="myQueenElements">
+        <AnimatePresence>{myQueenElements}</AnimatePresence>
+      </div>
       <ViewAllQueensHeader />
       {gridQueenElements}
       <ScrollToTop />
