@@ -36,29 +36,39 @@ export default function Signup() {
       {error}
       <form onSubmit={handleSubmit} className="formContainerForSignup">
         <h1 className="signupPageTitle">Signup</h1>
-        <label htmlFor="emailInput" className="emailLabelForSignup">
-          email
-        </label>
-        <input className="emailInputForSignup" ref={emailRef}></input>
-        <label htmlFor="passwordInput" className="passwordLabelForSignup">
-          password
-        </label>
-        <input
-          className="passwordInputForSignup"
-          ref={passwordRef}
-          type="password"
-        ></input>
-        <label
-          htmlFor="passwordConfirmInput"
-          className="passwordConfirmLabelForSignup"
-        >
-          password confirm
-        </label>
-        <input
-          className="passwordConfirmInputForSignup"
-          ref={passwordConfimRef}
-          type="password"
-        ></input>
+        <div className="emailLabelAndInputContainerForSignup">
+          <label htmlFor="emailInput" className="emailLabelForSignup">
+            email
+          </label>
+          <input
+            className="emailInputForSignup"
+            ref={emailRef}
+            placeholder="ru@paul.com"
+          ></input>
+        </div>
+        <div className="passwordLabelAndInputContainerForSignup">
+          <label htmlFor="passwordInput" className="passwordLabelForSignup">
+            password
+          </label>
+          <input
+            className="passwordInputForSignup"
+            ref={passwordRef}
+            type="password"
+          ></input>
+        </div>
+        <div className="passwordConfirmLabelAndInputContainerForSignup">
+          <label
+            htmlFor="passwordConfirmInput"
+            className="passwordConfirmLabelForSignup"
+          >
+            confirm password
+          </label>
+          <input
+            className="passwordConfirmInputForSignup"
+            ref={passwordConfimRef}
+            type="password"
+          ></input>
+        </div>
         <button disabled={loading} type="submit" className="signupButton">
           Signup
         </button>

@@ -95,6 +95,7 @@ body {
 .linkToOtherPage:link,
 .linkToOtherPage:visited {
   color: #3b28cc;
+  color: #6253d6;
   text-decoration: underline #fff;
   transition: all 0.5s ease;
 }
