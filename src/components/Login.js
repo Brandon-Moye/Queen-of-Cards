@@ -61,7 +61,7 @@ export default function Login() {
           Need an account?{" "}
           <Link className="linkToOtherPage" to="/signup">
             Sign up
-          </Link>{" "}
+          </Link>
         </div>
         <div className="forgotPassword">
           <Link className="linkToOtherPage" to="/forgot-password">

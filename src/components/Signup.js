@@ -62,13 +62,13 @@ export default function Signup() {
         <button disabled={loading} type="submit" className="signupButton">
           Signup
         </button>
-        <div className="linksToOtherPagesContainerForSignup">
-          Already have an account?{" "}
-          <Link to="/login" className="linkToOtherPage">
-            Login
-          </Link>
-        </div>
       </form>
+      <div className="linksToOtherPagesContainerForSignup">
+        Already have an account?{" "}
+        <Link to="/login" className="linkToOtherPage">
+          Login
+        </Link>
+      </div>
     </div>
   );
 }

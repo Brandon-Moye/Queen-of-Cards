@@ -1,6 +1,4 @@
 body {
-  background-color: #788bff;
-  background-color: #3b28cc;
   background-color: #9d94e6;
 }
 
@@ -82,9 +80,6 @@ body {
   background-color: #3b28cc;
   color: #fff;
   transition: all 0.75s ease;
-}
-
-.logInButton:hover {
   cursor: pointer;
 }
 
