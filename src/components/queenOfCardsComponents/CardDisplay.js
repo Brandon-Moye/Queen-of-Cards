@@ -1,10 +1,16 @@
 import "../queenOfCardsComponents/CardDisplay.css";
 import React from "react";
+import { render } from "react-dom";
+import { motion } from "framer-motion";
 
 export default function CardDisplays(props) {
   return (
     <div className="cardDisplayContainer">
-      <div className="card">
+      <motion.div
+        className="card"
+        animate={{ scale: 1 }}
+        initial={{ scale: 0 }}
+      >
         <div className="queenCardImageContainer">
           <img
             className="cardQueenImageProp"
@@ -55,7 +61,7 @@ export default function CardDisplays(props) {
             Sashay Away
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

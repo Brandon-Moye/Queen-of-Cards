@@ -5,6 +5,8 @@ import { db } from "../Firebase";
 import { auth } from "../Firebase";
 import { uid } from "uid";
 import { set, ref, onValue, remove } from "firebase/database";
+import { render } from "react-dom";
+import { motion } from "framer-motion";
 
 import CardDisplays from "./queenOfCardsComponents/CardDisplay";
 import ViewAllQueens from "./queenOfCardsComponents/ViewAllQueens";
