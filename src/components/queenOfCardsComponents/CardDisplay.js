@@ -4,17 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 export default function CardDisplays(props) {
-  const [removingQueenFramerState, setRemovingQueenFramerState] =
-    useState(false);
   return (
     <div className="cardDisplayContainer">
-      {/* <motion.div
-        key="card"
-        className="card"
-        animate={{ scale: 1 }}
-        initial={{ scale: 0 }}
-        exit={{ scale: 0 }}
-      > */}
       <div className="queenCardImageContainer">
         <img
           className="cardQueenImageProp"
@@ -65,7 +56,6 @@ export default function CardDisplays(props) {
           Sashay Away
         </button>
       </div>
-      {/* </motion.div> */}
     </div>
   );
 }
