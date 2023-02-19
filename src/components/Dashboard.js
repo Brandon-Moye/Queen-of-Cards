@@ -6,7 +6,6 @@ import { auth } from "../Firebase";
 import { uid } from "uid";
 import { set, ref, onValue, remove } from "firebase/database";
 import { render } from "react-dom";
-import { motion, AnimatePresence } from "framer-motion";
 
 import CardDisplays from "./queenOfCardsComponents/CardDisplay";
 import ViewAllQueens from "./queenOfCardsComponents/ViewAllQueens";
@@ -1985,22 +1984,6 @@ export default function Dashboard() {
       setError("Failed to log out");
     }
   }
-  function addNewQueen(dragNameProp) {
-    const findSelectedQueen = queenDatabase.find(function (
-      theQueenThatIsCurrentlyBeingIndexed
-    ) {
-      return theQueenThatIsCurrentlyBeingIndexed.dragName === dragNameProp;
-    });
-    const newQueen = {
-      // selectedQueenImage: findSelectedQueen.queenImage,
-      selectedQueenDragName: findSelectedQueen.dragName,
-      selectedQueenSeasonAppearedOn: findSelectedQueen.mainSeasonAppearedOn,
-      selectedQueenMainSeasonPlacement: findSelectedQueen.mainSeasonPlacement,
-      selectedQueenMainSeasonChallengeWins:
-        findSelectedQueen.mainSeasonChallengeWins,
-      selectedQueenHomepage: findSelectedQueen.queenHomepage,
-    };
-  }
 
   //WRITE
   function writeToDatabase(uidProp) {
@@ -2046,7 +2029,6 @@ export default function Dashboard() {
 
   //RENDER QUEENS TO DISPLAY
   const result = myQueensUIDSToRenderState.map((a) => a.myQueensUID);
-  console.log(result);
   let testArray = [];
   testArray = queenDatabase.filter(function (queen) {
     return result.includes(queen.uid);
@@ -2058,16 +2040,7 @@ export default function Dashboard() {
 
   const myQueenElements = testArray.map((certainItem) => {
     return (
-      <motion.div
-        key={certainItem.uid}
-        className="card"
-        animate={{ scale: 1 }}
-        initial={{ scale: 0 }}
-        exit={{ scale: 0 }}
-        transition={{ ease: "easeInOut", duration: 0.25 }}
-      >
-        <CardDisplays certainItem={certainItem} handleClick={handleDelete} />
-      </motion.div>
+      <CardDisplays certainItem={certainItem} handleClick={handleDelete} />
     );
   });
 
@@ -2078,11 +2051,8 @@ export default function Dashboard() {
     ) {
       return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
     });
-
     const uidVariable = findSelectedQueen.uid;
-
     remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`));
-    console.log("test", uid);
   }
 
   return (
@@ -2091,9 +2061,7 @@ export default function Dashboard() {
         onOpenOfModal={tooManyQueensMessage}
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
-      <div className="myQueenElements">
-        <AnimatePresence>{myQueenElements}</AnimatePresence>
-      </div>
+      <div className="myQueenElements">{myQueenElements}</div>
       <ViewAllQueensHeader />
       {gridQueenElements}
       <ScrollToTop />

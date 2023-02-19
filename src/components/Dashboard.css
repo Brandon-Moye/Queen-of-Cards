@@ -1,7 +1,7 @@
 .myQueenElements {
   display: flex;
   padding: 0rem 1rem 0rem 1rem;
-  justify-content: left;
+  justify-content: space-evenly;
   background-color: #fef0f5;
   height: 100vh;
 }

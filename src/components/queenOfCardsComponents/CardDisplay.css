@@ -1,4 +1,4 @@
-.card {
+.cardDisplayContainer {
   /* align-items: center; */
   background-color: #f598b9;
   border-radius: 10px;
@@ -7,6 +7,25 @@
   width: 15rem;
   box-shadow: 0px 1px 10px #30161f;
   margin-top: 5rem;
+  animation: adding-new-card 1s alternate;
+}
+
+@keyframes adding-new-card {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+
+@keyframes delete-card {
+  0% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(0%);
+  }
 }
 
 .queenCardImageContainer {
@@ -33,23 +52,10 @@
   font-size: 1.5rem;
   height: 4rem;
   background-color: #30161f;
-  /* background-color: #000;
-  background-image: linear-gradient(45deg, #fff 25%, transparent 25%),
-    linear-gradient(-45deg, #fff 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #fff 75%),
-    linear-gradient(-45deg, transparent 75%, #fff 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px; */
   color: #f598b9;
   border-radius: 10px 10px 0px 0px;
   margin-right: 0.5rem;
   padding: 0.5rem;
-}
-
-.cardQueenNameContrastForCheckerProp {
-  /* background-color: #30161fa9; */
-  /* box-shadow: black 0px 0px 40px 0.5px; */
-  border-radius: 10px;
 }
 
 .queenStatsWithoutNameContainer {
@@ -132,4 +138,38 @@
 
 .btn2.btn2.test-completed2:hover::before {
   left: 0;
+}
+
+@media (max-width: 1340px) {
+  .cardDisplayContainer {
+    height: 25rem;
+    width: 12rem;
+  }
+
+  .queenCardImageContainer {
+    height: 13rem;
+  }
+
+  .cardQueenImageProp {
+    max-width: 9rem;
+    max-height: 11rem;
+  }
+
+  .cardQueenNameProp {
+    font-size: 1.2rem;
+    height: 3.5rem;
+  }
+
+  .queenStatsWithoutNameContainer * {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .cardQueenHomepageProp,
+  .cardQueenCongenialProp {
+    font-size: 0.8rem;
+  }
+  .cardQueenLinkProp:link {
+    font-size: 0.8rem;
+  }
 }

@@ -4,17 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 export default function CardDisplays(props) {
-  const [removingQueenFramerState, setRemovingQueenFramerState] =
-    useState(false);
   return (
     <div className="cardDisplayContainer">
-      {/* <motion.div
-        key="card"
-        className="card"
-        animate={{ scale: 1 }}
-        initial={{ scale: 0 }}
-        exit={{ scale: 0 }}
-      > */}
       <div className="queenCardImageContainer">
         <img
           className="cardQueenImageProp"
@@ -23,19 +14,17 @@ export default function CardDisplays(props) {
       </div>
       <div className="cardQuenInfoTextContainer">
         <div className="cardQueenNameProp">
-          <div className="cardQueenNameContrastForCheckerProp">
-            <strong>{props.certainItem.dragName}</strong>
-          </div>
+          <strong>{props.certainItem.dragName}</strong>
         </div>
         <div className="queenStatsWithoutNameContainer">
-          <div className="cardQueenWinnerProp">
+          <div className="cardQueenWinnerProp cardQueenSeasonProp">
             <strong>Season:</strong> {props.certainItem.mainSeasonAppearedOn}
           </div>
-          <div className="cardQueenHomepageProp">
+          <div className="cardQueenHomepageProp cardQueenPlacementProp">
             <strong>Placement: </strong>
             {props.certainItem.mainSeasonPlacement}
           </div>
-          <div className="cardQueenCongenialProp">
+          <div className="cardQueenCongenialProp cardQueenChallengeWinsProp">
             <strong>Challenge Wins: </strong>
             {props.certainItem.mainSeasonChallengeWins}
           </div>
@@ -65,7 +54,6 @@ export default function CardDisplays(props) {
           Sashay Away
         </button>
       </div>
-      {/* </motion.div> */}
     </div>
   );
 }
