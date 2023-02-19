@@ -58,12 +58,6 @@
   padding: 0.5rem;
 }
 
-.cardQueenNameContrastForCheckerProp {
-  /* background-color: #30161fa9; */
-  /* box-shadow: black 0px 0px 40px 0.5px; */
-  border-radius: 10px;
-}
-
 .queenStatsWithoutNameContainer {
   color: #30161f;
   background-color: #fbd3e1;
@@ -144,4 +138,38 @@
 
 .btn2.btn2.test-completed2:hover::before {
   left: 0;
+}
+
+@media (max-width: 1340px) {
+  .cardDisplayContainer {
+    height: 25rem;
+    width: 12rem;
+  }
+
+  .queenCardImageContainer {
+    height: 13rem;
+  }
+
+  .cardQueenImageProp {
+    max-width: 9rem;
+    max-height: 11rem;
+  }
+
+  .cardQueenNameProp {
+    font-size: 1.2rem;
+    height: 3.5rem;
+  }
+
+  .queenStatsWithoutNameContainer * {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .cardQueenHomepageProp,
+  .cardQueenCongenialProp {
+    font-size: 0.8rem;
+  }
+  .cardQueenLinkProp:link {
+    font-size: 0.8rem;
+  }
 }
