@@ -26,10 +26,19 @@ export default function Header() {
         <strong className="usersCurrentEmail">{currentUser.email}</strong>
 
         <Link to="/update-profile" className="updateProfileLink">
-          Update Profile
+          <div className="updateProfileLinkText"> Update Profile</div>
+          <div className="updateProfileIconContainer">
+            <ion-icon
+              name="person-circle-outline"
+              className="updateProfileIcon"
+            ></ion-icon>
+          </div>
         </Link>
         <button className="logoutButton" type="link" onClick={handleLogout}>
-          Logout
+          <div className="logoutButtonText">Logout</div>
+          <div className="logoutButtonContainer">
+            <ion-icon name="exit-outline" className="logoutIcon"></ion-icon>
+          </div>
         </button>
       </div>
       {/* <a href="#" className="viewAllQueensButton">

@@ -12,19 +12,19 @@ export default function CardDisplays(props) {
           src={props.certainItem.queenImage}
         ></img>
       </div>
-      <div className="cardQuenInfoTextContainer">
+      <div className="cardQueenInfoTextContainer">
         <div className="cardQueenNameProp">
           <strong>{props.certainItem.dragName}</strong>
         </div>
         <div className="queenStatsWithoutNameContainer">
-          <div className="cardQueenWinnerProp cardQueenSeasonProp">
+          <div className="cardQueenSeasonProp">
             <strong>Season:</strong> {props.certainItem.mainSeasonAppearedOn}
           </div>
           <div className="cardQueenHomepageProp cardQueenPlacementProp">
             <strong>Placement: </strong>
             {props.certainItem.mainSeasonPlacement}
           </div>
-          <div className="cardQueenCongenialProp cardQueenChallengeWinsProp">
+          <div className="cardQueenChallengeWinsProp">
             <strong>Challenge Wins: </strong>
             {props.certainItem.mainSeasonChallengeWins}
           </div>
