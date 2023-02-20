@@ -31,6 +31,7 @@
 .mainSeasonChallengeWins {
   font-size: 2rem;
 }
+
 .btn {
   display: inline-block;
   background-color: #f598b9;
@@ -55,7 +56,7 @@
 
 .btn.test-completed::after,
 .btn.test-completed::before {
-  content: "Shantay";
+  content: "Shante";
   position: absolute;
   text-align: center;
   width: 100%;
@@ -75,4 +76,102 @@
 
 .btn.btn.test-completed:hover::before {
   left: 0;
+}
+
+@media (max-width: 1120px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 1.45rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 1.45rem;
+  }
+
+  .mainSeasonAppearedOnProp,
+  .mainSeasonPlacement,
+  .mainSeasonChallengeWins {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 920px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 1.15rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 1.15rem;
+  }
+
+  .mainSeasonAppearedOnProp,
+  .mainSeasonPlacement,
+  .mainSeasonChallengeWins {
+    font-size: 1.15rem;
+  }
+
+  .btn {
+    width: 4rem;
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 740px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 1rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 1rem;
+  }
+
+  .mainSeasonAppearedOnProp,
+  .mainSeasonPlacement,
+  .mainSeasonChallengeWins {
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 4rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 0.75rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 0.75rem;
+  }
+
+  .mainSeasonAppearedOnProp,
+  .mainSeasonPlacement,
+  .mainSeasonChallengeWins {
+    font-size: 0.75rem;
+  }
+
+  .btn {
+    width: 4rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 0.5rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 0.5rem;
+  }
 }
