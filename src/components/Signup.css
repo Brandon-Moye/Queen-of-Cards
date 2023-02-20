@@ -106,3 +106,10 @@ body {
   text-decoration: underline #3b28cc;
   transition: all 0.5s ease;
 }
+
+@media (max-width: 500px) {
+  .formContainerForSignup,
+  .linksToOtherPagesContainerForSignup {
+    max-width: 20rem;
+  }
+}

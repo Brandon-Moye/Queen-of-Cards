@@ -105,3 +105,16 @@ body {
   text-decoration: underline #3b28cc;
   transition: all 0.5s ease;
 }
+
+@media (max-width: 500px) {
+  .formContainer {
+    max-width: 20rem;
+  }
+
+  .linksToOtherPagesContainer {
+    flex-direction: column;
+    max-width: 20rem;
+    height: 5rem;
+    gap: 0rem;
+  }
+}
