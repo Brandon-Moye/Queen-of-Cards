@@ -21,7 +21,7 @@ export default function ViewAllQueens(props) {
         <div className="gridCell mainSeasonChallengeWins">
           {props.item.mainSeasonChallengeWins}
         </div>
-        <div className="buttonContainer">
+        <div className="buttonContainerForShante">
           <button
             className="btn test-completed"
             onClick={() => {
