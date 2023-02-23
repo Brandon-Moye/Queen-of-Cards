@@ -1,0 +1,122 @@
+body {
+  background-color: #9d94e6;
+}
+
+.formContainerUpdateProfile,
+.returnToLoginPageCancelLinkContainer {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 30rem;
+}
+
+.formContainerUpdateProfile {
+  flex-direction: column;
+  margin-top: 7rem;
+  border-radius: 10px;
+  border: 3px solid #fcdce7;
+  margin-bottom: 1rem;
+  background-color: #f06c9b;
+  background-color: #fff;
+}
+
+.updateProfilePageTitle {
+  margin-top: 1rem;
+  font-size: 3rem;
+  background-color: #f06c9b;
+  color: #fcdce7;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  border-radius: 50px;
+}
+
+.emailLabelUpdateProfile,
+.passwordLabelUpdateProfile,
+.passwordConfirmLabelUpdateProfile {
+  display: flex;
+  margin-bottom: 0.75rem;
+  margin-left: 0.45rem;
+  font-size: 1.5rem;
+  color: #242a4c;
+}
+
+.emailInputUpdateProfile,
+.passwordInputUpdateProfile,
+.passwordConfirmInputUpdateProfile {
+  border: 1px solid #788bff;
+  border-radius: 10px;
+  height: 2rem;
+  width: 15rem;
+  text-indent: 0.5rem;
+  font-size: 1rem;
+}
+
+.emailInputUpdateProfile {
+  margin-bottom: 1rem;
+}
+
+.emailInputUpdateProfile:focus,
+.passwordInputUpdateProfile:focus,
+.passwordConfirmInputUpdateProfile:focus {
+  outline: 2px solid #788bff;
+  box-shadow: 0px 0.5px 15px #788bff;
+}
+
+.emailInputUpdateProfile::placeholder,
+.passwordInputUpdateProfile::placeholder,
+.passwordConfirmInputUpdateProfile::placeholder {
+  color: #bcc5ff;
+}
+
+.updateProfileButton {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  border: none;
+  border-radius: 10px;
+  color: #3b28cc;
+  background-color: #fff;
+  transition: all 0.5s ease;
+}
+
+.updateProfileButton:hover {
+  background-color: #3b28cc;
+  color: #fff;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.returnToLoginPageCancelLinkContainer {
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.returnToLoginPageLink:link,
+.returnToLoginPageLink:visited {
+  color: #3b28cc;
+  text-decoration: underline #fff;
+  transition: all 0.5s ease;
+}
+
+.returnToLoginPageLink:hover,
+.returnToLoginPageLink:active {
+  text-decoration: underline #3b28cc;
+  transition: all 0.5s ease;
+}
+
+@media (max-width: 500px) {
+  .formContainerUpdateProfile,
+  .returnToLoginPageCancelLinkContainer {
+    max-width: 20rem;
+  }
+
+  .updateProfilePageTitle {
+    font-size: 2.5rem;
+  }
+}
