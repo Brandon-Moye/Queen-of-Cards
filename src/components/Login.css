@@ -2,6 +2,19 @@ body {
   background-color: #9d94e6;
 }
 
+.LoginMessageErrorContainer {
+  color: #f06c9b;
+  position: absolute;
+  background-color: #fcdce7;
+  left: 25%;
+  right: 25%;
+  top: 2%;
+  padding: 0.75rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.1s ease-in;
+}
+
 .formContainer,
 .linksToOtherPagesContainer {
   margin: 0 auto;
