@@ -2,6 +2,19 @@ body {
   background-color: #9d94e6;
 }
 
+.LoginMessageErrorContainer {
+  color: #f06c9b;
+  position: absolute;
+  background-color: #fcdce7;
+  left: 25%;
+  right: 25%;
+  top: 2%;
+  padding: 0.75rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.1s ease-in;
+}
+
 .formContainer,
 .linksToOtherPagesContainer {
   margin: 0 auto;
@@ -104,4 +117,17 @@ body {
 .linkToOtherPage:active {
   text-decoration: underline #3b28cc;
   transition: all 0.5s ease;
+}
+
+@media (max-width: 500px) {
+  .formContainer {
+    max-width: 20rem;
+  }
+
+  .linksToOtherPagesContainer {
+    flex-direction: column;
+    max-width: 20rem;
+    height: 5rem;
+    gap: 0rem;
+  }
 }

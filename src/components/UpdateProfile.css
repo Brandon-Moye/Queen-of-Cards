@@ -2,21 +2,8 @@ body {
   background-color: #9d94e6;
 }
 
-.signupMessageErrorContainer {
-  color: #f06c9b;
-  position: absolute;
-  background-color: #fcdce7;
-  left: 25%;
-  right: 25%;
-  top: 2%;
-  padding: 0.75rem;
-  border-radius: 10px;
-  text-align: center;
-  transition: 0.1s ease-in;
-}
-
-.formContainerForSignup,
-.linksToOtherPagesContainerForSignup {
+.formContainerUpdateProfile,
+.returnToLoginPageCancelLinkContainer {
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -25,7 +12,7 @@ body {
   max-width: 30rem;
 }
 
-.formContainerForSignup {
+.formContainerUpdateProfile {
   flex-direction: column;
   margin-top: 7rem;
   border-radius: 10px;
@@ -35,7 +22,7 @@ body {
   background-color: #fff;
 }
 
-.signupPageTitle {
+.updateProfilePageTitle {
   margin-top: 1rem;
   font-size: 3rem;
   background-color: #f06c9b;
@@ -44,9 +31,9 @@ body {
   border-radius: 50px;
 }
 
-.emailLabelForSignup,
-.passwordLabelForSignup,
-.passwordConfirmLabelForSignup {
+.emailLabelUpdateProfile,
+.passwordLabelUpdateProfile,
+.passwordConfirmLabelUpdateProfile {
   display: flex;
   margin-bottom: 0.75rem;
   margin-left: 0.45rem;
@@ -54,9 +41,9 @@ body {
   color: #242a4c;
 }
 
-.emailInputForSignup,
-.passwordInputForSignup,
-.passwordConfirmInputForSignup {
+.emailInputUpdateProfile,
+.passwordInputUpdateProfile,
+.passwordConfirmInputUpdateProfile {
   border: 1px solid #788bff;
   border-radius: 10px;
   height: 2rem;
@@ -65,22 +52,24 @@ body {
   font-size: 1rem;
 }
 
-.emailInputForSignup {
+.emailInputUpdateProfile {
   margin-bottom: 1rem;
 }
 
-.emailInputForSignup:focus,
-.passwordInputForSignup:focus {
+.emailInputUpdateProfile:focus,
+.passwordInputUpdateProfile:focus,
+.passwordConfirmInputUpdateProfile:focus {
   outline: 2px solid #788bff;
   box-shadow: 0px 0.5px 15px #788bff;
 }
 
-.emailInputForSignup::placeholder,
-.passwordInputForSignup::placeholder {
+.emailInputUpdateProfile::placeholder,
+.passwordInputUpdateProfile::placeholder,
+.passwordConfirmInputUpdateProfile::placeholder {
   color: #bcc5ff;
 }
 
-.signupButton {
+.updateProfileButton {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   padding: 0.5rem 0.75rem 0.5rem 0.75rem;
@@ -88,41 +77,46 @@ body {
   border-radius: 10px;
   color: #3b28cc;
   background-color: #fff;
-  transition: all 0.75s ease;
+  transition: all 0.5s ease;
 }
 
-.signupButton:hover {
+.updateProfileButton:hover {
   background-color: #3b28cc;
   color: #fff;
-  transition: all 0.75s ease;
+  transition: all 0.5s ease;
   cursor: pointer;
 }
 
-.linksToOtherPagesContainerForSignup {
+.returnToLoginPageCancelLinkContainer {
   background-color: #fff;
   border-radius: 10px;
   font-size: 1.25rem;
   height: 2rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.linkToOtherPage:link,
-.linkToOtherPage:visited {
+.returnToLoginPageLink:link,
+.returnToLoginPageLink:visited {
   color: #3b28cc;
   text-decoration: underline #fff;
   transition: all 0.5s ease;
 }
 
-.linkToOtherPage:hover,
-.linkToOtherPage:active {
+.returnToLoginPageLink:hover,
+.returnToLoginPageLink:active {
   text-decoration: underline #3b28cc;
   transition: all 0.5s ease;
 }
 
 @media (max-width: 500px) {
-  .formContainerForSignup,
-  .linksToOtherPagesContainerForSignup {
+  .formContainerUpdateProfile,
+  .returnToLoginPageCancelLinkContainer {
     max-width: 20rem;
+  }
+
+  .updateProfilePageTitle {
+    font-size: 2.5rem;
   }
 }

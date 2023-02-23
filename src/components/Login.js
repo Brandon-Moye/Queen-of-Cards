@@ -21,14 +21,14 @@ export default function Login() {
       await login(emailRef.current.value, passwordRef.current.value);
       navigate("/");
     } catch {
-      setError("Failed to sign in");
+      setError("Failed to sign in, please check your email or password");
     }
     setLoading(false);
   }
 
   return (
     <div className="signupFormComponentContainer">
-      {error}
+      <div className={error ? "LoginMessageErrorContainer" : ""}> {error}</div>
       <form onSubmit={handleSubmit} className="formContainer">
         <h1 className="loginPageTitle">Login</h1>
         <div className="emailLabelAndInputContainer">

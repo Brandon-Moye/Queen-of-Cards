@@ -109,7 +109,7 @@ ion-icon {
 }
 
 .headerProfileInfoUpdateAndLogoutContainer {
-  width: 30vw;
+  width: 27vw;
   height: 5rem;
 
   background: linear-gradient(45deg, #f06c9b, #f06c9ad5);
@@ -137,6 +137,11 @@ ion-icon {
 @media (max-width: 1240px) {
   .headerProfileInfoUpdateAndLogoutContainer {
     width: 25vw;
+  }
+
+  .updateProfileLink,
+  .logoutButton {
+    width: 2.5rem;
   }
   .updateProfileLinkText,
   .logoutButtonText {

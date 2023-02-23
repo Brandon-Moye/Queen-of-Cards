@@ -20,15 +20,20 @@ export default function ForgotPassword() {
       await resetPassword(emailRef.current.value);
       setMessage("Check your inbox for further instructions");
     } catch {
-      setError("Failed to reset password");
+      setError(
+        "Failed to reset password, the account you submitted is not in our records"
+      );
     }
     setLoading(false);
   }
 
   return (
     <div className="entireFormContainerForPasswordReset">
-      {error}
-      {message}
+      <div className={error ? "forgotPasswordErrorContainer" : ""}>
+        {" "}
+        {error}
+      </div>
+      <div className="forgotPasswordMessageContainer"> {message}</div>
       <form onSubmit={handleSubmit} className="formContainerForPasswordReset">
         <h1 className="resetPasswordPageTitle">Password Reset</h1>
         <div className="emailLabelAndInputContainerForPasswordReset">

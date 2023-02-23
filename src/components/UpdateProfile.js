@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import "./UpdateProfile.css";
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -45,40 +46,55 @@ export default function UpdateProfile() {
   return (
     <div className="signupFormComponentContainer">
       {error}
-      <form onSubmit={handleSubmit} className="formContainer">
-        <h1>Update Profile</h1>
-        <label htmlFor="emailInput" className="emailLabel">
-          email
-        </label>
-        <input
-          className="emailInput"
-          ref={emailRef}
-          required
-          defaultValue={currentUser.email}
-        ></input>
-        <label htmlFor="passwordInput" className="passwordLabel">
-          password
-        </label>
-        <input
-          className="passwordInput"
-          ref={passwordRef}
-          placeholder="Leave blank to keep the same"
-        ></input>
-        <label htmlFor="passwordConfirmInput" className="passwordConfirmLabel">
-          password confirm
-        </label>
-        <input
-          className="passwordConfirmInput"
-          ref={passwordConfimRef}
-          placeholder="Leave blank to keep the same"
-        ></input>
-        <button disabled={loading} type="submit">
+      <form onSubmit={handleSubmit} className="formContainerUpdateProfile">
+        <h1 className="updateProfilePageTitle">Update Profile</h1>
+        <div className="emailLabelAndInputContainerUpdateProfile">
+          <label htmlFor="emailInput" className="emailLabelUpdateProfile">
+            email
+          </label>
+          <input
+            className="emailInputUpdateProfile"
+            ref={emailRef}
+            required
+            defaultValue={currentUser.email}
+          ></input>
+        </div>
+        <div className="passwordLabelAndInputContainerUpdateProfile">
+          <label htmlFor="passwordInput" className="passwordLabelUpdateProfile">
+            password
+          </label>
+          <input
+            className="passwordInputUpdateProfile"
+            ref={passwordRef}
+            placeholder="Leave blank to keep the same"
+          ></input>
+        </div>
+        <div className="passwordConfirmLabelAndInputContainer">
+          <label
+            htmlFor="passwordConfirmInput"
+            className="passwordConfirmLabelUpdateProfile"
+          >
+            password confirm
+          </label>
+          <input
+            className="passwordConfirmInputUpdateProfile"
+            ref={passwordConfimRef}
+            placeholder="Leave blank to keep the same"
+          ></input>
+        </div>
+        <button
+          disabled={loading}
+          type="submit"
+          className="updateProfileButton"
+        >
           Update
         </button>
-        <div className="loginFromSignupPage">
-          <Link to="/">Cancel</Link>
-        </div>
       </form>
+      <div className="returnToLoginPageCancelLinkContainer">
+        <Link className="returnToLoginPageLink" to="/">
+          Cancel
+        </Link>
+      </div>
     </div>
   );
 }
