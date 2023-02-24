@@ -1971,7 +1971,7 @@ export default function Dashboard() {
     []
   );
   const [tooManyQueensMessage, setTooManyQueensMessage] = useState(false);
-
+  const [entranceAnimation, setEntranceAnimation] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   async function handleLogout() {
@@ -1998,8 +1998,8 @@ export default function Dashboard() {
       set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
         myQueensUID: uidVariable,
       });
-
       setMyQueensUID([]);
+      setEntranceAnimation(true);
     } else {
       setTooManyQueensMessage(true);
     }
@@ -2024,6 +2024,7 @@ export default function Dashboard() {
       } else if (!user) {
         navigate("/");
       }
+      setEntranceAnimation(true);
     });
   }, []);
 
@@ -2040,7 +2041,12 @@ export default function Dashboard() {
 
   const myQueenElements = testArray.map((certainItem) => {
     return (
-      <CardDisplays certainItem={certainItem} handleClick={handleDelete} />
+      <CardDisplays
+        certainItem={certainItem}
+        handleClick={handleDelete}
+        ƒ
+        entranceAnimation={entranceAnimation}
+      />
     );
   });
 
@@ -2049,6 +2055,7 @@ export default function Dashboard() {
     const findSelectedQueen = queenDatabase.find(function (
       theQueenThatIsCurrentlyBeingIndexed
     ) {
+      // setEntranceAnimation(false);
       return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
     });
     const uidVariable = findSelectedQueen.uid;

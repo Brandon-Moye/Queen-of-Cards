@@ -5,10 +5,21 @@ import React, { useState, useEffect } from "react";
 
 export default function CardDisplays(props) {
   return (
-    <div className="cardDisplayContainer">
+    // <div className="cardDisplayContainer">
+    <div
+      className={
+        props.entranceAnimation
+          ? "cardDisplayContainer cardDisplayContainerEntranceAnimation"
+          : "cardDisplayContainer cardDisplayContainerExitAnimation"
+      }
+    >
       <div className="queenCardImageContainer">
         <img
-          className="cardQueenImageProp"
+          className={
+            props.entranceAnimation
+              ? "cardQueenImageProp cardDisplayContainerEntranceAnimation"
+              : "cardQueenImageProp cardDisplayContainerExitAnimation"
+          }
           src={props.certainItem.queenImage}
         ></img>
       </div>
@@ -49,6 +60,7 @@ export default function CardDisplays(props) {
           className="btn2"
           onClick={() => {
             props.handleClick(props.certainItem.uid);
+            props.entranceAnimation = false;
           }}
         >
           Sashay Away
