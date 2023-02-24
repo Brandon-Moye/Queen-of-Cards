@@ -4,27 +4,49 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 export default function CardDisplays(props) {
+  // window.addEventListener("scroll", function (event) {
+  //   let scroll = this.scrollY;
+  //   let minimizedCardDisplays = false;
+  //   if (scroll > 200) {
+  //     minimizedCardDisplays = true;
+  //     console.log(minimizedCardDisplays);
+  //   } else {
+  //     minimizedCardDisplays = false;
+  //   }
+  // });
   return (
     // <div className="cardDisplayContainer">
     <div
       className={
-        props.entranceAnimation
-          ? "cardDisplayContainer cardDisplayContainerEntranceAnimation"
-          : "cardDisplayContainer cardDisplayContainerExitAnimation"
+        props.minimizedCardDisplays
+          ? "cardDisplayContainer minimizedCardDisplayContainer"
+          : "cardDisplayContainer"
       }
     >
-      <div className="queenCardImageContainer">
+      <div
+        className={
+          props.minimizedCardDisplays
+            ? "queenCardImageContainer minimizedQueenCardImageContainer"
+            : "queenCardImageContainer"
+        }
+      >
         <img
           className={
-            props.entranceAnimation
-              ? "cardQueenImageProp cardDisplayContainerEntranceAnimation"
-              : "cardQueenImageProp cardDisplayContainerExitAnimation"
+            props.minimizedCardDisplays
+              ? "cardQueenImageProp minimizedCardQueenImageProp"
+              : "cardQueenImageProp"
           }
           src={props.certainItem.queenImage}
         ></img>
       </div>
       <div className="cardQueenInfoTextContainer">
-        <div className="cardQueenNameProp">
+        <div
+          className={
+            props.minimizedCardDisplays
+              ? "cardQueenNameProp cardQueenNamePropRed"
+              : "cardQueenNameProp"
+          }
+        >
           <strong>{props.certainItem.dragName}</strong>
         </div>
         <div className="queenStatsWithoutNameContainer">

@@ -9,7 +9,6 @@ body {
   display: flex;
   justify-content: space-evenly;
   background-color: #fef0f5;
-  height: 95vh;
   overflow-y: scroll;
 }
 

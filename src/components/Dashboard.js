@@ -1972,6 +1972,7 @@ export default function Dashboard() {
   );
   const [tooManyQueensMessage, setTooManyQueensMessage] = useState(false);
   const [entranceAnimation, setEntranceAnimation] = useState(false);
+  const [minimizedCardDisplays, setMinimizedCardDisplays] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   async function handleLogout() {
@@ -1984,6 +1985,16 @@ export default function Dashboard() {
       setError("Failed to log out");
     }
   }
+
+  window.addEventListener("scroll", function (event) {
+    let scroll = this.scrollY;
+    if (scroll > 100) {
+      setMinimizedCardDisplays(true);
+      console.log(minimizedCardDisplays);
+    } else {
+      setMinimizedCardDisplays(false);
+    }
+  });
 
   //WRITE
   function writeToDatabase(uidProp) {
@@ -2044,8 +2055,8 @@ export default function Dashboard() {
       <CardDisplays
         certainItem={certainItem}
         handleClick={handleDelete}
-        ƒ
         entranceAnimation={entranceAnimation}
+        minimizedCardDisplays={minimizedCardDisplays}
       />
     );
   });
