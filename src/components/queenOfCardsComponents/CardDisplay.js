@@ -40,7 +40,13 @@ export default function CardDisplays(props) {
         ></img>
       </div>
       <div className="cardQueenInfoTextContainer">
-        <div className="cardQueenNameProp">
+        <div
+          className={
+            props.minimizedCardDisplays
+              ? "cardQueenNameProp minimizedCardQueenNameProp"
+              : "cardQueenNameProp"
+          }
+        >
           <strong>{props.certainItem.dragName}</strong>
         </div>
         <div className="queenStatsWithoutNameContainer">

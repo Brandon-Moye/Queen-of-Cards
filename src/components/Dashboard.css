@@ -5,6 +5,7 @@ body {
   width: 100%;
   scroll-behavior: auto;
   background-color: #fef0f5;
+  font-family: "Work Sans", sans-serif;
 }
 
 .myQueenElements {
@@ -15,7 +16,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1;
-  min-height: 40rem;
+  min-height: 20rem;
 }
 
 .minimizedMyQueenElements {
