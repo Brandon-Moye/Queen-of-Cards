@@ -7,7 +7,7 @@
   background-color: #f06c9b;
   border: none;
   color: #fef0f5;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   position: sticky;
   top: 18rem;
@@ -24,9 +24,21 @@
   }
 }
 
+@media (max-width: 1245px) {
+  .ViewAllQueensHeaderContainer {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ViewAllQueensHeaderContainer {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 1120px) {
   .ViewAllQueensHeaderContainer {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 

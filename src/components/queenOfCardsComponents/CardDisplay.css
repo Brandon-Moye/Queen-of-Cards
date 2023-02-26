@@ -122,6 +122,7 @@
   font-size: 1rem;
   transition: all 0.25s;
   padding: 0.25rem;
+  font-family: "Work Sans", sans-serif;
 }
 
 .btn2:hover {
@@ -167,6 +168,10 @@
 
 .minimizedCardQueenImageProp {
   scale: 0;
+}
+
+.minimizedCardQueenNameProp {
+  font-size: 1.5rem;
 }
 
 .minimizedCardQueenLinkProp {
@@ -226,6 +231,10 @@
 
   .minimizedCardQueenImageProp {
     scale: 0;
+  }
+
+  .minimizedCardQueenNameProp {
+    font-size: 1.15rem;
   }
 }
 

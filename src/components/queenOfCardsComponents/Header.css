@@ -152,17 +152,48 @@ ion-icon {
   .logoutButtonContainer {
     display: flex;
   }
+  .updateProfileLink,
+  .logoutButton {
+    width: 2rem;
+  }
 }
 
 @media (max-width: 1010px) {
   .headerProfileInfoUpdateAndLogoutContainer {
-    width: 35vw;
+    width: 25vw;
+  }
+  .usersCurrentEmail {
+    font-size: 0.65rem;
+  }
+}
+@media (max-width: 920px) {
+  .headerProfileInfoUpdateAndLogoutContainer {
+    width: 30vw;
   }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 810px) {
   .headerProfileInfoUpdateAndLogoutContainer {
-    width: 50vw;
+    width: 32vw;
+  }
+}
+
+@media (max-width: 760px) {
+  .headerProfileInfoUpdateAndLogoutContainer {
+    width: 40vw;
+  }
+  .headerProfileInfoUpdateAndLogoutContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0rem;
+    justify-items: center;
+    width: 35vw;
+  }
+
+  .usersCurrentEmail {
+    grid-column: 1 / -1;
+    width: 100%;
   }
 }
 
@@ -194,9 +225,9 @@ ion-icon {
   .logoutButton {
     font-size: 0.65rem;
   }
-
-  ion-icon {
-    font-size: 1rem;
+  .updateProfileLink,
+  .logoutButton {
+    width: 2rem;
   }
 }
 
@@ -216,10 +247,6 @@ ion-icon {
 
   .usersCurrentEmail {
     grid-column: 1 / -1;
-  }
-
-  .updateProfileLink,
-  .logoutButton {
-    width: 2.5rem;
+    font-size: 0.5rem;
   }
 }

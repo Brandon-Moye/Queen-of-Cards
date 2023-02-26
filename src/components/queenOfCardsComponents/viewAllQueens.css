@@ -81,7 +81,7 @@
 @media (max-width: 1120px) {
   .queenNameInGrid:link,
   .queenNameInGrid:visited {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
   }
 
   .queenNameInGrid:hover,
@@ -114,7 +114,8 @@
   }
 
   .btn {
-    width: 4rem;
+    width: 4.5rem;
+    height: 1.75rem;
     font-size: 0.75rem;
   }
 }
@@ -161,6 +162,7 @@
   .btn {
     width: 4rem;
     font-size: 0.75rem;
+    font-family: "Work Sans", sans-serif;
   }
 }
 
@@ -178,6 +180,6 @@
   .btn {
     width: 3.5rem;
     height: 1.5rem;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
   }
 }
