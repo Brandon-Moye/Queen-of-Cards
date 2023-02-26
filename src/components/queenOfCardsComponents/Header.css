@@ -216,14 +216,10 @@ ion-icon {
     padding-left: 1rem;
   }
 
-  .headerProfileInfoUpdateAndLogoutContainer {
-    gap: 0.5rem;
-  }
-
   .usersCurrentEmail,
   .updateProfileLink,
   .logoutButton {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
   }
   .updateProfileLink,
   .logoutButton {
@@ -247,6 +243,12 @@ ion-icon {
 
   .usersCurrentEmail {
     grid-column: 1 / -1;
-    font-size: 0.5rem;
+    font-size: 0.45rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .usersCurrentEmail {
+    font-size: 0.35rem;
   }
 }
