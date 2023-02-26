@@ -3,14 +3,29 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  scroll-behavior: auto;
+  background-color: #fef0f5;
 }
 
 .myQueenElements {
   display: flex;
   justify-content: space-evenly;
   background-color: #fef0f5;
-  height: 95vh;
   overflow-y: scroll;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  min-height: 40rem;
+}
+
+.minimizedMyQueenElements {
+  min-height: 10rem;
+}
+
+@media (max-width: 1340px) {
+  .minimizedMyQueenElements {
+    min-height: 10rem;
+  }
 }
 
 @media (max-width: 1100px) {

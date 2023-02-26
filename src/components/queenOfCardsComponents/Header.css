@@ -31,7 +31,7 @@
 .logoutButton {
   font-size: 1rem;
   height: 2rem;
-  padding: 0rem 0.4rem 0rem 0.4rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,7 +109,7 @@ ion-icon {
 }
 
 .headerProfileInfoUpdateAndLogoutContainer {
-  width: 27vw;
+  width: 35vw;
   height: 5rem;
 
   background: linear-gradient(45deg, #f06c9b, #f06c9ad5);

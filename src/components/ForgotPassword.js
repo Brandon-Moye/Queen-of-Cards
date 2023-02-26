@@ -33,7 +33,10 @@ export default function ForgotPassword() {
         {" "}
         {error}
       </div>
-      <div className="forgotPasswordMessageContainer"> {message}</div>
+      <div className={message ? "forgotPasswordMessageContainer" : ""}>
+        {" "}
+        {message}
+      </div>
       <form onSubmit={handleSubmit} className="formContainerForPasswordReset">
         <h1 className="resetPasswordPageTitle">Password Reset</h1>
         <div className="emailLabelAndInputContainerForPasswordReset">

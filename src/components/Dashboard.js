@@ -1971,7 +1971,8 @@ export default function Dashboard() {
     []
   );
   const [tooManyQueensMessage, setTooManyQueensMessage] = useState(false);
-
+  const [entranceAnimation, setEntranceAnimation] = useState(false);
+  const [minimizedCardDisplays, setMinimizedCardDisplays] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   async function handleLogout() {
@@ -1984,6 +1985,17 @@ export default function Dashboard() {
       setError("Failed to log out");
     }
   }
+
+  window.addEventListener("scroll", function (event) {
+    let scroll = this.scrollY;
+    if (scroll > 0) {
+      setMinimizedCardDisplays(true);
+      console.log(minimizedCardDisplays);
+    } else if (scroll < 10) {
+      this.window.scrollBy(-100, 0);
+      setMinimizedCardDisplays(false);
+    }
+  });
 
   //WRITE
   function writeToDatabase(uidProp) {
@@ -1998,8 +2010,8 @@ export default function Dashboard() {
       set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
         myQueensUID: uidVariable,
       });
-
       setMyQueensUID([]);
+      setEntranceAnimation(true);
     } else {
       setTooManyQueensMessage(true);
     }
@@ -2024,6 +2036,7 @@ export default function Dashboard() {
       } else if (!user) {
         navigate("/");
       }
+      setEntranceAnimation(true);
     });
   }, []);
 
@@ -2040,7 +2053,12 @@ export default function Dashboard() {
 
   const myQueenElements = testArray.map((certainItem) => {
     return (
-      <CardDisplays certainItem={certainItem} handleClick={handleDelete} />
+      <CardDisplays
+        certainItem={certainItem}
+        handleClick={handleDelete}
+        entranceAnimation={entranceAnimation}
+        minimizedCardDisplays={minimizedCardDisplays}
+      />
     );
   });
 
@@ -2049,6 +2067,7 @@ export default function Dashboard() {
     const findSelectedQueen = queenDatabase.find(function (
       theQueenThatIsCurrentlyBeingIndexed
     ) {
+      // setEntranceAnimation(false);
       return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
     });
     const uidVariable = findSelectedQueen.uid;
@@ -2061,7 +2080,15 @@ export default function Dashboard() {
         onOpenOfModal={tooManyQueensMessage}
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
-      <div className="myQueenElements">{myQueenElements}</div>
+      <div
+        className={
+          minimizedCardDisplays
+            ? "myQueenElements minimizedMyQueenElements"
+            : "myQueenElements"
+        }
+      >
+        {myQueenElements}
+      </div>
       <ViewAllQueensHeader />
       {gridQueenElements}
       <ScrollToTop />

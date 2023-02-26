@@ -10,7 +10,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   position: sticky;
-  top: 0;
+  top: 18rem;
   z-index: 1;
 }
 
@@ -20,6 +20,7 @@
 @media (max-width: 1340px) {
   .ViewAllQueensHeaderContainer {
     font-size: 1.25rem;
+    top: 15rem;
   }
 }
 

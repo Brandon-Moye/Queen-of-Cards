@@ -64,3 +64,22 @@
   transition: all 0.3s;
   cursor: pointer;
 }
+
+@media (max-width: 740px) {
+  .modalBody {
+    width: 20rem;
+  }
+
+  .modalTitleText {
+    font-size: 1rem;
+  }
+
+  .modalInstructionsText {
+    text-align: center;
+  }
+
+  .modalCloseButton {
+    width: 4rem;
+    height: 2rem;
+  }
+}

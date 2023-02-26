@@ -6,25 +6,37 @@
   height: 32rem;
   width: 15rem;
   box-shadow: 0px 1px 10px #30161f;
-  margin-top: 5rem;
-  animation: adding-new-card 1s alternate;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cardDisplayContainerEntranceAnimation {
+  animation: adding-new-card 2s;
+}
+
+.cardDisplayContainerExitAnimation {
+  animation: delete-card 2s;
 }
 
 @keyframes adding-new-card {
   0% {
-    transform: scale(0%);
+    transition: all opacity;
+    opacity: 0;
   }
   100% {
-    transform: scale(100%);
+    transform: all opacity;
+    opacity: 1;
   }
 }
 
 @keyframes delete-card {
   0% {
-    transform: scale(100%);
+    transition: all opacity;
+    opacity: 1;
   }
   100% {
-    transform: scale(0%);
+    transition: all opacity;
+    opacity: 0;
   }
 }
 
@@ -56,6 +68,10 @@
   border-radius: 10px 10px 0px 0px;
   margin-right: 0.5rem;
   padding: 0.5rem;
+}
+
+.minimizedCardQueenImageProp {
+  scale: 0;
 }
 
 .queenStatsWithoutNameContainer {
@@ -140,11 +156,28 @@
   left: 0;
 }
 
+.minimizedCardDisplayContainer {
+  height: 15rem;
+  padding: 0.5rem;
+}
+
+.minimizedQueenCardImageContainer {
+  height: 0rem;
+}
+
+.minimizedCardQueenImageProp {
+  scale: 0;
+}
+
+.minimizedCardQueenLinkProp {
+  display: none;
+}
+
 @media (max-width: 1340px) {
   .cardDisplayContainer {
     height: 25rem;
     width: 12rem;
-    min-height: 25rem;
+    /* min-height: 25rem; */
     min-width: 12rem;
   }
 
@@ -181,10 +214,35 @@
     font-size: 0.75rem;
     width: 6rem;
   }
+
+  .minimizedCardDisplayContainer {
+    height: 11.5rem;
+    padding: 0.5rem;
+  }
+
+  .minimizedQueenCardImageContainer {
+    height: 0rem;
+  }
+
+  .minimizedCardQueenImageProp {
+    scale: 0;
+  }
 }
 
 @media (max-width: 1100px) {
   .cardDisplayContainer:first-of-type {
-    margin-left: 2.25rem;
+    margin-left: 1rem;
+  }
+
+  .cardDisplayContainer:last-of-type {
+    margin-right: 1rem;
+  }
+
+  .minimizedQueenCardImageContainer {
+    height: 0rem;
+  }
+
+  .minimizedCardQueenImageProp {
+    scale: 0;
   }
 }

@@ -14,7 +14,7 @@
 }
 
 ion-icon {
-  font-size: 1rem;
+  font-size: 10rem;
   color: #000;
 }
 
@@ -46,12 +46,6 @@ ion-icon {
 
 @media (max-width: 740px) {
   .visible {
-    height: 1rem;
-    width: 1rem;
-    right: 0.55rem;
-  }
-
-  ion-icon {
-    font-size: 0.75rem;
+    right: 0.35rem;
   }
 }
