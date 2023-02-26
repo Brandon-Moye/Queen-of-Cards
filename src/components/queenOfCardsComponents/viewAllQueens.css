@@ -174,4 +174,10 @@
   .queenNameInGrid:active {
     font-size: 0.5rem;
   }
+
+  .btn {
+    width: 3.5rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
+  }
 }
