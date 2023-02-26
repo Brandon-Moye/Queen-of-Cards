@@ -1988,10 +1988,11 @@ export default function Dashboard() {
 
   window.addEventListener("scroll", function (event) {
     let scroll = this.scrollY;
-    if (scroll > 100) {
+    if (scroll > 0) {
       setMinimizedCardDisplays(true);
       console.log(minimizedCardDisplays);
-    } else {
+    } else if (scroll < 10) {
+      this.window.scrollBy(-100, 0);
       setMinimizedCardDisplays(false);
     }
   });
@@ -2079,7 +2080,15 @@ export default function Dashboard() {
         onOpenOfModal={tooManyQueensMessage}
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
-      <div className="myQueenElements">{myQueenElements}</div>
+      <div
+        className={
+          minimizedCardDisplays
+            ? "myQueenElements minimizedMyQueenElements"
+            : "myQueenElements"
+        }
+      >
+        {myQueenElements}
+      </div>
       <ViewAllQueensHeader />
       {gridQueenElements}
       <ScrollToTop />

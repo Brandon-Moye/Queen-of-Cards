@@ -40,13 +40,7 @@ export default function CardDisplays(props) {
         ></img>
       </div>
       <div className="cardQueenInfoTextContainer">
-        <div
-          className={
-            props.minimizedCardDisplays
-              ? "cardQueenNameProp cardQueenNamePropRed"
-              : "cardQueenNameProp"
-          }
-        >
+        <div className="cardQueenNameProp">
           <strong>{props.certainItem.dragName}</strong>
         </div>
         <div className="queenStatsWithoutNameContainer">
@@ -62,7 +56,12 @@ export default function CardDisplays(props) {
             {props.certainItem.mainSeasonChallengeWins}
           </div>
           <a
-            className="cardQueenLinkProp"
+            // className="cardQueenLinkProp"
+            className={
+              props.minimizedCardDisplays
+                ? "cardQueenLinkProp minimizedCardQueenLinkProp"
+                : "cardQueenLinkProp"
+            }
             href={props.certainItem.queenHomepage}
             target="_blank"
           >
