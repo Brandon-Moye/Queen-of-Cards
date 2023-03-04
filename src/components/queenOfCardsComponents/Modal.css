@@ -71,11 +71,12 @@
   }
 
   .modalTitleText {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .modalInstructionsText {
     text-align: center;
+    font-size: 0.7rem;
   }
 
   .modalCloseButton {

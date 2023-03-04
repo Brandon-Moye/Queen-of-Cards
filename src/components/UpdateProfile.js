@@ -45,7 +45,7 @@ export default function UpdateProfile() {
 
   return (
     <div className="signupFormComponentContainer">
-      {error}
+      <div className={error ? "signupErrorMessage" : ""}>{error}</div>
       <form onSubmit={handleSubmit} className="formContainerUpdateProfile">
         <h1 className="updateProfilePageTitle">Update Profile</h1>
         <div className="emailLabelAndInputContainerUpdateProfile">
@@ -65,6 +65,7 @@ export default function UpdateProfile() {
           </label>
           <input
             className="passwordInputUpdateProfile"
+            type="password"
             ref={passwordRef}
             placeholder="Leave blank to keep the same"
           ></input>

@@ -120,6 +120,18 @@ body {
   transition: all 0.5s ease;
 }
 
+@media (max-width: 875px) {
+  .signupMessageErrorContainer {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 705px) {
+  .signupMessageErrorContainer {
+    font-size: 0.75rem;
+  }
+}
+
 @media (max-width: 500px) {
   .formContainerForSignup,
   .linksToOtherPagesContainerForSignup {
@@ -128,5 +140,11 @@ body {
 
   .linksToOtherPagesContainerForSignup {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .signupMessageErrorContainer {
+    font-size: 0.6rem;
   }
 }
