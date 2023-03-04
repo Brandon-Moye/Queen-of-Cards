@@ -60,7 +60,7 @@ export default function Login() {
         <div className="signUpFromLoginPage">
           Need an account?{" "}
           <Link className="linkToOtherPage" to="/signup">
-            Sign up
+            Signup
           </Link>
         </div>
         <div className="forgotPassword">

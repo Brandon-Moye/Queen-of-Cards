@@ -119,6 +119,18 @@ body {
   transition: all 0.5s ease;
 }
 
+@media (max-width: 900px) {
+  .LoginMessageErrorContainer {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .LoginMessageErrorContainer {
+    font-size: 0.7rem;
+  }
+}
+
 @media (max-width: 500px) {
   .formContainer {
     max-width: 20rem;
@@ -129,5 +141,11 @@ body {
     max-width: 20rem;
     height: 5rem;
     gap: 0rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .LoginMessageErrorContainer {
+    font-size: 0.6rem;
   }
 }
