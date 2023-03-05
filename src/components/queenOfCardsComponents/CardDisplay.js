@@ -4,16 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 export default function CardDisplays(props) {
-  // window.addEventListener("scroll", function (event) {
-  //   let scroll = this.scrollY;
-  //   let minimizedCardDisplays = false;
-  //   if (scroll > 200) {
-  //     minimizedCardDisplays = true;
-  //     console.log(minimizedCardDisplays);
-  //   } else {
-  //     minimizedCardDisplays = false;
-  //   }
-  // });
   return (
     // <div className="cardDisplayContainer">
     <div
