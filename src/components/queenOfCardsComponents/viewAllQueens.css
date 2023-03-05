@@ -142,6 +142,18 @@
   }
 }
 
+@media (max-width: 710px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 0.9rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 650px) {
   .queenNameInGrid:link,
   .queenNameInGrid:visited {

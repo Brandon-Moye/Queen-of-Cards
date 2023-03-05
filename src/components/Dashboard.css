@@ -16,17 +16,17 @@ body {
   position: sticky;
   top: 0;
   z-index: 1;
-  min-height: 30rem;
+  min-height: 20rem;
 }
 
 .minimizedMyQueenElements {
-  height: 15rem;
+  height: 10rem;
   overflow: hidden;
 }
 
 @media (max-width: 1340px) {
   .minimizedMyQueenElements {
-    min-height: 10rem;
+    min-height: 15rem;
   }
 }
 
