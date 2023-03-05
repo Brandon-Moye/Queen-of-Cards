@@ -15,6 +15,12 @@ Every contestant has a uid that is pushed to the Realtime database upon selectio
 The code takes all of the uids in the Realtime database and compares them to an object in the code files
 It find the matching contestant object and renders their data into a card
 
+The object containing all of the contestant information was generated via a webscraper I developed
+
+Users can see the contestant's season, placements, and number of wins to help them pick their favorites
+
+There is a maximum of 5 contestants per user, a pop up alerts the user when they need to remove a contestant before they add another
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
