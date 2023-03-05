@@ -21,6 +21,8 @@ Users can see the contestant's season, placements, and number of wins to help th
 
 There is a maximum of 5 contestants per user, a pop up alerts the user when they need to remove a contestant before they add another
 
+If users want to learn more about their favorite queens links to their Fandom pages are provided on their card.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
