@@ -10,7 +10,7 @@ Every contestant has a uid that is pushed to the Realtime database upon selectio
 
 # Queen of Cards 🏁
 
-Racers! Start your engines, and may the best developer WIN!
+## Racers! Start your engines, and may the best developer WIN!
 
 The code takes all of the uids in the Realtime database and compares them to an object in the code files
 It find the matching contestant object and renders their data into a card
