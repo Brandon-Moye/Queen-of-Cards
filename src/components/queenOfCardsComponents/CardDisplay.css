@@ -24,7 +24,7 @@
     opacity: 0;
   }
   100% {
-    transform: all opacity;
+    transition: all opacity;
     opacity: 1;
   }
 }

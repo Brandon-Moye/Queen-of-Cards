@@ -71,7 +71,7 @@
 
 .btn.test-completed::before {
   content: "You Stay";
-  left: 6rem;
+  left: 5.99rem;
 }
 
 .btn.btn.test-completed:hover::before {
@@ -139,6 +139,18 @@
   .btn {
     width: 4rem;
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 710px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 0.9rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 0.9rem;
   }
 }
 

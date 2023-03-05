@@ -20,12 +20,13 @@ body {
 }
 
 .minimizedMyQueenElements {
-  min-height: 10rem;
+  height: 10rem;
+  overflow: hidden;
 }
 
 @media (max-width: 1340px) {
   .minimizedMyQueenElements {
-    min-height: 10rem;
+    min-height: 15rem;
   }
 }
 
