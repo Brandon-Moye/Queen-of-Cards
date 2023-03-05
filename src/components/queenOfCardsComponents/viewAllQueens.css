@@ -71,7 +71,7 @@
 
 .btn.test-completed::before {
   content: "You Stay";
-  left: 5.99rem;
+  left: 6rem;
 }
 
 .btn.btn.test-completed:hover::before {
