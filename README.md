@@ -1,3 +1,10 @@
+# Firebase 🔥
+
+Users are prompted to create an account using their email and password
+
+From there, users can login, update their username and password, and send a reset email if they forgot their password
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
