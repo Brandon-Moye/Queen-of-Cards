@@ -2010,7 +2010,7 @@ export default function Dashboard() {
       set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
         myQueensUID: uidVariable,
       });
-      setMyQueensUID([]);
+      // setMyQueensUID([]);
       setEntranceAnimation(true);
     } else {
       setTooManyQueensMessage(true);
@@ -2034,7 +2034,7 @@ export default function Dashboard() {
           }
         });
       } else if (!user) {
-        navigate("/");
+        navigate("/login");
       }
       setEntranceAnimation(true);
     });

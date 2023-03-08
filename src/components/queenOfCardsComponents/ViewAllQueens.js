@@ -29,8 +29,6 @@ export default function ViewAllQueens(props) {
             }}
           >
             <div className="buttonTextContainer">
-              {/* <span className="shantayButtonText">Shantay</span>
-            <span className="youStayButtonText">You Stay</span> */}
             </div>
           </button>
         </div>
