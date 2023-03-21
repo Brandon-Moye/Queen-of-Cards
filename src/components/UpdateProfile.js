@@ -33,6 +33,20 @@ export default function UpdateProfile() {
       promises.push(userUpdatePassword(passwordRef.current.value));
     }
 
+    // const promiseOfUpdatedPassword = userUpdatePassword(passwordRef.current.value);
+
+    // promiseOfUpdatedPassword.then(() => {
+    //   navigate("/");
+    // });
+
+    // promiseOfUpdatedPassword.catch(() => {
+    //   setError("Something got fucked up")
+    // });
+
+    // promiseOfUpdatedPassword.finally(() => {
+    //   setLoading(false);
+    // });
+    
     Promise.all(promises)
       .then(() => {
         navigate("/");
