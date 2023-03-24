@@ -6,7 +6,7 @@ From there, users can login, update their username and password, and send a rese
 
 Data for each user is stored in the Realtime Database and renders when the user is logged in
 
-Every contestant has a uid that is pushed to the Realtime database upon selection
+Every contestant has a uid that is pushed and stored on the Realtime database upon selection
 
 # Queen of Cards 🏁
 
