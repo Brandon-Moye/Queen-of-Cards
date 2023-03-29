@@ -9,8 +9,10 @@ body {
 }
 
 .myQueenElements {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
   background-color: #fef0f5;
   overflow-y: scroll;
   position: sticky;
@@ -18,6 +20,19 @@ body {
   z-index: 1;
   min-height: 20rem;
 }
+
+/* .separatelyRenderedCardContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  background-color: #fef0f5;
+  overflow-y: scroll;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  min-height: 20rem;
+} */
 
 .minimizedMyQueenElements {
   height: 10rem;
