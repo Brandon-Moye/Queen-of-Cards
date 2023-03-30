@@ -19,20 +19,27 @@ body {
   top: 0;
   z-index: 1;
   min-height: 20rem;
+  transition: all 2s;
 }
 
-/* .separatelyRenderedCardContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  justify-items: center;
-  align-items: center;
-  background-color: #fef0f5;
-  overflow-y: scroll;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  min-height: 20rem;
-} */
+.myQueenElementsEntranceAnimation {
+  animation: adding-new-card 2s;
+}
+
+.cardDisplayContainerExitAnimation {
+  animation: delete-card 2s;
+}
+
+@keyframes adding-new-card {
+  0% {
+    transition: all opacity;
+    opacity: 0;
+  }
+  100% {
+    transition: all opacity;
+    opacity: 1;
+  }
+}
 
 .minimizedMyQueenElements {
   height: 10rem;

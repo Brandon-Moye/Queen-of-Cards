@@ -4,13 +4,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 export default function CardDisplays(props) {
+  const grid = document.querySelector('.cardDisplayContainer');
+  const deleteQueenButton = document.querySelector('.btn2');
+  // grid.classList.add('cardDisplayContainerEntranceAnimation');
   return (
     // <div className="cardDisplayContainer">
     <div
       className={
         props.minimizedCardDisplays
           ? "cardDisplayContainer minimizedCardDisplayContainer"
-          : "cardDisplayContainer"
+          : "cardDisplayContainer cardDisplayContainerEntranceAnimation"
       }
     >
       <div

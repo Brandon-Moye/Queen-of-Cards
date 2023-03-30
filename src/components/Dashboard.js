@@ -14,98 +14,6 @@ import ViewAllQueensHeader from "./queenOfCardsComponents/ViewAllQueensHeader";
 import Modal from "./queenOfCardsComponents/Modal";
 import "./Dashboard.css";
 import ScrollToTop from "./queenOfCardsComponents/ScrollToTop";
-// const queenDatabase = [
-//   {
-//     uid: 1,
-//     dragName: "Jade",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "6",
-//     mainSeasonChallengeWins: "0",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e4/JadePromoHD.png",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Jade",
-//   },
-//   {
-//     uid: 2,
-//     dragName: "Ongina",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "5",
-//     mainSeasonChallengeWins: "2",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0d/OnginaAllStars5.jpg",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Ongina",
-//   },
-//   {
-//     uid: 3,
-//     dragName: "Nina Flowers",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "2",
-//     mainSeasonChallengeWins: "1",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/92/Nina_Flowers_All_Stars.jpg",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Nina_Flowers",
-//   },
-//   {
-//     uid: 4,
-//     dragName: "BeBe Zahara Benet",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "1",
-//     mainSeasonChallengeWins: "2",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/BeBeAS3Promo.png",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/BeBe_Zahara_Benet",
-//   },
-//   {
-//     uid: 5,
-//     dragName: "Rebecca Glasscock",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "3",
-//     mainSeasonChallengeWins: "1",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/ce/RebeccaPromoHD.png",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Rebecca_Glasscock",
-//   },
-//   {
-//     uid: 6,
-//     dragName: "Victoria Parker",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "9",
-//     mainSeasonChallengeWins: "0",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/47/VictoriaPromoHD.png",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Victoria_Parker",
-//   },
-//   {
-//     uid: 7,
-//     dragName: "Shannel",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "4",
-//     mainSeasonChallengeWins: "0",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/ba/Shannel_All_Stars.jpg",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Shannel",
-//   },
-//   {
-//     uid: 8,
-//     dragName: "Tammie Brown",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "8",
-//     mainSeasonChallengeWins: "0",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a8/Tammie_Brown_All_Stars.jpg",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Tammie_Brown",
-//   },
-//   {
-//     uid: 9,
-//     dragName: "Akashia",
-//     mainSeasonAppearedOn: "1",
-//     mainSeasonPlacement: "7",
-//     mainSeasonChallengeWins: "0",
-//     queenImage:
-//       "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8a/AkashiaPromoHD.png",
-//     queenHomepage: "https://rupaulsdragrace.fandom.com//wiki/Akashia",
-//   },
-// ];
 
 const queenDatabase = [
   {
@@ -2007,9 +1915,12 @@ export default function Dashboard() {
       });
 
       const uidVariable = findSelectedQueen.uid;
-      set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-        myQueensUID: uidVariable,
-      });
+      setTimeout(() => {
+        set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
+          myQueensUID: uidVariable,
+        });
+  
+      }, 2000)
       // setMyQueensUID([]);
       setEntranceAnimation(true);
     } else {
@@ -2040,18 +1951,19 @@ export default function Dashboard() {
     });
   }, []);
 
+
   //RENDER QUEENS TO DISPLAY
-  const result = myQueensUIDSToRenderState.map((a) => a.myQueensUID);
-  let testArray = [];
-  testArray = queenDatabase.filter(function (queen) {
-    return result.includes(queen.uid);
+  const arrayOfUidsToUseToMapThroughDatabase = myQueensUIDSToRenderState.map((a) => a.myQueensUID);
+  let arrayOfQueenObjectDataToMapIntoComponent = [];
+  arrayOfQueenObjectDataToMapIntoComponent = queenDatabase.filter(function (queen) {
+    return arrayOfUidsToUseToMapThroughDatabase.includes(queen.uid);
   });
 
   const gridQueenElements = queenDatabase.map((item) => {
     return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
   });
 
-  const myQueenElements = testArray.map((certainItem) => {
+  const myQueenElements = arrayOfQueenObjectDataToMapIntoComponent.map((certainItem) => {
     return (
       <CardDisplays
         certainItem={certainItem}
@@ -2071,7 +1983,8 @@ export default function Dashboard() {
       return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
     });
     const uidVariable = findSelectedQueen.uid;
-    remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`));
+    setTimeout(() => remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`)),2000
+    )
   }
 
   return (
@@ -2083,8 +1996,8 @@ export default function Dashboard() {
       <div
         className={
           minimizedCardDisplays
-            ? "myQueenElements minimizedMyQueenElements"
-            : "myQueenElements"
+            ? "myQueenElements minimizedMyQueenElements myQueenElementsEntranceAnimation"
+            : "myQueenElements myQueenElementsEntranceAnimation"
         }
       >
         {myQueenElements}
