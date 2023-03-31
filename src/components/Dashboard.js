@@ -1920,9 +1920,9 @@ export default function Dashboard() {
           myQueensUID: uidVariable,
         });
   
-      }, 2000)
+      }, 1000)
+      setEntranceAnimation(!entranceAnimation);
       // setMyQueensUID([]);
-      setEntranceAnimation(true);
     } else {
       setTooManyQueensMessage(true);
     }
@@ -1949,7 +1949,7 @@ export default function Dashboard() {
       }
       setEntranceAnimation(true);
     });
-  }, []);
+  }, [entranceAnimation]);
 
 
   //RENDER QUEENS TO DISPLAY
@@ -1983,7 +1983,7 @@ export default function Dashboard() {
       return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
     });
     const uidVariable = findSelectedQueen.uid;
-    setTimeout(() => remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`)),2000
+    setTimeout(() => remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`)), 1000
     )
   }
 
