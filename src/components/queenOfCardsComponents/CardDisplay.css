@@ -11,7 +11,7 @@
 }
 
 .cardDisplayContainerEntranceAnimation {
-  animation: adding-new-card 5s;
+  animation: adding-new-card 1s;
 }
 
 .cardDisplayContainerExitAnimation {

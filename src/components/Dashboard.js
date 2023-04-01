@@ -1915,14 +1915,11 @@ export default function Dashboard() {
       });
 
       const uidVariable = findSelectedQueen.uid;
-      setTimeout(() => {
         set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
           myQueensUID: uidVariable,
         });
   
-      }, 1000)
-      setEntranceAnimation(!entranceAnimation);
-      // setMyQueensUID([]);
+      setEntranceAnimation(true);
     } else {
       setTooManyQueensMessage(true);
     }
@@ -1949,7 +1946,7 @@ export default function Dashboard() {
       }
       setEntranceAnimation(true);
     });
-  }, [entranceAnimation]);
+  }, []);
 
 
   //RENDER QUEENS TO DISPLAY
@@ -1987,6 +1984,8 @@ export default function Dashboard() {
     )
   }
 
+  
+
   return (
     <div className="dashboardContainer">
       <Modal
@@ -1994,6 +1993,7 @@ export default function Dashboard() {
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
       <div
+        // ref={shmee}
         className={
           minimizedCardDisplays
             ? "myQueenElements minimizedMyQueenElements myQueenElementsEntranceAnimation"

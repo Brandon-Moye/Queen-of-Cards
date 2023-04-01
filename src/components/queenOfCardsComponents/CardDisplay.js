@@ -7,9 +7,28 @@ export default function CardDisplays(props) {
   const grid = document.querySelector('.cardDisplayContainer');
   const deleteQueenButton = document.querySelector('.btn2');
   // grid.classList.add('cardDisplayContainerEntranceAnimation');
+  
+  const shmee = React.useRef();
+
+  // shmee.current
+
+  const [isInRemoveTransition, setIsInRemoveTransition] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isInRemoveTransition) {
+      shmee.current.addEventListener('transitionend', () => {
+        props.handleDelete(props.uid);
+        // call a callback
+        // or set state
+        // indiciating that the transition is over so that your other code can actually remove this queen
+      });
+    }
+  }, [isInRemoveTransition]);
+  
   return (
     // <div className="cardDisplayContainer">
     <div
+      ref={shmee}
       className={
         props.minimizedCardDisplays
           ? "cardDisplayContainer minimizedCardDisplayContainer"
@@ -79,8 +98,8 @@ export default function CardDisplays(props) {
         <button
           className="btn2"
           onClick={() => {
-            props.handleClick(props.certainItem.uid);
-            props.entranceAnimation = false;
+            // do this first
+            setIsInRemoveTransition(true);
           }}
         >
           Sashay Away
