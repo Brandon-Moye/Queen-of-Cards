@@ -1918,10 +1918,9 @@ export default function Dashboard() {
       });
 
       const uidVariable = findSelectedQueen.uid;
+      
+      
       if(!quee.includes(uidVariable)) {
-      // setQuee((prevQuee) => 
-      //   [...prevQuee, uidVariable]
-      // )
         quee.splice([quee.length],4, uidVariable);
         set(ref(db, `/${auth.currentUser.uid}`),
           quee
@@ -1961,20 +1960,20 @@ export default function Dashboard() {
   }, [ ]);
 
 
-  const objectArray = [
-    { id: 1, name: "John" },
-    { id: 2, name: "Sarah" },
-    { id: 3, name: "David" },
-    { id: 4, name: "Emily" },
-  ];
+  // const objectArray = [
+  //   { id: 1, name: "John" },
+  //   { id: 2, name: "Sarah" },
+  //   { id: 3, name: "David" },
+  //   { id: 4, name: "Emily" },
+  // ];
   
-  const orderArray = [2, 4, 1, 3];
+  // const orderArray = [2, 4, 1, 3];
   
-  const orderedArray = orderArray.map((id) =>
-    objectArray.find((obj) => obj.id === id)
-  );
+  // const orderedArray = orderArray.map((id) =>
+  //   objectArray.find((obj) => obj.id === id)
+  // );
   
-  console.log(orderedArray);
+  // console.log(orderedArray);
   
 
 
@@ -2007,15 +2006,27 @@ console.log(orderedArrayOfObjects);
 
   //DELETE
   function handleDelete(uidProp) {
-    const findSelectedQueen = queenDatabase.find(function (
-      theQueenThatIsCurrentlyBeingIndexed
-    ) {
-      // setEntranceAnimation(false);
-      return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-    });
-    const uidVariable = findSelectedQueen.uid;
-    setTimeout(() => remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`)), 1000
-    )
+    onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
+      const data = snapshot.val();
+      if (data !== null) {
+        const indexInArrayToRemove = Object.values(data).indexOf(uidProp);
+          if(indexInArrayToRemove !== -1) {
+            const newArray = Object.values(data).filter(
+              (value, index) => index !== indexInArrayToRemove
+            );
+            set(ref(db, `${auth.currentUser.uid}`), newArray);
+          }
+      }
+    })
+    // const findSelectedQueen = queenDatabase.find(function (
+    //   theQueenThatIsCurrentlyBeingIndexed
+    // ) {
+    //   // setEntranceAnimation(false);
+    //   return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
+    // });
+    // const uidVariable = findSelectedQueen.uid;
+    // console.log(uidVariable);
+    // remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`))
   }
 
   return (
