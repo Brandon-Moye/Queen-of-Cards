@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "./context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useAsyncError, useNavigate } from "react-router-dom";
 import { db } from "../Firebase";
 import { auth } from "../Firebase";
 import { uid } from "uid";
-import { set, ref, onValue, remove } from "firebase/database";
+import { set, ref, onValue, remove, push } from "firebase/database";
 import { render } from "react-dom";
 
 import CardDisplays from "./queenOfCardsComponents/CardDisplay";
@@ -1883,6 +1883,9 @@ export default function Dashboard() {
   const [minimizedCardDisplays, setMinimizedCardDisplays] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
+
+  const [quee, setQuee] = useState([]);
+
   async function handleLogout() {
     setError("");
 
@@ -1915,18 +1918,22 @@ export default function Dashboard() {
       });
 
       const uidVariable = findSelectedQueen.uid;
-      setTimeout(() => {
-        set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-          myQueensUID: uidVariable,
-        });
-  
-      }, 1000)
-      setEntranceAnimation(!entranceAnimation);
-      // setMyQueensUID([]);
+      if(!quee.includes(uidVariable)) {
+      // setQuee((prevQuee) => 
+      //   [...prevQuee, uidVariable]
+      // )
+        quee.splice([quee.length],4, uidVariable);
+        set(ref(db, `/${auth.currentUser.uid}`),
+          quee
+        );
+      }
+        console.log(quee);
+      // setEntranceAnimation(!entranceAnimation);
     } else {
       setTooManyQueensMessage(true);
     }
   }
+
 
   //READ
   useEffect(() => {
@@ -1936,12 +1943,14 @@ export default function Dashboard() {
           setMyQueensUIDSToRenderState([]);
           const data = snapshot.val();
           if (data !== null) {
-            Object.values(data).map((myQueensUID) => {
-              return setMyQueensUIDSToRenderState((prevQueens) => [
-                ...prevQueens,
-                myQueensUID,
-              ]);
-            });
+            // Object.values(data).map((myQueensUID) => {
+            //   return setMyQueensUIDSToRenderState((prevQueens) => [
+            //     ...prevQueens,
+            //     myQueensUID,
+            //   ]);
+            // });
+            console.log(data)
+            setMyQueensUIDSToRenderState(data);
           }
         });
       } else if (!user) {
@@ -1949,21 +1958,43 @@ export default function Dashboard() {
       }
       setEntranceAnimation(true);
     });
-  }, [entranceAnimation]);
+  }, [ ]);
+
+
+  const objectArray = [
+    { id: 1, name: "John" },
+    { id: 2, name: "Sarah" },
+    { id: 3, name: "David" },
+    { id: 4, name: "Emily" },
+  ];
+  
+  const orderArray = [2, 4, 1, 3];
+  
+  const orderedArray = orderArray.map((id) =>
+    objectArray.find((obj) => obj.id === id)
+  );
+  
+  console.log(orderedArray);
+  
 
 
   //RENDER QUEENS TO DISPLAY
-  const arrayOfUidsToUseToMapThroughDatabase = myQueensUIDSToRenderState.map((a) => a.myQueensUID);
+  const arrayOfUidsToUseToMapThroughDatabase = myQueensUIDSToRenderState;
   let arrayOfQueenObjectDataToMapIntoComponent = [];
   arrayOfQueenObjectDataToMapIntoComponent = queenDatabase.filter(function (queen) {
+    // return arrayOfUidsToUseToMapThroughDatabase.includes(queen.uid);
     return arrayOfUidsToUseToMapThroughDatabase.includes(queen.uid);
   });
-
+  const orderedArrayOfObjects = myQueensUIDSToRenderState.map((uid) => 
+  arrayOfQueenObjectDataToMapIntoComponent.find((obj) => obj.uid === uid)
+)
+console.log(orderedArrayOfObjects);
+// return orderedArrayOfObjects;
   const gridQueenElements = queenDatabase.map((item) => {
     return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
   });
 
-  const myQueenElements = arrayOfQueenObjectDataToMapIntoComponent.map((certainItem) => {
+  const myQueenElements = orderedArrayOfObjects.map((certainItem) => {
     return (
       <CardDisplays
         certainItem={certainItem}
