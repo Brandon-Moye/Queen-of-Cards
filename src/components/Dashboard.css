@@ -23,7 +23,7 @@ body {
 }
 
 .myQueenElementsEntranceAnimation {
-  animation: adding-new-card 2s;
+  animation: adding-new-card 1s;
 }
 
 .cardDisplayContainerExitAnimation {
