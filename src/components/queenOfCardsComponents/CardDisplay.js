@@ -12,7 +12,7 @@ export default function CardDisplays(props) {
     <div
       className={
         props.minimizedCardDisplays
-          ? "cardDisplayContainer minimizedCardDisplayContainer"
+          ? "cardDisplayContainer minimizedCardDisplayContainer cardDisplayContainerEntranceAnimation"
           : "cardDisplayContainer cardDisplayContainerEntranceAnimation"
       }
     >
