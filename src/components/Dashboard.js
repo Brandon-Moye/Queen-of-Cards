@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "./context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useAsyncError, useNavigate } from "react-router-dom";
 import { db } from "../Firebase";
 import { auth } from "../Firebase";
 import { uid } from "uid";
-import { set, ref, onValue, remove } from "firebase/database";
+import { set, ref, onValue, remove, push, get } from "firebase/database";
 import { render } from "react-dom";
 
 import CardDisplays from "./queenOfCardsComponents/CardDisplay";
@@ -1883,6 +1883,9 @@ export default function Dashboard() {
   const [minimizedCardDisplays, setMinimizedCardDisplays] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
+
+  const [quee, setQuee] = useState([]);
+
   async function handleLogout() {
     setError("");
 
@@ -1898,35 +1901,121 @@ export default function Dashboard() {
     let scroll = this.scrollY;
     if (scroll > 0) {
       setMinimizedCardDisplays(true);
-      console.log(minimizedCardDisplays);
+      // console.log(minimizedCardDisplays);
     } else if (scroll < 10) {
       this.window.scrollBy(-100, 0);
       setMinimizedCardDisplays(false);
     }
   });
 
-  //WRITE
+  //WRITE V2
   function writeToDatabase(uidProp) {
-    if (myQueensUIDSToRenderState.length <= 4) {
+    const userRef = ref(db, `/${auth.currentUser.uid}`)
+
+    // onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
+      get(userRef).then((snapshot) => {
+      const data = snapshot.val(); //this gives me the array of data inside RTDB
+    
+    
+    if (data !== null) {
       const findSelectedQueen = queenDatabase.find(function (
         theQueenThatIsCurrentlyBeingIndexed
       ) {
         return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
       });
-
       const uidVariable = findSelectedQueen.uid;
-      setTimeout(() => {
-        set(ref(db, `/${auth.currentUser.uid}/${uidVariable}`), {
-          myQueensUID: uidVariable,
-        });
-  
-      }, 2000)
-      // setMyQueensUID([]);
-      setEntranceAnimation(true);
+      const values = Object.values(data);
+      if(!data.includes(uidVariable)) {
+        values.push(uidVariable);
+        // data.splice([data.length],4, uidVariable);
+        set(ref(db, `/${auth.currentUser.uid}`),
+          values
+        );
+      }
     } else {
-      setTooManyQueensMessage(true);
+      const findSelectedQueen = queenDatabase.find(function (
+        theQueenThatIsCurrentlyBeingIndexed
+      ) {
+        return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
+      });
+      const uidVariable = findSelectedQueen.uid;
+      const newArray = [uidVariable];
+      set(ref(db, `${auth.currentUser.uid}`), newArray);
+      console.log(newArray)
     }
+  });
   }
+
+  //WRITE
+  // function writeToDatabase(uidProp) {
+  //   onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
+  //     const data = snapshot.val(); //this gives me the array of data inside RTDB
+  //     console.log(data);
+  //   })
+
+  //   if (myQueensUIDSToRenderState.length <= 4) {
+  //     const findSelectedQueen = queenDatabase.find(function (
+  //       theQueenThatIsCurrentlyBeingIndexed
+  //     ) {
+  //       return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
+  //     });
+  //     const uidVariable = findSelectedQueen.uid;    
+  //     if(!quee.includes(uidVariable)) {
+  //       quee.splice([quee.length],4, uidVariable);
+  //       set(ref(db, `/${auth.currentUser.uid}`),
+  //         quee
+  //       );
+  //     }
+  //       // console.log(quee);
+  //     // setEntranceAnimation(!entranceAnimation);
+  //   } else {
+  //     setTooManyQueensMessage(true);
+  //   }
+  // }
+
+  //DELETE
+function handleDelete(uidProp) {
+  const userRef = ref(db, `/${auth.currentUser.uid}`)
+  get(userRef).then((snapshot) => {
+    const data = snapshot.val();
+    if (data !== null) {
+      const keys = Object.keys(data);
+      const values = Object.values(data);
+      console.log(keys);
+      const indexToRemove = values.indexOf(uidProp);
+      console.log(indexToRemove);
+      if(indexToRemove !== -1) {
+        values.splice(indexToRemove, 1);
+        const newData = {};
+        values.forEach((value, index) => {
+          // newData[values] = data[values];
+          const key = keys[index];
+          newData[key] = value;
+        });
+        console.log(newData);
+
+        set(ref(db, `${auth.currentUser.uid}`), newData);
+      }
+      // -----------------------------------------
+      // const indexInArrayToRemove = Object.values(data).indexOf(uidProp);
+      //   console.log(indexInArrayToRemove);
+      //   const newData = data.splice(indexInArrayToRemove, 1);
+      //   console.log(data);
+      //   set(ref(db, `/${auth.currentUser.uid}/${indexInArrayToRemove}`));
+    }
+  })
+
+  /// -----------------------------
+  // const findSelectedQueen = queenDatabase.find(function (
+  //   theQueenThatIsCurrentlyBeingIndexed
+  // ) {
+  //   // setEntranceAnimation(false);
+  //   return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
+  // });
+  // const uidVariable = findSelectedQueen.uid;
+  // console.log(uidVariable);
+  // remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`))
+}
 
   //READ
   useEffect(() => {
@@ -1936,12 +2025,14 @@ export default function Dashboard() {
           setMyQueensUIDSToRenderState([]);
           const data = snapshot.val();
           if (data !== null) {
-            Object.values(data).map((myQueensUID) => {
-              return setMyQueensUIDSToRenderState((prevQueens) => [
-                ...prevQueens,
-                myQueensUID,
-              ]);
-            });
+            // Object.values(data).map((myQueensUID) => {
+            //   return setMyQueensUIDSToRenderState((prevQueens) => [
+            //     ...prevQueens,
+            //     myQueensUID,
+            //   ]);
+            // });
+            // console.log(data)
+            setMyQueensUIDSToRenderState(data);
           }
         });
       } else if (!user) {
@@ -1950,20 +2041,26 @@ export default function Dashboard() {
       setEntranceAnimation(true);
     });
   }, []);
+  
 
 
   //RENDER QUEENS TO DISPLAY
-  const arrayOfUidsToUseToMapThroughDatabase = myQueensUIDSToRenderState.map((a) => a.myQueensUID);
+  const arrayOfUidsToUseToMapThroughDatabase = myQueensUIDSToRenderState;
   let arrayOfQueenObjectDataToMapIntoComponent = [];
   arrayOfQueenObjectDataToMapIntoComponent = queenDatabase.filter(function (queen) {
+    // return arrayOfUidsToUseToMapThroughDatabase.includes(queen.uid);
     return arrayOfUidsToUseToMapThroughDatabase.includes(queen.uid);
   });
-
+  const orderedArrayOfObjects = myQueensUIDSToRenderState.map((uid) => 
+  arrayOfQueenObjectDataToMapIntoComponent.find((obj) => obj.uid === uid)
+)
+// console.log(orderedArrayOfObjects);
+// return orderedArrayOfObjects;
   const gridQueenElements = queenDatabase.map((item) => {
     return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
   });
 
-  const myQueenElements = arrayOfQueenObjectDataToMapIntoComponent.map((certainItem) => {
+  const myQueenElements = orderedArrayOfObjects.map((certainItem) => {
     return (
       <CardDisplays
         certainItem={certainItem}
@@ -1974,18 +2071,7 @@ export default function Dashboard() {
     );
   });
 
-  //DELETE
-  function handleDelete(uidProp) {
-    const findSelectedQueen = queenDatabase.find(function (
-      theQueenThatIsCurrentlyBeingIndexed
-    ) {
-      // setEntranceAnimation(false);
-      return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-    });
-    const uidVariable = findSelectedQueen.uid;
-    setTimeout(() => remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`)),2000
-    )
-  }
+  
 
   return (
     <div className="dashboardContainer">

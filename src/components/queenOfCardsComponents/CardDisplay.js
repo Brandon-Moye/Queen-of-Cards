@@ -12,7 +12,7 @@ export default function CardDisplays(props) {
     <div
       className={
         props.minimizedCardDisplays
-          ? "cardDisplayContainer minimizedCardDisplayContainer"
+          ? "cardDisplayContainer minimizedCardDisplayContainer cardDisplayContainerEntranceAnimation"
           : "cardDisplayContainer cardDisplayContainerEntranceAnimation"
       }
     >
@@ -70,17 +70,11 @@ export default function CardDisplays(props) {
       </div>
 
       <div className="buttonContainer">
-        {/* <button
-            className="btn2 test-completed2"
-            onClick={() => {
-              props.handleClick(props.certainItem.selectedQueenId);
-            }}
-          ></button> */}
         <button
           className="btn2"
           onClick={() => {
             props.handleClick(props.certainItem.uid);
-            props.entranceAnimation = false;
+            // props.entranceAnimation = false;
           }}
         >
           Sashay Away
