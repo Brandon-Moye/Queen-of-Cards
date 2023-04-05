@@ -1992,7 +1992,7 @@ function handleDelete(uidProp) {
           const key = keys[index];
           newData[key] = value;
         });
-        console.log(newData);
+        // console.log(newData);
 
         set(ref(db, `${auth.currentUser.uid}`), newData);
       }

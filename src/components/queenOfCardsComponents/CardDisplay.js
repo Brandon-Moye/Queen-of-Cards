@@ -1,12 +1,28 @@
 import "../queenOfCardsComponents/CardDisplay.css";
 import { render } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useFetcher } from "react-router-dom";
 
 export default function CardDisplays(props) {
-  const grid = document.querySelector('.cardDisplayContainer');
-  const deleteQueenButton = document.querySelector('.btn2');
-  // grid.classList.add('cardDisplayContainerEntranceAnimation');
+
+  const cardContainerRef = useRef(null)
+  const [isInRemoveTransition, setIsInRemoveTransition] = useState(false);
+
+  useEffect(() => {
+    if(isInRemoveTransition) {
+      setIsInRemoveTransition(false);
+      cardContainerRef.current.classList.add('cardDisplayContainerExitAnimation')
+      cardContainerRef.current.addEventListener('animationend', () => {
+        props.handleClick(props.certainItem.uid);
+        console.log(props.certainItem.uid);
+        console.log('i tried to delete it');
+        console.log(isInRemoveTransition);
+
+      })
+    }
+  }, [isInRemoveTransition])
+
   return (
     // <div className="cardDisplayContainer">
     <div
@@ -15,6 +31,7 @@ export default function CardDisplays(props) {
           ? "cardDisplayContainer minimizedCardDisplayContainer cardDisplayContainerEntranceAnimation"
           : "cardDisplayContainer cardDisplayContainerEntranceAnimation"
       }
+      ref={cardContainerRef}
     >
       <div
         className={
@@ -73,8 +90,8 @@ export default function CardDisplays(props) {
         <button
           className="btn2"
           onClick={() => {
-            props.handleClick(props.certainItem.uid);
-            // props.entranceAnimation = false;
+            // props.handleClick(props.certainItem.uid);
+            setIsInRemoveTransition(true);
           }}
         >
           Sashay Away
