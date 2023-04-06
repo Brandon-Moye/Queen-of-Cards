@@ -11,9 +11,9 @@ export default function CardDisplays(props) {
 
   useEffect(() => {
     if(isInRemoveTransition) {
-      setIsInRemoveTransition(false);
       cardContainerRef.current.classList.add('cardDisplayContainerExitAnimation')
       cardContainerRef.current.addEventListener('animationend', () => {
+        setIsInRemoveTransition(false);
         props.handleClick(props.certainItem.uid);
         console.log(props.certainItem.uid);
         console.log('i tried to delete it');
