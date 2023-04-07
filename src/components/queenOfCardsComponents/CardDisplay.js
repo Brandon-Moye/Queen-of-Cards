@@ -3,21 +3,21 @@ import { render } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
 import { useFetcher } from "react-router-dom";
+import { set } from "firebase/database";
 
 export default function CardDisplays(props) {
 
   const cardContainerRef = useRef(null)
+  const sashayAwayButtonRef = useRef(null)
   const [isInRemoveTransition, setIsInRemoveTransition] = useState(false);
 
   useEffect(() => {
     if(isInRemoveTransition) {
       cardContainerRef.current.classList.add('cardDisplayContainerExitAnimation')
+      setIsInRemoveTransition(false);
       cardContainerRef.current.addEventListener('animationend', () => {
-        setIsInRemoveTransition(false);
         props.handleClick(props.certainItem.uid);
-        console.log(props.certainItem.uid);
-        console.log('i tried to delete it');
-        console.log(isInRemoveTransition);
+        console.log(props.cardInRemoveTransition);
 
       })
     }

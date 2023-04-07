@@ -1881,6 +1881,7 @@ export default function Dashboard() {
   const [tooManyQueensMessage, setTooManyQueensMessage] = useState(false);
   const [entranceAnimation, setEntranceAnimation] = useState(false);
   const [minimizedCardDisplays, setMinimizedCardDisplays] = useState(false);
+  const [cardInRemoveTransition, setCardInRemoveTransition] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -1915,8 +1916,7 @@ export default function Dashboard() {
     // onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
       get(userRef).then((snapshot) => {
       const data = snapshot.val(); //this gives me the array of data inside RTDB
-    
-    
+
     if (data !== null) {
       const findSelectedQueen = queenDatabase.find(function (
         theQueenThatIsCurrentlyBeingIndexed
@@ -1981,40 +1981,18 @@ function handleDelete(uidProp) {
     if (data !== null) {
       const keys = Object.keys(data);
       const values = Object.values(data);
-      console.log(keys);
       const indexToRemove = values.indexOf(uidProp);
-      console.log(indexToRemove);
       if(indexToRemove !== -1) {
         values.splice(indexToRemove, 1);
         const newData = {};
         values.forEach((value, index) => {
-          // newData[values] = data[values];
           const key = keys[index];
           newData[key] = value;
         });
-        // console.log(newData);
-
         set(ref(db, `${auth.currentUser.uid}`), newData);
       }
-      // -----------------------------------------
-      // const indexInArrayToRemove = Object.values(data).indexOf(uidProp);
-      //   console.log(indexInArrayToRemove);
-      //   const newData = data.splice(indexInArrayToRemove, 1);
-      //   console.log(data);
-      //   set(ref(db, `/${auth.currentUser.uid}/${indexInArrayToRemove}`));
     }
   })
-
-  /// -----------------------------
-  // const findSelectedQueen = queenDatabase.find(function (
-  //   theQueenThatIsCurrentlyBeingIndexed
-  // ) {
-  //   // setEntranceAnimation(false);
-  //   return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-  // });
-  // const uidVariable = findSelectedQueen.uid;
-  // console.log(uidVariable);
-  // remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`))
 }
 
   //READ
@@ -2025,13 +2003,6 @@ function handleDelete(uidProp) {
           setMyQueensUIDSToRenderState([]);
           const data = snapshot.val();
           if (data !== null) {
-            // Object.values(data).map((myQueensUID) => {
-            //   return setMyQueensUIDSToRenderState((prevQueens) => [
-            //     ...prevQueens,
-            //     myQueensUID,
-            //   ]);
-            // });
-            // console.log(data)
             setMyQueensUIDSToRenderState(data);
           }
         });
@@ -2067,6 +2038,7 @@ function handleDelete(uidProp) {
         handleClick={handleDelete}
         entranceAnimation={entranceAnimation}
         minimizedCardDisplays={minimizedCardDisplays}
+        cardInRemoveTransition = {cardInRemoveTransition}
       />
     );
   });
