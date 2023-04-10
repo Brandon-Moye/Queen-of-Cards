@@ -11,11 +11,11 @@
 }
 
 .cardDisplayContainerEntranceAnimation {
-  animation: adding-new-card 1s;
+  animation: adding-new-card 0.5s;
 }
 
 .cardDisplayContainerExitAnimation {
-  animation: delete-card 1s;
+  animation: delete-card 0.5s;
 }
 
 @keyframes adding-new-card {
