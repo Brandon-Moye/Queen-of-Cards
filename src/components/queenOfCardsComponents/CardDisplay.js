@@ -37,18 +37,20 @@ export default function CardDisplays(props) {
   //---------------------------------------------------------------
 
   const handleCardClick = (uid) => {
-    // setStuu(prevState => {
-    //   return prevState.map(item => {
-    //     if (item.uid === uid) {
-    //       return { ...item, stuu: false };
-    //     }
-    //     return item;
-    //   });
-    // });
 
-    setStuu({uid, stuu: false})
+
+    const useToRemove  = ({uid, stuu: false})
+
+    // setStuu(prevState => {
+    //   const updatedState = prevState.map(item => {
+    //     if(item.uid === uid) {
+    //       return {...item, stuu: false}
+    //     }
+    //   })
+    // })
+
     console.log(stuu);
-      const item = stuu;
+      const item = useToRemove;
       if (!item.stuu) {
         const cardRef = document.getElementById(item.uid)
         console.log(cardRef)
