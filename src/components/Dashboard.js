@@ -1915,9 +1915,13 @@ export default function Dashboard() {
     // onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
       get(userRef).then((snapshot) => {
       const data = snapshot.val(); //this gives me the array of data inside RTDB
-    
+
+
     
     if (data !== null) {
+      if (data.length < 5) {
+
+      
       const findSelectedQueen = queenDatabase.find(function (
         theQueenThatIsCurrentlyBeingIndexed
       ) {
@@ -1933,6 +1937,9 @@ export default function Dashboard() {
         );
       }
     } else {
+      setTooManyQueensMessage(true);
+    }
+  } else {
       const findSelectedQueen = queenDatabase.find(function (
         theQueenThatIsCurrentlyBeingIndexed
       ) {
