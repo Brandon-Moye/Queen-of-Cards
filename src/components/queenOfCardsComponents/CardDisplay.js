@@ -84,25 +84,25 @@ export default function CardDisplays(props) {
     
   // }
 
-  useEffect(() => {
-    // const handleAnimationEnd = (uid) => {
-    //   setStuu(prevState => prevState.filter(item => item.uid !== uid));
-    // }
+  // useEffect(() => {
+  //   // const handleAnimationEnd = (uid) => {
+  //   //   setStuu(prevState => prevState.filter(item => item.uid !== uid));
+  //   // }
   
-    for (let i = 0; i < stuu.length; i++) {
-      const item = stuu[i];
-      if (!item.stuu) {
-        const cardRef = document.getElementById(item.uid)
-        if(cardRef !== null) {
-          cardRef.classList.add("cardDisplayContainerExitAnimation");
-          cardRef.addEventListener("animationend", () => {
-            props.handleClick(item.uid);
-            // handleAnimationEnd(item.uid);
-          }, { once: true }); // Use { once: true } to ensure the event listener is removed after it's triggered
-        }
-      }
-    }
-  }, []);
+  //   for (let i = 0; i < stuu.length; i++) {
+  //     const item = stuu[i];
+  //     if (!item.stuu) {
+  //       const cardRef = document.getElementById(item.uid)
+  //       if(cardRef !== null) {
+  //         cardRef.classList.add("cardDisplayContainerExitAnimation");
+  //         cardRef.addEventListener("animationend", () => {
+  //           props.handleClick(item.uid);
+  //           // handleAnimationEnd(item.uid);
+  //         }, { once: true }); // Use { once: true } to ensure the event listener is removed after it's triggered
+  //       }
+  //     }
+  //   }
+  // }, []);
 
 
   // ------------ half works code , not perfect but save ------------------------------------------------
