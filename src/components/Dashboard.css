@@ -19,15 +19,15 @@ body {
   top: 0;
   z-index: 1;
   min-height: 20rem;
-  transition: all 2s;
+  /* transition: all 0.5s; */
 }
 
 .myQueenElementsEntranceAnimation {
-  animation: adding-new-card 1s;
+  animation: adding-new-card 0.5s;
 }
 
 .cardDisplayContainerExitAnimation {
-  animation: delete-card 2s;
+  animation: delete-card 0.5s;
 }
 
 @keyframes adding-new-card {
