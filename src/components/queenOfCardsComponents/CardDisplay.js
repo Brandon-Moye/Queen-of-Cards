@@ -7,9 +7,8 @@ import { isReactNative } from "@firebase/util";
 
 export default function CardDisplays(props) {
 
-  const cardContainerRef = useRef(null)
+  const cardContainerRef = useRef();
   const [isInRemoveTransition, setIsInRemoveTransition] = useState(false);
-  const [stuu, setStuu] = useState([]);
 
 
   // ------------ half works code , not perfect but save ------------------------------------------------
@@ -34,119 +33,22 @@ export default function CardDisplays(props) {
   //     })
   // };
 
+
+  
+
   //---------------------------------------------------------------
 
-  const handleCardClick = (uid) => {
-
-
-    const useToRemove  = ({uid, stuu: false})
-
-    // setStuu(prevState => {
-    //   const updatedState = prevState.map(item => {
-    //     if(item.uid === uid) {
-    //       return {...item, stuu: false}
-    //     }
-    //   })
-    // })
-
-    console.log(stuu);
-      const item = useToRemove;
-      if (!item.stuu) {
-        const cardRef = document.getElementById(item.uid)
-        console.log(cardRef)
-        if(cardRef !== null) {
+  const handleCardClick = (uid) => {  
+        const cardRef = cardContainerRef.current;
           cardRef.classList.add("cardDisplayContainerExitAnimation");
-          cardRef.addEventListener("animationend", () => {
-            props.handleClick(item.uid);
-            // handleAnimationEnd(item.uid);
+          cardRef.addEventListener("animationend", function onAnimationEnd() {
             if(cardRef.classList.contains("cardDisplayContainerExitAnimation")) {
               cardRef.classList.remove("cardDisplayContainerExitAnimation")
             }
-          }, { once: true }); // Use { once: true } to ensure the event listener is removed after it's triggered
-        }
-      }
+            props.handleClick(props.certainItem.uid);
+
+          });
   };
-
-//code with my variation and testing below --------------------
-  // const handleCardClick = (uid) => {
-  //   setStuu(stuu.map(["clicked"]))
-  //   console.log(stuu);
-
-  //   setStuu(prevState => {
-  //     prevState.map(item => {
-  //       if(item.uid === uid) {
-  //         return {...item, stuu: true};
-  //       }
-  //       return item
-  //     })
-      
-  //   })
-    
-  // }
-
-  // useEffect(() => {
-  //   // const handleAnimationEnd = (uid) => {
-  //   //   setStuu(prevState => prevState.filter(item => item.uid !== uid));
-  //   // }
-  
-  //   for (let i = 0; i < stuu.length; i++) {
-  //     const item = stuu[i];
-  //     if (!item.stuu) {
-  //       const cardRef = document.getElementById(item.uid)
-  //       if(cardRef !== null) {
-  //         cardRef.classList.add("cardDisplayContainerExitAnimation");
-  //         cardRef.addEventListener("animationend", () => {
-  //           props.handleClick(item.uid);
-  //           // handleAnimationEnd(item.uid);
-  //         }, { once: true }); // Use { once: true } to ensure the event listener is removed after it's triggered
-  //       }
-  //     }
-  //   }
-  // }, []);
-
-
-  // ------------ half works code , not perfect but save ------------------------------------------------
-  // useEffect(() => {
-  //   // const handleAnimationEnd = (uid) => {
-  //   //   setStuu(prevState => prevState.filter(item => item.uid !== uid));
-  //   // }
-  //   stuu.forEach(item => {
-  //     console.log(item.stuu);
-  //     if (!item.stuu) {
-  //       console.log(item.uid);
-  //       const cardRef = document.getElementById(item.uid)
-  //       if(cardRef !== null) {
-  //         cardRef.classList.add("cardDisplayContainerExitAnimation");
-  //         console.log(cardRef);
-  //         cardRef.addEventListener("animationend", () => {
-  //           props.handleClick(props.certainItem.uid);
-  //           // handleAnimationEnd(props.item.uid);
-            
-  //         })
-  //       }
-
-  //     }
-  //   })
-  // }, [stuu])
-  // ------------------------------------------------------------------------
-
-  // useEffect(() => {
-  //   if(isInRemoveTransition) {
-
-  //     cardContainerRef.current.classList.add('cardDisplayContainerExitAnimation')
-  //     cardContainerRef.current.addEventListener('animationend', () => {
-  //       props.handleClick(props.certainItem.uid);
-  //       console.log(props.certainItem.uid);
-  //       console.log('i tried to delete it');
-  //       console.log(isInRemoveTransition);
-  //     })
-
-  //   }
-  // }, [isInRemoveTransition])
-
-  // useEffect(() => {
-  //   setIsInRemoveTransition(false);
-  // })
 
   return (
     // <div className="cardDisplayContainer">
