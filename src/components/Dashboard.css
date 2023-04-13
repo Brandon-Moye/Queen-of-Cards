@@ -22,7 +22,8 @@ body {
   /* transition: all 0.5s; */
 }
 
-.myQueenElementsEntranceAnimation {
+/* this keeps the card from reloading with anim but I kind of like it with the anim  -------------------*/
+/* .myQueenElementsEntranceAnimation {
   animation: adding-new-card 0.5s;
 }
 
@@ -39,11 +40,54 @@ body {
     transition: all opacity;
     opacity: 1;
   }
-}
+} */
 
 .minimizedMyQueenElements {
   height: 10rem;
   overflow: hidden;
+}
+
+.blankDeckWithInstructions {
+  animation: showing-instructions-on-screen 0.5s;
+}
+
+.hideBlankDeckWithInstructions {
+  animation: removing-instructions-on-screen 0.5s;
+}
+
+@keyframes showing-instructions-on-screen {
+  0% {
+    transition: all;
+    opacity: 0;
+    scale: 0;
+  }
+
+  90% {
+    transition: all;
+    scale: 1.05;
+  }
+  100% {
+    transition: all;
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes removing-instructions-on-screen {
+  0% {
+    transition: all;
+    opacity: 1;
+    scale: 1.05;
+  }
+  10% {
+    transition: all;
+    scale: 1;
+  }
+  90% {
+    transition: all;
+    opacity: 0;
+    scale: 0;
+  }
 }
 
 @media (max-width: 1340px) {

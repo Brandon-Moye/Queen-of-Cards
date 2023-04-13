@@ -56,7 +56,7 @@
 
 .btn.test-completed::after,
 .btn.test-completed::before {
-  content: "Shante";
+  content: "Shantay";
   position: absolute;
   text-align: center;
   width: 100%;

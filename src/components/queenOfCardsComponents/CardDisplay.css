@@ -24,6 +24,11 @@
     opacity: 0;
     scale: 0;
   }
+
+  90% {
+    transition: all;
+    scale: 1.05;
+  }
   100% {
     transition: all;
     opacity: 1;
@@ -35,6 +40,10 @@
   0% {
     transition: all;
     opacity: 1;
+    scale: 1.05;
+  }
+  10% {
+    transition: all;
     scale: 1;
   }
   100% {
