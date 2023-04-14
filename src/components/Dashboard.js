@@ -2091,10 +2091,10 @@ function handleDelete(uidProp) {
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
       <div className={showInstructions ? "blankDeckWithInstructions" : "hideBlankDeckWithInstructions"}>
-        Always struggling to keep track of your favorite drag race contestants?
-        Look at the list below and "Shantay" any contest to add them to your deck!
-        Not sure if you want to add them? Click on their name to view their Fandom page!
-        Uh oh, hit your limit of 5 but want to add another contestant? One must "Sashay Away" first!
+        <span>Always struggling to keep track of your favorite drag race contestants?</span>
+        <span>Look at the list below and "Shantay" any contest to add them to your deck!</span>
+        <span>Not sure if you want to add them? Click on their name to view their Fandom page!</span>
+        <span>Uh oh, hit your limit of 5 but want to add another contestant? One must "Sashay Away" first!</span>
       </div>
       <div
         className={
