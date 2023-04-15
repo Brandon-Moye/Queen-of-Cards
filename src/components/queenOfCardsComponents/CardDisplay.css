@@ -170,9 +170,16 @@
   left: 0;
 }
 
+
+.minimizedMyQueenElements {
+  height: 5rem;
+}
+
 .minimizedCardDisplayContainer {
-  height: 15rem;
+  height: 12.5rem;
   padding: 0.5rem;
+  margin-bottom: 0rem;
+  margin-top: 0rem;
 }
 
 .minimizedQueenCardImageContainer {
@@ -184,7 +191,16 @@
 }
 
 .minimizedCardQueenNameProp {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  height: 3.5rem;
+}
+
+.minimizedqueenStatsWithoutNameContainer * {
+  margin-bottom: 0.25rem;
+}
+
+.minimizedButtonContainer {
+  margin-top: 0.5rem;
 }
 
 .minimizedCardQueenLinkProp {

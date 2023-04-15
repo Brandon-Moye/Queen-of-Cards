@@ -87,7 +87,7 @@ export default function CardDisplays(props) {
         >
           <strong>{props.certainItem.dragName}</strong>
         </div>
-        <div className="queenStatsWithoutNameContainer">
+        <div className={props.minimizedCardDisplays ? "queenStatsWithoutNameContainer minimizedqueenStatsWithoutNameContainer" : "queenStatsWithoutNameContainer" }>
           <div className="cardQueenSeasonProp">
             <strong>Season:</strong> {props.certainItem.mainSeasonAppearedOn}
           </div>
@@ -114,7 +114,7 @@ export default function CardDisplays(props) {
         </div>
       </div>
 
-      <div className="buttonContainer">
+      <div className={props.minimizedCardDisplays ? "buttonContainer minimizedButtonContainer" : "buttonContainer"}>
         <button
           className="btn2"
           onClick={() => {

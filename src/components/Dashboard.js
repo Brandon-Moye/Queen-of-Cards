@@ -1948,7 +1948,6 @@ export default function Dashboard() {
       const uidVariable = findSelectedQueen.uid;
       const newArray = [uidVariable];
       set(ref(db, `${auth.currentUser.uid}`), newArray);
-      console.log(newArray)
     }
   });
   }
@@ -2078,6 +2077,7 @@ function handleDelete(uidProp) {
         handleClick={handleDelete}
         entranceAnimation={entranceAnimation}
         minimizedCardDisplays={minimizedCardDisplays}
+        showInstructions={showInstructions}
       />
     );
   });
@@ -2091,10 +2091,10 @@ function handleDelete(uidProp) {
         onCloseOfModal={() => setTooManyQueensMessage(false)}
       ></Modal>
       <div className={showInstructions ? "blankDeckWithInstructions" : "hideBlankDeckWithInstructions"}>
-        <span>Always struggling to keep track of your favorite drag race contestants?</span>
-        <span>Look at the list below and "Shantay" any contest to add them to your deck!</span>
-        <span>Not sure if you want to add them? Click on their name to view their Fandom page!</span>
-        <span>Uh oh, hit your limit of 5 but want to add another contestant? One must "Sashay Away" first!</span>
+        <span>- Struggling to keep track of your favorite <span className="instructionRPDRTitleText">Rupaul's Drag Race</span> contestants?</span>
+        <span>- Look at the list below and <span className="buttonTextInInstruction">Shantay</span> any contest to add them to your deck!</span>
+        <span>- Not sure if you want to add them? Click on their name to view their Fandom page!</span>
+        <span>- Uh oh, hit your limit of 5 but want to add another contestant? One must <span className="buttonTextInInstruction">Sashay Away</span> first!</span>
       </div>
       <div
         className={
