@@ -6,6 +6,7 @@ body {
   scroll-behavior: auto;
   background-color: #fef0f5;
   font-family: "Work Sans", sans-serif;
+  overscroll-behavior-y: none;
 }
 
 .myQueenElements {
@@ -19,75 +20,50 @@ body {
   top: 0;
   z-index: 1;
   min-height: 20rem;
-  /* transition: all 0.5s; */
 }
-
-/* this keeps the card from reloading with anim but I kind of like it with the anim  -------------------*/
-/* .myQueenElementsEntranceAnimation {
-  animation: adding-new-card 0.5s;
-}
-
-.cardDisplayContainerExitAnimation {
-  animation: delete-card 0.5s;
-}
-
-@keyframes adding-new-card {
-  0% {
-    transition: all opacity;
-    opacity: 0;
-  }
-  100% {
-    transition: all opacity;
-    opacity: 1;
-  }
-} */
 
 .minimizedMyQueenElements {
-  height: 10rem;
+  min-height: 15rem;
   overflow: hidden;
 }
 
 .blankDeckWithInstructions {
-  animation: showing-instructions-on-screen 0.5s;
+  margin: 0 auto;
+  margin-top: 2rem;
+  transition: all 0.25s;
+  scale: 1;
+  opacity: 0.75;
+  padding: 1rem;
+  font-size: clamp(0.5rem, 3rem, 5rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  background-color: #f598b9;
+  color: #fef0f5;
+  filter:grayscale(1);
+  border-radius: 30px;
+  max-width: 80%;
+
 }
 
 .hideBlankDeckWithInstructions {
-  animation: removing-instructions-on-screen 0.5s;
+  transition: all 0.25s;
+  scale: 0;
+  opacity: 0;
+  height: 0rem;
 }
 
-@keyframes showing-instructions-on-screen {
-  0% {
-    transition: all;
-    opacity: 0;
-    scale: 0;
-  }
-
-  90% {
-    transition: all;
-    scale: 1.05;
-  }
-  100% {
-    transition: all;
-    opacity: 1;
-    scale: 1;
-  }
+.buttonTextInInstruction {
+  background-color: #000;
+  color: #fbd3e1;
+  filter:grayscale(1);
+  padding: 0.15rem 0.5rem 0.15rem 0.5rem;
+  border-radius: 10px;
+  display: inline-block;
 }
 
-@keyframes removing-instructions-on-screen {
-  0% {
-    transition: all;
-    opacity: 1;
-    scale: 1.05;
-  }
-  10% {
-    transition: all;
-    scale: 1;
-  }
-  90% {
-    transition: all;
-    opacity: 0;
-    scale: 0;
-  }
+.instructionRPDRTitleText {
+  font-style: italic;
 }
 
 @media (max-width: 1340px) {
@@ -102,5 +78,22 @@ body {
     overflow-x: auto;
     justify-content: flex-start;
     gap: 1rem;
+  }
+
+  .blankDeckWithInstructions  {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 610px) {
+  .blankDeckWithInstructions  {
+    font-size: 1.5rem;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .blankDeckWithInstructions  {
+    font-size: 1.25rem;
   }
 }
