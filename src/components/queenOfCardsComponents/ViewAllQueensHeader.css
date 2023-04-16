@@ -63,3 +63,9 @@
     font-size: 0.65rem;
   }
 }
+
+@media (max-width: 410px) {
+  .ViewAllQueensHeaderContainer {
+    font-size: 0.5rem;
+  }
+}
