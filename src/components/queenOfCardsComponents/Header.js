@@ -23,8 +23,9 @@ export default function Header() {
       <h1 className="pageTitle">QUEEN OF CARDS</h1>
       <div className="headerProfileInfoUpdateAndLogoutContainer">
         {error}
-        <strong className="usersCurrentEmail">{currentUser.email}</strong>
-
+        <div className="usersCurrentEmailContainer">
+          <p className="usersCurrentEmail">{currentUser.email}</p>
+        </div>
         <Link to="/update-profile" className="updateProfileLink">
           <div className="updateProfileLinkText"> Update Profile</div>
           <div className="updateProfileIconContainer">
