@@ -110,11 +110,11 @@
   transition: all ease 0.5s;
 }
 
-.cardQueenLinkProp:hover,
+/* .cardQueenLinkProp:hover,
 .cardQueenLinkProp:active {
   text-decoration: underline #30161f;
   transition: all ease 0.5s;
-}
+} */
 
 .buttonContainer {
   display: flex;
