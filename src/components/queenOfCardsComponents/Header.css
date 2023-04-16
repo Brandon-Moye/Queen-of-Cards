@@ -26,15 +26,7 @@
   gap: 1rem;
   padding-right: 1rem;
 }
-.updateProfileLink,
-.logoutButton {
-  font-size: 1rem;
-  height: 2rem;
-  padding: 0rem 0.5rem 0rem 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .usersCurrentEmail {
   max-width: 9.6rem;
@@ -47,6 +39,17 @@
   border-radius: 5px;
   cursor: default;
 }
+
+.updateProfileLink,
+.logoutButton {
+  font-size: 1rem;
+  height: 2rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .updateProfileLink:link,
 .updateProfileLink:visited {
   text-decoration: underline #ffd4e3;
@@ -130,6 +133,10 @@ ion-icon {
   );
   /* padding: 1rem; */
   /* box-shadow: 0px 0px 40px #f06c9b; */
+}
+
+@media (hover: hover) {
+  
 }
 
 @media (max-width: 1340px) {
@@ -273,7 +280,17 @@ ion-icon {
 }
 
 @media (hover: hover) {
-  .updateProfileLink:link,
+.updateProfileLink,
+.logoutButton {
+  font-size: 1rem;
+  height: 2rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateProfileLink:link,
 .updateProfileLink:visited {
   text-decoration: underline #ffd4e3;
   color: #000;
