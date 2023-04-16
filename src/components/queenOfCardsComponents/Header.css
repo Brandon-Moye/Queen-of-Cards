@@ -26,7 +26,6 @@
   gap: 1rem;
   padding-right: 1rem;
 }
-/* .usersCurrentEmail, */
 .updateProfileLink,
 .logoutButton {
   font-size: 1rem;
@@ -37,19 +36,16 @@
   align-items: center;
 }
 
-.usersCurrentEmailContainer {  
-  max-width: 10rem;
-  text-align: center;
-}
-
 .usersCurrentEmail {
-  padding: 0rem 0.5rem 0rem 0.5rem;
+  max-width: 9.6rem;
+  padding: 0.4rem 0.5rem 0rem 0.5rem;
   height: 2rem;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   background-color: #ffd4e3;
   border-radius: 5px;
+  cursor: default;
 }
 .updateProfileLink:link,
 .updateProfileLink:visited {
@@ -95,6 +91,8 @@ ion-icon {
 .viewAllQueensButton {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  cursor: default;
+
 }
 
 .pageTitle {
@@ -142,6 +140,10 @@ ion-icon {
     height: 1.5rem;
     padding: 0rem 0.9rem 0rem 0.9rem;
   }
+
+  .usersCurrentEmail {
+    padding-top: 0.3rem;
+  }
 }
 
 @media (max-width: 1240px) {
@@ -174,6 +176,7 @@ ion-icon {
   }
   .usersCurrentEmail {
     font-size: 0.65rem;
+    padding-top: 0.35rem;
   }
 }
 @media (max-width: 920px) {
@@ -231,6 +234,10 @@ ion-icon {
   .logoutButton {
     font-size: 0.55rem;
   }
+
+  .usersCurrentEmail {
+    padding-top: 0.4rem;
+  }
   .updateProfileLink,
   .logoutButton {
     width: 2rem;
@@ -254,11 +261,13 @@ ion-icon {
   .usersCurrentEmail {
     grid-column: 1 / -1;
     font-size: 0.45rem;
+    padding-top: 0.5rem;
   }
 }
 
 @media (max-width: 375px) {
   .usersCurrentEmail {
     font-size: 0.35rem;
+    padding-top: 0.55rem;
   }
 }
