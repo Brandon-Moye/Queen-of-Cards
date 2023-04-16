@@ -195,3 +195,27 @@
     font-size: 0.65rem;
   }
 }
+
+@media (max-width: 375px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 0.45rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 0.45rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .queenNameInGrid:link,
+  .queenNameInGrid:visited {
+    font-size: 0.4rem;
+  }
+
+  .queenNameInGrid:hover,
+  .queenNameInGrid:active {
+    font-size: 0.4rem;
+  }
+}

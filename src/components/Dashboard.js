@@ -2009,7 +2009,7 @@ function handleDelete(uidProp) {
       ></Modal>
       <div className={showInstructions ? "blankDeckWithInstructions" : "hideBlankDeckWithInstructions"}>
         <span>- Struggling to keep track of your favorite <span className="instructionRPDRTitleText">Rupaul's Drag Race</span> contestants?</span>
-        <span>- Look at the list below and <span className="buttonTextInInstruction">Shantay</span> any contest to add them to your deck!</span>
+        <span>- Look at the list below and <span className="buttonTextInInstruction">Shantay</span> any contestant to add them to your deck!</span>
         <span>- Not sure if you want to add them? Click on their name to view their Fandom page!</span>
         <span>- Uh oh, hit your limit of 5 but want to add another contestant? One must <span className="buttonTextInInstruction">Sashay Away</span> first!</span>
       </div>
