@@ -284,3 +284,18 @@
     scale: 0;
   }
 }
+
+@media (hover: hover) {
+.cardQueenLinkProp:link,
+.cardQueenLinkProp:visited {
+  text-decoration: underline #fbd3e1;
+  color: #30161f;
+  transition: all ease 0.5s;
+}
+
+.cardQueenLinkProp:hover,
+.cardQueenLinkProp:active {
+  text-decoration: underline #30161f;
+  transition: all ease 0.5s;
+}
+}
