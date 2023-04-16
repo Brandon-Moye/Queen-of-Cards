@@ -26,15 +26,7 @@
   gap: 1rem;
   padding-right: 1rem;
 }
-.updateProfileLink,
-.logoutButton {
-  font-size: 1rem;
-  height: 2rem;
-  padding: 0rem 0.5rem 0rem 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .usersCurrentEmail {
   max-width: 9.6rem;
@@ -46,41 +38,6 @@
   background-color: #ffd4e3;
   border-radius: 5px;
   cursor: default;
-}
-.updateProfileLink:link,
-.updateProfileLink:visited {
-  text-decoration: underline #ffd4e3;
-  color: #000;
-  transition: all ease 0.5s;
-  background-color: #ffd4e3;
-  border-radius: 5px;
-}
-
-.updateProfileLink:hover,
-.updateProfileLink:active {
-  text-decoration: underline #000;
-  transition: all ease 0.5s;
-}
-
-.updateProfileIconContainer,
-.logoutButtonContainer {
-  display: none;
-}
-
-.logoutButton {
-  border: none;
-  background-color: #ffd4e3;
-  border-radius: 5px;
-  transition: all 0.75s;
-  position: relative;
-  right: 0;
-  transition: right ease 0.75s;
-}
-
-.logoutButton:hover {
-  cursor: pointer;
-  transition: all 0.75s;
-  right: -0.5rem;
 }
 
 ion-icon {
@@ -130,6 +87,10 @@ ion-icon {
   );
   /* padding: 1rem; */
   /* box-shadow: 0px 0px 40px #f06c9b; */
+}
+
+@media (hover: hover) {
+  
 }
 
 @media (max-width: 1340px) {
@@ -273,7 +234,17 @@ ion-icon {
 }
 
 @media (hover: hover) {
-  .updateProfileLink:link,
+.updateProfileLink,
+.logoutButton {
+  font-size: 1rem;
+  height: 2rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateProfileLink:link,
 .updateProfileLink:visited {
   text-decoration: underline #ffd4e3;
   color: #000;
