@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "./context/AuthContext";
-import { Link, useAsyncError, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { db } from "../Firebase";
 import { auth } from "../Firebase";
-import { uid } from "uid";
-import { set, ref, onValue, remove, push, get } from "firebase/database";
-import { render } from "react-dom";
+import { set, ref, onValue, get } from "firebase/database";
 
 import CardDisplays from "./queenOfCardsComponents/CardDisplay";
 import ViewAllQueens from "./queenOfCardsComponents/ViewAllQueens";
-import viewAllQueensHeader from "./queenOfCardsComponents/ViewAllQueensHeader";
 import ViewAllQueensHeader from "./queenOfCardsComponents/ViewAllQueensHeader";
 import Modal from "./queenOfCardsComponents/Modal";
 import "./Dashboard.css";
@@ -1873,8 +1869,6 @@ const queenDatabase = [
 ];
 
 export default function Dashboard() {
-  const [error, setError] = useState("");
-  const [myQueensUID, setMyQueensUID] = useState([]);
   const [myQueensUIDSToRenderState, setMyQueensUIDSToRenderState] = useState(
     []
   );
@@ -1882,27 +1876,12 @@ export default function Dashboard() {
   const [entranceAnimation, setEntranceAnimation] = useState(false);
   const [minimizedCardDisplays, setMinimizedCardDisplays] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
-  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-
-  const [quee, setQuee] = useState([]);
-
-  async function handleLogout() {
-    setError("");
-
-    try {
-      await logout();
-      navigate("/login");
-    } catch {
-      setError("Failed to log out");
-    }
-  }
 
   window.addEventListener("scroll", function (event) {
     let scroll = this.scrollY;
     if (scroll > 0) {
       setMinimizedCardDisplays(true);
-      // console.log(minimizedCardDisplays);
     } else if (scroll < 10) {
       this.window.scrollBy(-100, 0);
       setMinimizedCardDisplays(false);
@@ -1912,13 +1891,8 @@ export default function Dashboard() {
   //WRITE V2
   function writeToDatabase(uidProp) {
     const userRef = ref(db, `/${auth.currentUser.uid}`)
-
-    // onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
       get(userRef).then((snapshot) => {
       const data = snapshot.val(); //this gives me the array of data inside RTDB
-
-
-    
     if (data !== null) {
       setShowInstructions(false);
       if (data.length < 5) {
@@ -1931,7 +1905,6 @@ export default function Dashboard() {
       const values = Object.values(data);
       if(!data.includes(uidVariable)) {
         values.push(uidVariable);
-        // data.splice([data.length],4, uidVariable);
         set(ref(db, `/${auth.currentUser.uid}`),
           values
         );
@@ -1952,33 +1925,6 @@ export default function Dashboard() {
   });
   }
 
-  //WRITE
-  // function writeToDatabase(uidProp) {
-  //   onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
-  //     const data = snapshot.val(); //this gives me the array of data inside RTDB
-  //     console.log(data);
-  //   })
-
-  //   if (myQueensUIDSToRenderState.length <= 4) {
-  //     const findSelectedQueen = queenDatabase.find(function (
-  //       theQueenThatIsCurrentlyBeingIndexed
-  //     ) {
-  //       return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-  //     });
-  //     const uidVariable = findSelectedQueen.uid;    
-  //     if(!quee.includes(uidVariable)) {
-  //       quee.splice([quee.length],4, uidVariable);
-  //       set(ref(db, `/${auth.currentUser.uid}`),
-  //         quee
-  //       );
-  //     }
-  //       // console.log(quee);
-  //     // setEntranceAnimation(!entranceAnimation);
-  //   } else {
-  //     setTooManyQueensMessage(true);
-  //   }
-  // }
-
   //DELETE
 function handleDelete(uidProp) {
   const userRef = ref(db, `/${auth.currentUser.uid}`)
@@ -1994,33 +1940,14 @@ function handleDelete(uidProp) {
         values.splice(indexToRemove, 1);
         const newData = {};
         values.forEach((value, index) => {
-          // newData[values] = data[values];
           const key = keys[index];
           newData[key] = value;
         });
-        // console.log(newData);
 
         set(ref(db, `${auth.currentUser.uid}`), newData);
       }
-      // -----------------------------------------
-      // const indexInArrayToRemove = Object.values(data).indexOf(uidProp);
-      //   console.log(indexInArrayToRemove);
-      //   const newData = data.splice(indexInArrayToRemove, 1);
-      //   console.log(data);
-      //   set(ref(db, `/${auth.currentUser.uid}/${indexInArrayToRemove}`));
     }
   })
-
-  /// -----------------------------
-  // const findSelectedQueen = queenDatabase.find(function (
-  //   theQueenThatIsCurrentlyBeingIndexed
-  // ) {
-  //   // setEntranceAnimation(false);
-  //   return theQueenThatIsCurrentlyBeingIndexed.uid === uidProp;
-  // });
-  // const uidVariable = findSelectedQueen.uid;
-  // console.log(uidVariable);
-  // remove(ref(db, `/${auth.currentUser.uid}/${uidVariable}`))
 }
 
   //READ
@@ -2031,13 +1958,6 @@ function handleDelete(uidProp) {
           setMyQueensUIDSToRenderState([]);
           const data = snapshot.val();
           if (data !== null) {
-            // Object.values(data).map((myQueensUID) => {
-            //   return setMyQueensUIDSToRenderState((prevQueens) => [
-            //     ...prevQueens,
-            //     myQueensUID,
-            //   ]);
-            // });
-            // console.log(data)
             setMyQueensUIDSToRenderState(data);
             setShowInstructions(false);
 
@@ -2049,8 +1969,8 @@ function handleDelete(uidProp) {
         navigate("/login");
       }
       setEntranceAnimation(true);
-    });
-  }, []);
+    }); // eslint-disable-next-line
+  }, []); 
   
 
 
@@ -2058,14 +1978,11 @@ function handleDelete(uidProp) {
   const arrayOfUidsToUseToMapThroughDatabase = myQueensUIDSToRenderState;
   let arrayOfQueenObjectDataToMapIntoComponent = [];
   arrayOfQueenObjectDataToMapIntoComponent = queenDatabase.filter(function (queen) {
-    // return arrayOfUidsToUseToMapThroughDatabase.includes(queen.uid);
     return arrayOfUidsToUseToMapThroughDatabase.includes(queen.uid);
   });
   const orderedArrayOfObjects = myQueensUIDSToRenderState.map((uid) => 
   arrayOfQueenObjectDataToMapIntoComponent.find((obj) => obj.uid === uid)
 )
-// console.log(orderedArrayOfObjects);
-// return orderedArrayOfObjects;
   const gridQueenElements = queenDatabase.map((item) => {
     return <ViewAllQueens item={item} handleClick={writeToDatabase} />;
   });
