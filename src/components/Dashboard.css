@@ -38,13 +38,13 @@ body {
   font-size: clamp(0.5rem, 3rem, 5rem);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-auto-rows: fit-content;
   background-color: #f598b9;
   color: #fef0f5;
   filter:grayscale(1);
   border-radius: 30px;
   max-width: 80%;
-
 }
 
 .hideBlankDeckWithInstructions {
