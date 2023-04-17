@@ -136,12 +136,6 @@
   transition: all 0.25s;
   padding: 0.25rem;
   font-family: "Work Sans", sans-serif;
-}
-
-.btn2:hover {
-  /* background-color: #fbd3e1;
-  box-shadow: 0 5px 10px #30161f;
-  text-decoration: line-through #30161f; */
   cursor: pointer;
 }
 
@@ -294,7 +288,6 @@
 }
 
 .cardQueenLinkProp:hover {
-
 }
 
 .cardQueenLinkProp:active {
