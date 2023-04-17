@@ -136,38 +136,7 @@
   transition: all 0.25s;
   padding: 0.25rem;
   font-family: "Work Sans", sans-serif;
-}
-
-.btn2:hover {
-  /* background-color: #fbd3e1;
-  box-shadow: 0 5px 10px #30161f;
-  text-decoration: line-through #30161f; */
   cursor: pointer;
-}
-
-/* .btn2.test-completed2::after,
-.btn2.test-completed2::before {
-  content: "Sashay";
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  transition: all 0.75s;
-  left: 0;
-  line-height: 0.05rem;
-  transition-delay: 500ms;
-}
-
-.btn2.btn2.test-completed2:hover::after {
-  left: 6rem;
-}
-
-.btn2.test-completed2::before {
-  content: "Away";
-  left: -6rem;
-} */
-
-.btn2.btn2.test-completed2:hover::before {
-  left: 0;
 }
 
 
@@ -294,7 +263,6 @@
 }
 
 .cardQueenLinkProp:hover {
-
 }
 
 .cardQueenLinkProp:active {
