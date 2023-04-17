@@ -139,31 +139,6 @@
   cursor: pointer;
 }
 
-/* .btn2.test-completed2::after,
-.btn2.test-completed2::before {
-  content: "Sashay";
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  transition: all 0.75s;
-  left: 0;
-  line-height: 0.05rem;
-  transition-delay: 500ms;
-}
-
-.btn2.btn2.test-completed2:hover::after {
-  left: 6rem;
-}
-
-.btn2.test-completed2::before {
-  content: "Away";
-  left: -6rem;
-} */
-
-.btn2.btn2.test-completed2:hover::before {
-  left: 0;
-}
-
 
 .minimizedMyQueenElements {
   height: 5rem;
