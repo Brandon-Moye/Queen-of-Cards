@@ -7,6 +7,7 @@ export default function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfimRef = useRef();
+  const cancelProfileUpdateRef = useRef();
   const { currentUser, userUpdatePassword, userUpdateEmail } = useAuth();
   const navigate = useNavigate();
 
@@ -41,6 +42,12 @@ export default function UpdateProfile() {
       .finally(() => {
         setLoading(false);
       });
+
+     
+  }
+
+  async function testTurnOffHoverStateFunction() {
+    cancelProfileUpdateRef.current.blur()
   }
 
   return (
@@ -92,7 +99,7 @@ export default function UpdateProfile() {
         </button>
       </form>
       <div className="returnToLoginPageCancelLinkContainer">
-        <Link className="returnToLoginPageLink" to="/">
+        <Link className="returnToLoginPageLink" ref={cancelProfileUpdateRef} onTouchStart={testTurnOffHoverStateFunction} to="/">
           Cancel
         </Link>
       </div>
