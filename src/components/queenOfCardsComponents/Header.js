@@ -1,5 +1,5 @@
 import "../queenOfCardsComponents/Header.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ export default function Header() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-
+  const profileRef = useRef(null);
   async function handleLogout() {
     setError("");
 
@@ -18,13 +18,19 @@ export default function Header() {
       setError("Failed to log out");
     }
   }
+
+  async function testTurnOffHoverStateFunction() {
+    profileRef.current.blur()
+  }
+
+
   return (
     <div className="headerContainer">
       <h1 className="pageTitle">QUEEN OF CARDS</h1>
       <div className="headerProfileInfoUpdateAndLogoutContainer">
         {error}
           <div className="usersCurrentEmail" title={currentUser.email}>{currentUser.email}</div>
-        <Link to="/update-profile" className="updateProfileLink">
+        <Link to="/update-profile" ref={profileRef} className="updateProfileLink" onTouchStart={testTurnOffHoverStateFunction}>
           <div className="updateProfileLinkText"> Update Profile</div>
           <div className="updateProfileIconContainer">
             <ion-icon
