@@ -54,40 +54,47 @@ export default function CardDisplays(props) {
     // <div className="cardDisplayContainer">
     <div
       id={`${props.certainItem.uid}`}
-      className={
-        props.minimizedCardDisplays
-          ? "cardDisplayContainer minimizedCardDisplayContainer cardDisplayContainerEntranceAnimation"
-          : "cardDisplayContainer cardDisplayContainerEntranceAnimation"
-      }
+      // className={
+      //   props.minimizedCardDisplays
+      //     ? "cardDisplayContainer minimizedCardDisplayContainer cardDisplayContainerEntranceAnimation"
+      //     : "cardDisplayContainer cardDisplayContainerEntranceAnimation"
+      // }
+      className="cardDisplayContainer cardDisplayContainerEntranceAnimation"
       ref={cardContainerRef}
     >
       <div
-        className={
-          props.minimizedCardDisplays
-            ? "queenCardImageContainer minimizedQueenCardImageContainer"
-            : "queenCardImageContainer"
-        }
+        // className={
+        //   props.minimizedCardDisplays
+        //     ? "queenCardImageContainer minimizedQueenCardImageContainer"
+        //     : "queenCardImageContainer"
+        // }
+        className="queenCardImageContainer"
       >
         <img
-          className={
-            props.minimizedCardDisplays
-              ? "cardQueenImageProp minimizedCardQueenImageProp"
-              : "cardQueenImageProp"
-          }
+          // className={
+          //   props.minimizedCardDisplays
+          //     ? "cardQueenImageProp minimizedCardQueenImageProp"
+          //     : "cardQueenImageProp"
+          // }
+          className="cardQueenImageProp"
           src={props.certainItem.queenImage}
         ></img>
       </div>
       <div className="cardQueenInfoTextContainer">
         <div
-          className={
-            props.minimizedCardDisplays
-              ? "cardQueenNameProp minimizedCardQueenNameProp"
-              : "cardQueenNameProp"
-          }
+          // className={
+          //   props.minimizedCardDisplays
+          //     ? "cardQueenNameProp minimizedCardQueenNameProp"
+          //     : "cardQueenNameProp"
+          // }
+          className="cardQueenNameProp"
         >
           <strong>{props.certainItem.dragName}</strong>
         </div>
-        <div className={props.minimizedCardDisplays ? "queenStatsWithoutNameContainer minimizedqueenStatsWithoutNameContainer" : "queenStatsWithoutNameContainer" }>
+        <div 
+        // className={props.minimizedCardDisplays ? "queenStatsWithoutNameContainer minimizedqueenStatsWithoutNameContainer" : "queenStatsWithoutNameContainer" }
+        classNam="queenStatsWithoutNameContainer"
+        >
           <div className="cardQueenSeasonProp">
             <strong>Season:</strong> {props.certainItem.mainSeasonAppearedOn}
           </div>
@@ -100,12 +107,12 @@ export default function CardDisplays(props) {
             {props.certainItem.mainSeasonChallengeWins}
           </div>
           <a
-            // className="cardQueenLinkProp"
-            className={
-              props.minimizedCardDisplays
-                ? "cardQueenLinkProp minimizedCardQueenLinkProp"
-                : "cardQueenLinkProp"
-            }
+            className="cardQueenLinkProp"
+            // className={
+            //   props.minimizedCardDisplays
+            //     ? "cardQueenLinkProp minimizedCardQueenLinkProp"
+            //     : "cardQueenLinkProp"
+            // }
             href={props.certainItem.queenHomepage}
             target="_blank"
           >
@@ -114,7 +121,10 @@ export default function CardDisplays(props) {
         </div>
       </div>
 
-      <div className={props.minimizedCardDisplays ? "buttonContainer minimizedButtonContainer" : "buttonContainer"}>
+      <div 
+      // className={props.minimizedCardDisplays ? "buttonContainer minimizedButtonContainer" : "buttonContainer"}
+      className="buttonContainer"
+      >
         <button
           className="btn2"
           onClick={() => {
