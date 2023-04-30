@@ -117,13 +117,23 @@ body {
   transition: all 0.5s ease;
 }
 
-.returnToLoginPageLink:hover,
+@media (hover: hover) {
+
+  .returnToLoginPageLink:hover,
+  .returnToLoginPageLink:active {
+    text-decoration: underline #3b28cc;
+    transition: all 0.5s ease;
+  }
+}
+
+/* .returnToLoginPageLink:hover,
 .returnToLoginPageLink:active {
   text-decoration: underline #3b28cc;
   transition: all 0.5s ease;
-}
+} */
 
 @media (max-width: 500px) {
+
   .formContainerUpdateProfile,
   .returnToLoginPageCancelLinkContainer {
     max-width: 20rem;
