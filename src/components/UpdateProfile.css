@@ -103,7 +103,7 @@ body {
 .returnToLoginPageCancelLinkContainer {
   background-color: #fff;
   border-radius: 10px;
-  font-size: 1.25rem;
+  font-size: 2rem;
   height: 2rem;
   display: flex;
   justify-content: center;
@@ -119,8 +119,10 @@ body {
 
 @media (hover: hover) {
 
-  .returnToLoginPageLink:hover,
-  .returnToLoginPageLink:active {
+  .returnToLoginPageLink:hover
+
+  /* ,.returnToLoginPageLink:active  */
+    {
     text-decoration: underline #3b28cc;
     transition: all 0.5s ease;
   }
