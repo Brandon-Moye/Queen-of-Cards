@@ -144,8 +144,11 @@ ion-icon {
   .updateProfileLink,
   .logoutButton {
     font-size: 0.75rem;
-    height: 1.5rem;
     padding: 0rem 0.9rem 0rem 0.9rem;
+  }
+
+  .usersCurrentEmail {
+    height: 1.5rem;
   }
 
   .usersCurrentEmail {
@@ -153,7 +156,7 @@ ion-icon {
   }
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1250px) {
   .headerProfileInfoUpdateAndLogoutContainer {
     width: 25vw;
   }
@@ -214,6 +217,7 @@ ion-icon {
   .usersCurrentEmail {
     grid-column: 1 / -1;
     width: 100%;
+    text-align: center;
   }
 }
 
@@ -282,8 +286,8 @@ ion-icon {
 @media (hover: hover) {
 .updateProfileLink,
 .logoutButton {
-  font-size: 1rem;
-  height: 2rem;
+  font-size: 0.75rem;
+  height: 1.75rem;
   padding: 0rem 0.5rem 0rem 0.5rem;
   display: flex;
   justify-content: center;
@@ -305,10 +309,10 @@ ion-icon {
   transition: all ease 0.5s;
 }
 
-.updateProfileIconContainer,
+/* .updateProfileIconContainer,
 .logoutButtonContainer {
   display: none;
-}
+} */
 
 .logoutButton {
   border: none;
