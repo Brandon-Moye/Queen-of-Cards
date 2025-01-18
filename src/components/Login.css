@@ -27,7 +27,7 @@ body {
 
 .formContainer {
   flex-direction: column;
-  margin-top: 4rem;
+  margin-top: 2rem;
   border-radius: 10px;
   border: 3px solid #fcdce7;
   margin-bottom: 1rem;
@@ -103,6 +103,7 @@ body {
   height: 2rem;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 1rem;
 }
 
 .linkToOtherPage:link,
@@ -118,7 +119,31 @@ body {
   text-decoration: underline #3b28cc;
   transition: all 0.5s ease;
 }
+/* 
 
+*/
+
+.demoLoginButton {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 30rem;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #3b28cc;
+  transition: all 0.75s ease;
+}
+
+.demoLoginButton:hover {
+  background-color: #fff;
+  color: #3b28cc;
+  transition: all 0.75s ease;
+  cursor: pointer;
+}
 @media (max-width: 900px) {
   .LoginMessageErrorContainer {
     font-size: 0.75rem;
