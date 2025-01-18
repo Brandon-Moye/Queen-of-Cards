@@ -82,7 +82,7 @@ export default function Login() {
           </Link>
         </div>
       </div>
-        <button disabled={loading} className="formContainer logInButton" onClick={handleSubmitDemoLogin}>Demo Login</button>
+        <button disabled={loading} className="demoLoginButton" onClick={handleSubmitDemoLogin}>Demo Login</button>
     </div>
   );
 }
