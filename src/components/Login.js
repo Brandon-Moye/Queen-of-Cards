@@ -26,6 +26,19 @@ export default function Login() {
     setLoading(false);
   }
 
+  async function handleSubmitDemoLogin(e) {
+    e.preventDefault(); //preventing from refreshing
+
+    try {
+      setError("");
+      setLoading(true);
+      await login("demo@mail.com", "123456aA$$$$")
+      navigate("/");
+    } catch {
+      setError("Failed to sign in, please check your email or passwor")
+    }
+  }
+
   return (
     <div className="signupFormComponentContainer">
       <div className={error ? "LoginMessageErrorContainer" : ""}> {error}</div>
@@ -69,6 +82,7 @@ export default function Login() {
           </Link>
         </div>
       </div>
+        <button disabled={loading} className="formContainer logInButton" onClick={handleSubmitDemoLogin}>Demo Login</button>
     </div>
   );
 }
